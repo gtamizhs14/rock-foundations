@@ -293,8 +293,8 @@
 
         <p class="rf-subsection-title">Display Font — Merriweather</p>
         <div style="padding:20px;background:linear-gradient(135deg,#EBF4FF,#DBEAFE);border-radius:8px;">
-          <p style="font-family:'Merriweather',Georgia,serif;font-size:28px;font-weight:700;color:#1F2937;margin:0 0 8px;">Give to Life Change</p>
-          <p style="font-family:'Merriweather',Georgia,serif;font-size:16px;font-style:italic;color:#6B7280;margin:0;">Your generosity transforms communities and changes lives.</p>
+          <p style="font-family:'Merriweather',Georgia,serif;font-size:28px;font-weight:700;margin:0 0 8px;">Give to Life Change</p>
+          <p style="font-family:'Merriweather',Georgia,serif;font-size:16px;font-style:italic;margin:0;opacity:0.65;">Your generosity transforms communities and changes lives.</p>
         </div>
 
         <p class="rf-subsection-title">Line Heights</p>
@@ -594,10 +594,10 @@ border-radius: @rounded-full;    // 9999px — avatars, badges, pills</code></pr
 
         </div>
 
-        <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;">
+        <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:32px;">
 
           <!-- Checkboxes -->
-          <div>
+          <div style="flex:1;min-width:160px;">
             <div class="rf-demo-label">Checkboxes</div>
             <div class="rf-checkbox-group">
               <label class="rf-checkbox-wrapper">
@@ -619,7 +619,7 @@ border-radius: @rounded-full;    // 9999px — avatars, badges, pills</code></pr
           </div>
 
           <!-- Radio -->
-          <div>
+          <div style="flex:1;min-width:160px;">
             <div class="rf-demo-label">Radio Group</div>
             <div class="rf-radio-group" role="radiogroup" aria-label="Membership status">
               <label class="rf-radio-wrapper">
@@ -641,7 +641,7 @@ border-radius: @rounded-full;    // 9999px — avatars, badges, pills</code></pr
           </div>
 
           <!-- Toggles -->
-          <div>
+          <div style="flex:1;min-width:160px;">
             <div class="rf-demo-label">Toggle Switches</div>
             <div style="display:flex;flex-direction:column;gap:12px;">
               <label class="rf-toggle-wrapper">
