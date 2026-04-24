@@ -433,6 +433,56 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // ---- Add to Calendar (.ics download) ----
+  document.querySelectorAll('.rf-event-calendar-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      var ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Rock Foundations//Rock Foundations 1.0//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:easter-2025-9am@rockfoundations',
+        'DTSTART:20250420T090000',
+        'DTEND:20250420T103000',
+        'SUMMARY:Easter Sunday Celebration — 9:00 AM Service',
+        'DESCRIPTION:Join us for a powerful Easter Sunday celebration! Experience moving worship\\, an inspiring message\\, and the joy of gathering together as a church family. Childcare available for ages 0–5.\\n\\nSecond service at 11:00 AM.',
+        'LOCATION:Main Auditorium\\, Rock Church',
+        'STATUS:CONFIRMED',
+        'TRANSP:OPAQUE',
+        'END:VEVENT',
+        'BEGIN:VEVENT',
+        'UID:easter-2025-11am@rockfoundations',
+        'DTSTART:20250420T110000',
+        'DTEND:20250420T123000',
+        'SUMMARY:Easter Sunday Celebration — 11:00 AM Service',
+        'DESCRIPTION:Join us for a powerful Easter Sunday celebration! Experience moving worship\\, an inspiring message\\, and the joy of gathering together as a church family. Childcare available for ages 0–5.',
+        'LOCATION:Main Auditorium\\, Rock Church',
+        'STATUS:CONFIRMED',
+        'TRANSP:OPAQUE',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'easter-sunday-celebration.ics';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      var original = link.innerHTML;
+      link.innerHTML = '<i class="fa-solid fa-check"></i> Added to Calendar!';
+      setTimeout(function() { link.innerHTML = original; }, 3000);
+    });
+  });
+
   // ---- Hero: Copy CDN Link Button ----
   const cdnBtn = document.getElementById('rf-copy-cdn');
   if (cdnBtn) {
