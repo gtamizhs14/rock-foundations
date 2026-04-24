@@ -148,10 +148,11 @@ const ToastApp = createApp({
     let nextId = 0;
 
     const toastConfig = {
-      success: { icon: 'fa-check',          title: 'Success!',   message: 'The group member has been added successfully.' },
-      warning: { icon: 'fa-triangle-exclaim', title: 'Warning',    message: 'This person is already registered for this event.' },
-      error:   { icon: 'fa-xmark',           title: 'Error',      message: 'Unable to save. Please check your connection and try again.' },
-      info:    { icon: 'fa-info',            title: 'Info',       message: 'Rock RMS sync will run automatically at midnight.' }
+      success: { icon: 'fa-check',           title: 'Success!',              message: 'The group member has been added successfully.' },
+      warning: { icon: 'fa-triangle-exclamation', title: 'Warning',          message: 'This person is already registered for this event.' },
+      error:   { icon: 'fa-xmark',           title: 'Error',                 message: 'Unable to save. Please check your connection and try again.' },
+      info:    { icon: 'fa-info',            title: 'Info',                  message: 'Rock RMS sync will run automatically at midnight.' },
+      easter:  { icon: 'fa-shrimp',          title: 'Rock Lobster detected 🦞', message: 'You read the whole JD, didn\'t you?' }
     };
 
     function showToast(type) {
@@ -262,7 +263,7 @@ toastStyle.textContent = `
 document.head.appendChild(toastStyle);
 
 if (document.getElementById('vue-toasts-app')) {
-  ToastApp.mount('#vue-toasts-app');
+  window._rfToastInstance = ToastApp.mount('#vue-toasts-app');
 }
 
 

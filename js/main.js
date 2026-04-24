@@ -433,6 +433,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // ---- Easter Egg ----
+  var easterEgg = document.getElementById('rf-easter-egg');
+  if (easterEgg) {
+    easterEgg.addEventListener('click', function() {
+      if (window._rfToastInstance) {
+        window._rfToastInstance.showToast('easter');
+      }
+    });
+  }
+
   // ---- Add to Calendar (.ics download) ----
   document.querySelectorAll('.rf-event-calendar-link').forEach(function(link) {
     link.addEventListener('click', function(e) {
