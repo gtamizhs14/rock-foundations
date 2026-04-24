@@ -422,10 +422,17 @@ body.dark-mode {
     }
   }
 
-  .rf-shadow-demo .rf-shadow-card {
-    background: @dark-surface-raised;
-    border-color: @dark-border;
-    .rf-shadow-label { color: lighten(@color-primary, 10%); }
+  .rf-shadow-demo {
+    .rf-shadow-card {
+      background: @dark-surface-raised;
+      border-color: @dark-border;
+      .rf-shadow-label { color: lighten(@color-primary, 10%); }
+    }
+    .rf-shadow-xs { box-shadow: 0 1px 3px rgba(255,255,255,0.06); }
+    .rf-shadow-sm { box-shadow: 0 2px 6px rgba(255,255,255,0.09); }
+    .rf-shadow-md { box-shadow: 0 4px 12px rgba(255,255,255,0.11); }
+    .rf-shadow-lg { box-shadow: 0 8px 24px rgba(255,255,255,0.14); }
+    .rf-shadow-xl { box-shadow: 0 16px 40px rgba(255,255,255,0.18); }
   }
 
   .rf-radius-demo .rf-radius-item {

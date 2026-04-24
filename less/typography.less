@@ -91,11 +91,35 @@ h6 { font-size: @font-size-base; }
   }
 }
 
+@media (max-width: 576px) {
+  .rf-typo-sample {
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    .rf-typo-meta {
+      min-width: auto;
+      width: 100%;
+    }
+
+    .rf-typo-text {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
 body.dark-mode {
   h1, h2, h3, h4, h5, h6 {
     color: @dark-text-strong;
   }
   .rf-typo-sample {
     border-color: @dark-border;
+
+    .rf-typo-text { color: @dark-text-strong; }
+    .rf-typo-meta {
+      .rf-typo-px { color: @dark-text-medium; }
+    }
   }
 }
