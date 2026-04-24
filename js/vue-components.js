@@ -114,7 +114,7 @@ const ModalApp = createApp({
                 </button>
               </div>
               <div class="rf-modal-body">
-                <p>This is a <strong>{{ modalSize }}</strong> modal dialog. It supports keyboard navigation — press <kbd style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:12px;">Esc</kbd> to close, or click the backdrop.</p>
+                <p>This is a <strong>{{ modalSize }}</strong> modal dialog. It supports keyboard navigation — press <kbd style="background:#1F2937;color:#F9FAFB;padding:2px 8px;border-radius:4px;font-size:11px;font-family:monospace;border:1px solid #4B5563;box-shadow:0 1px 0 #4B5563;letter-spacing:0.5px;">Esc</kbd> to close, or click the backdrop.</p>
                 <p>Modals in Rock Foundations support three sizes and include focus trapping, body scroll lock, and smooth fade-scale transitions. All accessibility requirements from WCAG AA are met.</p>
                 <template v-if="modalSize === 'lg'">
                   <p>Large modals are ideal for forms, detailed views, or complex data entry — like adding a new person to a group, scheduling a volunteer, or configuring campus settings.</p>
