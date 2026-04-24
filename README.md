@@ -12,7 +12,7 @@ All design tokens use Rock RMS v18 RockNextGen exact variable names (`@color-pri
 
 ## Live Demo
 
-[View Live Demo](https://YOUR_USERNAME.github.io/rock-foundations)
+[View Live Demo](https://gtamizhs14.github.io/rock-foundations)
 
 ## Getting Started
 
