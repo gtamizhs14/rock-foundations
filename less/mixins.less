@@ -1,0 +1,106 @@
+// ============================================================
+// Rock Foundations — Mixins
+// ============================================================
+
+.flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.visually-hidden() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus-ring() {
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px fade(@color-primary, 30%);
+  }
+}
+
+.card-base() {
+  background: @color-white;
+  border-radius: @rounded-medium;
+  box-shadow: @shadow-sm;
+  border: @border-width solid @border-color;
+}
+
+.transition-base() {
+  transition: @transition-base;
+}
+
+.hover-lift() {
+  transition: @transition-slow;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: @shadow-md;
+  }
+}
+
+.badge-base(@bg, @color) {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: @rounded-full;
+  font-size: @font-size-xs;
+  font-weight: @font-weight-semibold;
+  line-height: 1.4;
+  background-color: @bg;
+  color: @color;
+  white-space: nowrap;
+}
+
+.btn-variant(@bg, @color, @border) {
+  background-color: @bg;
+  color: @color;
+  border: 1px solid @border;
+
+  &:hover:not(:disabled):not(.disabled) {
+    background-color: darken(@bg, 7%);
+    border-color: darken(@border, 7%);
+    color: @color;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: @shadow-sm;
+  }
+
+  &:active:not(:disabled):not(.disabled) {
+    background-color: darken(@bg, 14%);
+    border-color: darken(@border, 14%);
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none !important;
+  }
+
+  .focus-ring();
+}

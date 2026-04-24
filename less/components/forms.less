@@ -1,0 +1,510 @@
+// ============================================================
+// Rock Foundations — Forms
+// ============================================================
+
+// ---- Base Label ----
+.rf-label {
+  display: block;
+  font-size: @font-size-sm;
+  font-weight: @font-weight-semibold;
+  color: @color-interface-strong;
+  margin-bottom: 5px;
+
+  .rf-label-required {
+    color: @color-danger-strong;
+    margin-left: 3px;
+  }
+}
+
+// ---- Base Input ----
+.rf-input {
+  display: block;
+  width: 100%;
+  padding: 9px 12px;
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  font-weight: @font-weight-normal;
+  line-height: @line-height-base;
+  color: @color-interface-strong;
+  background-color: @color-white;
+  border: @border-width solid @border-color;
+  border-radius: @border-radius-base;
+  transition: @transition-fast;
+  min-height: 38px;
+
+  &::placeholder {
+    color: @color-interface-medium;
+    opacity: 1;
+  }
+
+  &:hover {
+    border-color: darken(@border-color, 10%);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: @color-primary;
+    box-shadow: 0 0 0 3px fade(@color-primary, 20%);
+  }
+
+  &:disabled {
+    background-color: @color-interface-softer;
+    color: @color-interface-medium;
+    cursor: not-allowed;
+    opacity: 0.75;
+  }
+
+  &:read-only {
+    background-color: @color-interface-softest;
+    cursor: default;
+  }
+}
+
+// ---- Input States ----
+.rf-input-error {
+  border-color: @color-danger-strong !important;
+
+  &:focus {
+    box-shadow: 0 0 0 3px fade(@color-danger-strong, 20%) !important;
+  }
+}
+
+.rf-input-success {
+  border-color: @color-success-strong !important;
+
+  &:focus {
+    box-shadow: 0 0 0 3px fade(@color-success-strong, 20%) !important;
+  }
+}
+
+// ---- Input with icon ----
+.rf-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .rf-input-prefix-icon {
+    position: absolute;
+    left: 12px;
+    color: @color-interface-medium;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .rf-input-suffix-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0 12px;
+    background-color: @color-interface-softer;
+    border: @border-width solid @border-color;
+    border-left: none;
+    border-radius: 0 @border-radius-base @border-radius-base 0;
+    font-size: @font-size-sm;
+    font-weight: @font-weight-medium;
+    color: @color-interface-strong;
+    cursor: pointer;
+    transition: @transition-fast;
+
+    &:hover {
+      background-color: @color-interface-soft;
+    }
+  }
+
+  .rf-input.has-prefix {
+    padding-left: 36px;
+  }
+
+  .rf-input.has-suffix {
+    padding-right: 72px;
+    border-radius: @border-radius-base 0 0 @border-radius-base;
+  }
+}
+
+// ---- Textarea ----
+.rf-textarea {
+  display: block;
+  width: 100%;
+  padding: 9px 12px;
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @color-interface-strong;
+  background-color: @color-white;
+  border: @border-width solid @border-color;
+  border-radius: @border-radius-base;
+  transition: @transition-fast;
+  resize: vertical;
+  min-height: 100px;
+
+  &::placeholder { color: @color-interface-medium; }
+
+  &:hover { border-color: darken(@border-color, 10%); }
+
+  &:focus {
+    outline: none;
+    border-color: @color-primary;
+    box-shadow: 0 0 0 3px fade(@color-primary, 20%);
+  }
+
+  &:disabled {
+    background-color: @color-interface-softer;
+    color: @color-interface-medium;
+    cursor: not-allowed;
+  }
+}
+
+// ---- Select ----
+.rf-select {
+  display: block;
+  width: 100%;
+  padding: 9px 36px 9px 12px;
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  color: @color-interface-strong;
+  background-color: @color-white;
+  border: @border-width solid @border-color;
+  border-radius: @border-radius-base;
+  transition: @transition-fast;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236B7280' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+
+  &:hover { border-color: darken(@border-color, 10%); }
+
+  &:focus {
+    outline: none;
+    border-color: @color-primary;
+    box-shadow: 0 0 0 3px fade(@color-primary, 20%);
+  }
+
+  &:disabled {
+    background-color: @color-interface-softer;
+    color: @color-interface-medium;
+    cursor: not-allowed;
+  }
+}
+
+// ---- Helper / Error text ----
+.rf-field-help {
+  font-size: @font-size-xs;
+  color: @color-interface-medium;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rf-field-error {
+  font-size: @font-size-xs;
+  color: @color-danger-strong;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rf-field-success {
+  font-size: @font-size-xs;
+  color: @color-success-strong;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+// ---- Form Group ----
+.rf-form-group {
+  margin-bottom: @spacing-medium;
+  &:last-child { margin-bottom: 0; }
+}
+
+// ---- Checkbox ----
+.rf-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: @spacing-small;
+  cursor: pointer;
+  user-select: none;
+
+  input[type="checkbox"] {
+    .visually-hidden();
+  }
+
+  .rf-checkbox {
+    width: 17px;
+    height: 17px;
+    min-width: 17px;
+    border: 2px solid @border-color;
+    border-radius: @rounded-xsmall;
+    background-color: @color-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: @transition-fast;
+    position: relative;
+
+    i {
+      font-size: 10px;
+      color: @color-white;
+      opacity: 0;
+      transition: @transition-fast;
+    }
+  }
+
+  input[type="checkbox"]:checked + .rf-checkbox {
+    background-color: @color-primary;
+    border-color: @color-primary;
+
+    i { opacity: 1; }
+  }
+
+  input[type="checkbox"]:indeterminate + .rf-checkbox {
+    background-color: @color-primary;
+    border-color: @color-primary;
+
+    &::after {
+      content: '';
+      width: 9px;
+      height: 2px;
+      background-color: @color-white;
+      border-radius: 1px;
+    }
+  }
+
+  input[type="checkbox"]:focus + .rf-checkbox {
+    box-shadow: 0 0 0 3px fade(@color-primary, 25%);
+  }
+
+  input[type="checkbox"]:disabled + .rf-checkbox {
+    background-color: @color-interface-softer;
+    border-color: @color-interface-soft;
+    cursor: not-allowed;
+  }
+
+  .rf-checkbox-label {
+    font-size: @font-size-base;
+    color: @color-interface-strong;
+    line-height: @line-height-tight;
+  }
+}
+
+// ---- Radio ----
+.rf-radio-wrapper {
+  display: flex;
+  align-items: center;
+  gap: @spacing-small;
+  cursor: pointer;
+  user-select: none;
+
+  input[type="radio"] {
+    .visually-hidden();
+  }
+
+  .rf-radio {
+    width: 17px;
+    height: 17px;
+    min-width: 17px;
+    border: 2px solid @border-color;
+    border-radius: @rounded-full;
+    background-color: @color-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: @transition-fast;
+
+    &::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: @rounded-full;
+      background-color: @color-white;
+      opacity: 0;
+      transition: @transition-fast;
+    }
+  }
+
+  input[type="radio"]:checked + .rf-radio {
+    background-color: @color-primary;
+    border-color: @color-primary;
+    &::after { opacity: 1; }
+  }
+
+  input[type="radio"]:focus + .rf-radio {
+    box-shadow: 0 0 0 3px fade(@color-primary, 25%);
+  }
+
+  .rf-radio-label {
+    font-size: @font-size-base;
+    color: @color-interface-strong;
+    line-height: @line-height-tight;
+  }
+}
+
+.rf-radio-group,
+.rf-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-small;
+}
+
+// ---- Toggle Switch ----
+.rf-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: @spacing-small;
+  cursor: pointer;
+  user-select: none;
+
+  input[type="checkbox"] {
+    .visually-hidden();
+  }
+
+  .rf-toggle {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    background-color: @color-interface-soft;
+    border-radius: @rounded-full;
+    transition: @transition-base;
+    flex-shrink: 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background-color: @color-white;
+      border-radius: @rounded-full;
+      top: 3px;
+      left: 3px;
+      transition: @transition-base;
+      box-shadow: @shadow-xs;
+    }
+  }
+
+  input[type="checkbox"]:checked + .rf-toggle {
+    background-color: @color-primary;
+
+    &::after {
+      transform: translateX(18px);
+    }
+  }
+
+  input[type="checkbox"]:focus + .rf-toggle {
+    box-shadow: 0 0 0 3px fade(@color-primary, 25%);
+  }
+
+  .rf-toggle-label {
+    font-size: @font-size-base;
+    color: @color-interface-strong;
+    font-weight: @font-weight-medium;
+  }
+}
+
+// ---- Range Slider ----
+.rf-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: @rounded-full;
+  background: @color-interface-softer;
+  border: @border-width solid @border-color;
+  outline: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: @rounded-full;
+    background: @color-primary;
+    cursor: pointer;
+    box-shadow: @shadow-sm;
+    transition: @transition-fast;
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 4px fade(@color-primary, 20%);
+    }
+  }
+
+  &::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: @rounded-full;
+    background: @color-primary;
+    cursor: pointer;
+    box-shadow: @shadow-sm;
+    border: none;
+  }
+
+  &:focus {
+    &::-webkit-slider-thumb {
+      box-shadow: 0 0 0 4px fade(@color-primary, 25%);
+    }
+  }
+}
+
+// ---- Dark Mode ----
+body.dark-mode {
+  .rf-label { color: @dark-text-strong; }
+
+  .rf-input,
+  .rf-textarea,
+  .rf-select {
+    background-color: @dark-surface;
+    border-color: @dark-border;
+    color: @dark-text-strong;
+
+    &::placeholder { color: @dark-text-medium; }
+
+    &:hover { border-color: lighten(@dark-border, 10%); }
+
+    &:focus {
+      border-color: @color-primary;
+      box-shadow: 0 0 0 3px fade(@color-primary, 20%);
+    }
+
+    &:disabled {
+      background-color: darken(@dark-surface, 5%);
+      color: @dark-text-medium;
+    }
+  }
+
+  .rf-input-wrapper .rf-input-suffix-btn {
+    background-color: @dark-surface-raised;
+    border-color: @dark-border;
+    color: @dark-text-strong;
+
+    &:hover { background-color: lighten(@dark-surface-raised, 5%); }
+  }
+
+  .rf-checkbox-wrapper .rf-checkbox,
+  .rf-radio-wrapper .rf-radio {
+    background-color: @dark-surface;
+    border-color: @dark-border;
+  }
+
+  .rf-toggle { background-color: @dark-border; }
+
+  .rf-checkbox-label,
+  .rf-radio-label,
+  .rf-toggle-label {
+    color: @dark-text-strong;
+  }
+
+  .rf-field-help { color: @dark-text-medium; }
+
+  .rf-range {
+    background: @dark-border;
+    border-color: @dark-border;
+  }
+}

@@ -1,0 +1,475 @@
+// ============================================================
+// Rock Foundations — Main Entry Point
+// Compilation order matters: variables → mixins → everything else
+// ============================================================
+
+// 1. Design tokens (must be first — everything depends on these)
+@import "variables";
+
+// 2. Mixins (must be second — components use these)
+@import "mixins";
+
+// 3. Base reset and global styles
+@import "reset";
+
+// 4. Typography
+@import "typography";
+
+// 5. Utility classes
+@import "utilities";
+
+// 6. Layout & Navigation (defines page structure)
+@import "components/navigation";
+
+// 7. Core UI components
+@import "components/buttons";
+@import "components/forms";
+@import "components/cards";
+@import "components/badges";
+@import "components/avatars";
+@import "components/alerts";
+@import "components/modals";
+@import "components/tables";
+@import "components/panels";
+
+// 8. Church-specific components
+@import "components/church/member-card";
+@import "components/church/group-card";
+@import "components/church/event-block";
+@import "components/church/giving-widget";
+@import "components/church/prayer-card";
+@import "components/church/stat-card";
+@import "components/church/checkin-badge";
+@import "components/church/volunteer-row";
+
+// 9. Foundation demo styles (color swatches, spacing blocks, etc.)
+
+// Color Palette
+.rf-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: @spacing-medium;
+
+  @media (max-width: @breakpoint-md) { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: @breakpoint-sm) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.rf-swatch-card {
+  border-radius: @rounded-medium;
+  overflow: hidden;
+  border: @border-width solid @border-color;
+  transition: @transition-base;
+
+  &:hover { box-shadow: @shadow-md; transform: translateY(-2px); }
+
+  .rf-swatch-color {
+    height: 60px;
+    width: 100%;
+  }
+
+  .rf-swatch-info {
+    padding: @spacing-small;
+    background: @color-white;
+    border-top: @border-width solid @border-color;
+
+    .rf-swatch-name {
+      font-size: 10px;
+      font-weight: @font-weight-semibold;
+      color: @color-interface-strong;
+      font-family: 'Fira Code', 'Consolas', monospace;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .rf-swatch-hex {
+      font-size: 10px;
+      color: @color-interface-medium;
+      font-family: 'Fira Code', 'Consolas', monospace;
+    }
+  }
+}
+
+// Spacing Scale
+.rf-spacing-demo {
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-small;
+}
+
+.rf-spacing-row {
+  display: flex;
+  align-items: center;
+  gap: @spacing-medium;
+
+  .rf-spacing-token {
+    font-size: @font-size-xs;
+    font-weight: @font-weight-semibold;
+    color: @color-primary;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    width: 160px;
+    flex-shrink: 0;
+  }
+
+  .rf-spacing-px {
+    font-size: @font-size-xs;
+    color: @color-interface-medium;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    width: 40px;
+    flex-shrink: 0;
+  }
+
+  .rf-spacing-bar {
+    height: 20px;
+    background: @color-primary-soft;
+    border: @border-width solid @color-primary;
+    border-radius: @rounded-xsmall;
+    flex-shrink: 0;
+  }
+}
+
+// Shadow Scale
+.rf-shadow-demo {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: @spacing-xlarge;
+
+  @media (max-width: @breakpoint-md) { grid-template-columns: repeat(3, 1fr); }
+
+  .rf-shadow-card {
+    background: @color-white;
+    border-radius: @rounded-medium;
+    padding: @spacing-large @spacing-medium;
+    text-align: center;
+    border: @border-width solid @border-color;
+    transition: @transition-base;
+
+    &:hover { transform: translateY(-3px); }
+
+    .rf-shadow-label {
+      font-size: @font-size-xs;
+      font-weight: @font-weight-semibold;
+      color: @color-primary;
+      font-family: 'Fira Code', 'Consolas', monospace;
+    }
+  }
+
+  .rf-shadow-xs  { box-shadow: @shadow-xs; }
+  .rf-shadow-sm  { box-shadow: @shadow-sm; }
+  .rf-shadow-md  { box-shadow: @shadow-md; }
+  .rf-shadow-lg  { box-shadow: @shadow-lg; }
+  .rf-shadow-xl  { box-shadow: @shadow-xl; }
+}
+
+// Border Radius Scale
+.rf-radius-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @spacing-large;
+  align-items: flex-end;
+
+  .rf-radius-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: @spacing-small;
+
+    .rf-radius-square {
+      width: 60px;
+      height: 60px;
+      background: @color-primary-soft;
+      border: 2px solid @color-primary;
+    }
+
+    .rf-radius-token {
+      font-size: 10px;
+      font-weight: @font-weight-semibold;
+      color: @color-primary;
+      font-family: 'Fira Code', 'Consolas', monospace;
+    }
+
+    .rf-radius-px {
+      font-size: 10px;
+      color: @color-interface-medium;
+      font-family: 'Fira Code', 'Consolas', monospace;
+    }
+  }
+}
+
+// Toast (Vue) container
+.rf-toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: @spacing-small;
+  pointer-events: none;
+  max-width: 360px;
+  width: calc(100% - 48px);
+}
+
+.rf-toast {
+  background: @color-white;
+  border-radius: @rounded-medium;
+  box-shadow: @shadow-xl;
+  border: @border-width solid @border-color;
+  overflow: hidden;
+  pointer-events: all;
+  position: relative;
+
+  .rf-toast-content {
+    display: flex;
+    align-items: flex-start;
+    gap: @spacing-small;
+    padding: @spacing-medium;
+
+    .rf-toast-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: @rounded-full;
+      .flex-center();
+      font-size: 10px;
+      color: @color-white;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .rf-toast-body {
+      flex: 1;
+      min-width: 0;
+
+      .rf-toast-title {
+        font-size: @font-size-base;
+        font-weight: @font-weight-semibold;
+        color: @color-interface-strong;
+        line-height: @line-height-tight;
+        margin-bottom: 2px;
+      }
+
+      .rf-toast-message {
+        font-size: @font-size-sm;
+        color: @color-interface-medium;
+        line-height: @line-height-base;
+      }
+    }
+
+    .rf-toast-dismiss {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: @color-interface-medium;
+      font-size: 14px;
+      padding: 0;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 1px;
+      transition: @transition-fast;
+
+      &:hover { color: @color-interface-strong; }
+    }
+  }
+
+  .rf-toast-progress {
+    height: 3px;
+    background: @color-interface-softer;
+
+    .rf-toast-progress-bar {
+      height: 100%;
+      border-radius: 0 0 2px 2px;
+      transition: width linear;
+    }
+  }
+
+  &.rf-toast-success {
+    .rf-toast-icon { background-color: @color-success-strong; }
+    .rf-toast-progress-bar { background-color: @color-success-strong; }
+  }
+
+  &.rf-toast-warning {
+    .rf-toast-icon { background-color: @color-warning-strong; }
+    .rf-toast-progress-bar { background-color: @color-warning-strong; }
+  }
+
+  &.rf-toast-error {
+    .rf-toast-icon { background-color: @color-danger-strong; }
+    .rf-toast-progress-bar { background-color: @color-danger-strong; }
+  }
+
+  &.rf-toast-info {
+    .rf-toast-icon { background-color: @color-info-strong; }
+    .rf-toast-progress-bar { background-color: @color-info-strong; }
+  }
+}
+
+// Vue Dropdown
+.rf-dropdown {
+  position: relative;
+  display: inline-block;
+
+  .rf-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 210px;
+    background: @color-white;
+    border: @border-width solid @border-color;
+    border-radius: @rounded-medium;
+    box-shadow: @shadow-lg;
+    z-index: 200;
+    overflow: hidden;
+    transform-origin: top center;
+
+    .rf-dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: @spacing-small;
+      padding: 9px @spacing-medium;
+      font-size: @font-size-base;
+      color: @color-interface-strong;
+      cursor: pointer;
+      transition: @transition-fast;
+      font-family: @font-family-base;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+
+      i {
+        width: 16px;
+        text-align: center;
+        color: @color-interface-medium;
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        background-color: @color-interface-softer;
+      }
+
+      &.rf-dropdown-item-destructive {
+        color: @color-danger-strong;
+        i { color: @color-danger-strong; }
+        &:hover { background-color: @color-danger-soft; }
+      }
+
+      &.rf-dropdown-item-disabled {
+        color: @color-interface-soft;
+        cursor: not-allowed;
+        pointer-events: none;
+        i { color: @color-interface-soft; }
+      }
+    }
+
+    .rf-dropdown-divider {
+      height: 1px;
+      background-color: @border-color;
+      margin: 4px 0;
+    }
+  }
+}
+
+// Vue Tabs
+.rf-vue-tabs {
+  .rf-vue-tab-list {
+    display: flex;
+    border-bottom: 2px solid @border-color;
+    position: relative;
+    overflow-x: auto;
+    &::-webkit-scrollbar { height: 0; }
+  }
+
+  .rf-vue-tab-btn {
+    padding: 11px @spacing-large;
+    font-size: @font-size-base;
+    font-weight: @font-weight-medium;
+    color: @color-interface-medium;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: @transition-fast;
+    white-space: nowrap;
+    font-family: @font-family-base;
+    margin-bottom: -2px;
+    position: relative;
+
+    &:hover {
+      color: @color-interface-strong;
+    }
+
+    &.active {
+      color: @color-primary;
+      border-bottom-color: @color-primary;
+      font-weight: @font-weight-semibold;
+    }
+  }
+
+  .rf-vue-tab-content {
+    padding-top: @spacing-large;
+  }
+}
+
+// Dark mode for Vue components
+body.dark-mode {
+  .rf-swatch-card {
+    border-color: @dark-border;
+    .rf-swatch-info {
+      background: @dark-surface-raised;
+      border-top-color: @dark-border;
+      .rf-swatch-name { color: @dark-text-strong; }
+      .rf-swatch-hex  { color: @dark-text-medium; }
+    }
+  }
+
+  .rf-shadow-demo .rf-shadow-card {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+    .rf-shadow-label { color: lighten(@color-primary, 10%); }
+  }
+
+  .rf-radius-demo .rf-radius-item {
+    .rf-radius-square { background: fade(@color-primary, 15%); }
+    .rf-radius-token  { color: lighten(@color-primary, 10%); }
+    .rf-radius-px     { color: @dark-text-medium; }
+  }
+
+  .rf-spacing-row {
+    .rf-spacing-token { color: lighten(@color-primary, 10%); }
+    .rf-spacing-px    { color: @dark-text-medium; }
+    .rf-spacing-bar   { background: fade(@color-primary, 20%); border-color: fade(@color-primary, 40%); }
+  }
+
+  .rf-toast {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+
+    .rf-toast-title   { color: @dark-text-strong; }
+    .rf-toast-message { color: @dark-text-medium; }
+    .rf-toast-dismiss { color: @dark-text-medium; &:hover { color: @dark-text-strong; } }
+    .rf-toast-progress { background: @dark-border; }
+  }
+
+  .rf-dropdown .rf-dropdown-menu {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+
+    .rf-dropdown-item {
+      color: @dark-text-strong;
+      i { color: @dark-text-medium; }
+      &:hover { background-color: @dark-surface; }
+      &.rf-dropdown-item-disabled { color: @dark-border; i { color: @dark-border; } }
+    }
+
+    .rf-dropdown-divider { background-color: @dark-border; }
+  }
+
+  .rf-vue-tabs {
+    .rf-vue-tab-list { border-color: @dark-border; }
+    .rf-vue-tab-btn {
+      color: @dark-text-medium;
+      &:hover { color: @dark-text-strong; }
+      &.active { color: @color-primary; border-bottom-color: @color-primary; }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+// ============================================================
+// Rock Foundations — Ministry Group Card
+// ============================================================
+
+.rf-group-card {
+  .card-base();
+  padding: @spacing-large;
+  max-width: 340px;
+  .hover-lift();
+
+  .rf-group-card-header {
+    display: flex;
+    align-items: center;
+    gap: @spacing-medium;
+    margin-bottom: @spacing-medium;
+  }
+
+  .rf-group-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: @rounded-large;
+    .flex-center();
+    background-color: @color-primary-soft;
+    color: @color-primary;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .rf-group-title-area {
+    flex: 1;
+    min-width: 0;
+
+    .rf-group-name {
+      font-size: @font-size-md;
+      font-weight: @font-weight-bold;
+      color: @color-interface-strong;
+      margin-bottom: 4px;
+      .truncate();
+    }
+  }
+
+  .rf-group-divider {
+    height: 1px;
+    background-color: @border-color;
+    margin: @spacing-medium 0;
+  }
+
+  .rf-group-leader-row {
+    display: flex;
+    align-items: center;
+    gap: @spacing-small;
+    margin-bottom: @spacing-medium;
+    font-size: @font-size-sm;
+    color: @color-interface-medium;
+
+    strong { color: @color-interface-strong; font-weight: @font-weight-medium; }
+  }
+
+  .rf-group-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 @spacing-medium;
+    display: flex;
+    flex-direction: column;
+    gap: @spacing-xsmall;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: @spacing-small;
+      font-size: @font-size-sm;
+      color: @color-interface-medium;
+
+      i {
+        width: 14px;
+        text-align: center;
+        color: @color-interface-soft;
+        font-size: 12px;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .rf-group-capacity {
+    margin-bottom: @spacing-medium;
+
+    .rf-group-capacity-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: @font-size-xs;
+      color: @color-interface-medium;
+      margin-bottom: 5px;
+
+      strong { color: @color-interface-strong; }
+    }
+
+    .rf-progress {
+      height: 6px;
+      background-color: @color-interface-softer;
+      border-radius: @rounded-full;
+      overflow: hidden;
+      border: @border-width solid @border-color;
+
+      .rf-progress-bar {
+        height: 100%;
+        border-radius: @rounded-full;
+        background-color: @color-primary;
+        transition: width 0.6s ease;
+      }
+    }
+  }
+}
+
+body.dark-mode {
+  .rf-group-card {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+
+    .rf-group-name { color: @dark-text-strong; }
+    .rf-group-divider { background-color: @dark-border; }
+    .rf-group-leader-row { color: @dark-text-medium; strong { color: @dark-text-strong; } }
+    .rf-group-info-list li { color: @dark-text-medium; i { color: @dark-border; } }
+
+    .rf-group-capacity {
+      .rf-group-capacity-label { color: @dark-text-medium; strong { color: @dark-text-strong; } }
+      .rf-progress { background-color: @dark-border; border-color: @dark-border; }
+    }
+  }
+}

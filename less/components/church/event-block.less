@@ -1,0 +1,182 @@
+// ============================================================
+// Rock Foundations — Event Registration Block
+// ============================================================
+
+.rf-event-block {
+  .card-base();
+  max-width: 420px;
+  overflow: hidden;
+  .hover-lift();
+
+  .rf-event-banner {
+    height: 180px;
+    position: relative;
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 40%, #DC2626 100%);
+    overflow: hidden;
+
+    .rf-event-banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.35) 100%);
+    }
+
+    .rf-event-banner-badge {
+      position: absolute;
+      top: @spacing-medium;
+      left: @spacing-medium;
+      z-index: 1;
+    }
+
+    .rf-event-banner-icon {
+      position: absolute;
+      bottom: @spacing-medium;
+      right: @spacing-medium;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.2);
+      border-radius: @rounded-medium;
+      .flex-center();
+      font-size: 18px;
+      color: @color-white;
+      backdrop-filter: blur(4px);
+    }
+  }
+
+  .rf-event-body {
+    padding: @spacing-large;
+
+    .rf-event-name {
+      font-size: @font-size-xl;
+      font-weight: @font-weight-bold;
+      color: @color-interface-strong;
+      margin-bottom: @spacing-small;
+      line-height: @line-height-tight;
+    }
+
+    .rf-event-meta-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 @spacing-medium;
+      display: flex;
+      flex-direction: column;
+      gap: @spacing-xsmall;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: @spacing-small;
+        font-size: @font-size-sm;
+        color: @color-interface-medium;
+
+        i {
+          width: 14px;
+          text-align: center;
+          color: @color-primary;
+          font-size: 12px;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .rf-event-description {
+      font-size: @font-size-sm;
+      color: @color-interface-medium;
+      line-height: @line-height-base;
+      margin-bottom: @spacing-medium;
+    }
+
+    .rf-event-divider {
+      height: 1px;
+      background-color: @border-color;
+      margin: @spacing-medium 0;
+    }
+
+    .rf-event-capacity {
+      margin-bottom: @spacing-medium;
+
+      .rf-event-capacity-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: @font-size-xs;
+        color: @color-interface-medium;
+        margin-bottom: 5px;
+
+        strong { color: @color-interface-strong; }
+      }
+
+      .rf-progress {
+        height: 6px;
+        background-color: @color-interface-softer;
+        border-radius: @rounded-full;
+        overflow: hidden;
+        border: @border-width solid @border-color;
+
+        .rf-progress-bar {
+          height: 100%;
+          border-radius: @rounded-full;
+          background-color: @color-primary;
+          transition: width 0.6s ease;
+        }
+      }
+    }
+
+    .rf-event-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: @spacing-medium;
+
+      .rf-event-countdown {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: @font-size-xs;
+        color: @color-interface-medium;
+
+        i { color: @color-warning-strong; }
+      }
+    }
+
+    .rf-event-cta {
+      margin-bottom: @spacing-small;
+    }
+
+    .rf-event-calendar-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: @font-size-sm;
+      color: @color-primary;
+      text-decoration: none;
+      transition: @transition-fast;
+
+      &:hover {
+        color: @color-primary-dark;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+body.dark-mode {
+  .rf-event-block {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+
+    .rf-event-body {
+      .rf-event-name { color: @dark-text-strong; }
+      .rf-event-meta-list li { color: @dark-text-medium; }
+      .rf-event-description { color: @dark-text-medium; }
+      .rf-event-divider { background-color: @dark-border; }
+
+      .rf-event-capacity {
+        .rf-event-capacity-label { color: @dark-text-medium; strong { color: @dark-text-strong; } }
+        .rf-progress { background-color: @dark-border; border-color: @dark-border; }
+      }
+
+      .rf-event-countdown { color: @dark-text-medium; }
+    }
+  }
+}

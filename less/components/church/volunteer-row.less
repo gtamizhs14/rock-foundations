@@ -1,0 +1,160 @@
+// ============================================================
+// Rock Foundations — Volunteer Schedule Row
+// ============================================================
+
+.rf-volunteer-table {
+  .card-base();
+  overflow: hidden;
+
+  .rf-volunteer-table-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 80px 110px auto;
+    padding: 10px @spacing-medium;
+    background-color: @color-interface-softest;
+    border-bottom: 2px solid @border-color;
+    gap: @spacing-medium;
+
+    span {
+      font-size: @font-size-xs;
+      font-weight: @font-weight-bold;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: @color-interface-medium;
+    }
+  }
+
+  .rf-volunteer-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 80px 110px auto;
+    padding: @spacing-medium;
+    align-items: center;
+    gap: @spacing-medium;
+    border-bottom: @border-width solid @border-color;
+    transition: background-color @transition-fast;
+
+    &:last-child { border-bottom: none; }
+
+    &:hover { background-color: @color-interface-softest; }
+
+    .rf-vol-person {
+      display: flex;
+      align-items: center;
+      gap: @spacing-small;
+      min-width: 0;
+
+      .rf-vol-name {
+        font-size: @font-size-base;
+        font-weight: @font-weight-medium;
+        color: @color-interface-strong;
+        .truncate();
+      }
+    }
+
+    .rf-vol-role { }
+
+    .rf-vol-time {
+      font-size: @font-size-sm;
+      color: @color-interface-medium;
+      font-weight: @font-weight-medium;
+    }
+
+    .rf-vol-status { }
+
+    .rf-vol-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      justify-content: flex-end;
+
+      .rf-vol-action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: @rounded-xsmall;
+        border: @border-width solid @border-color;
+        background: none;
+        cursor: pointer;
+        font-size: 11px;
+        color: @color-interface-medium;
+        transition: @transition-fast;
+        padding: 0;
+
+        &.rf-vol-confirm:hover {
+          border-color: @color-success-strong;
+          color: @color-success-strong;
+          background-color: @color-success-soft;
+        }
+
+        &.rf-vol-decline:hover {
+          border-color: @color-danger-strong;
+          color: @color-danger-strong;
+          background-color: @color-danger-soft;
+        }
+
+        &.rf-vol-message:hover {
+          border-color: @color-primary;
+          color: @color-primary;
+          background-color: @color-primary-light;
+        }
+      }
+    }
+  }
+}
+
+// ---- Mobile Responsive ----
+@media (max-width: @breakpoint-md) {
+  .rf-volunteer-table {
+    .rf-volunteer-table-header {
+      display: none;
+    }
+
+    .rf-volunteer-row {
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+
+      .rf-vol-person { grid-column: 1; grid-row: 1; }
+      .rf-vol-actions { grid-column: 2; grid-row: 1 / 3; }
+      .rf-vol-role,
+      .rf-vol-time,
+      .rf-vol-status {
+        grid-column: 1;
+        grid-row: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: @spacing-xsmall;
+      }
+
+      .rf-vol-time {
+        display: none;
+      }
+    }
+  }
+}
+
+body.dark-mode {
+  .rf-volunteer-table {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+
+    .rf-volunteer-table-header {
+      background-color: @dark-surface;
+      border-color: @dark-border;
+      span { color: @dark-text-medium; }
+    }
+
+    .rf-volunteer-row {
+      border-color: @dark-border;
+      &:hover { background-color: @dark-surface; }
+
+      .rf-vol-name { color: @dark-text-strong; }
+      .rf-vol-time { color: @dark-text-medium; }
+
+      .rf-vol-action-btn {
+        border-color: @dark-border;
+        color: @dark-text-medium;
+      }
+    }
+  }
+}

@@ -1,0 +1,291 @@
+// ============================================================
+// Rock Foundations — Tables
+// ============================================================
+
+.rf-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: @rounded-medium;
+  border: @border-width solid @border-color;
+}
+
+.rf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: @font-size-base;
+  background: @color-white;
+
+  thead tr {
+    background-color: @color-interface-softest;
+    border-bottom: 2px solid @border-color;
+  }
+
+  th {
+    padding: 11px @spacing-medium;
+    text-align: left;
+    font-size: @font-size-xs;
+    font-weight: @font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: @color-interface-medium;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  td {
+    padding: 12px @spacing-medium;
+    color: @color-interface-strong;
+    border-bottom: @border-width solid @border-color;
+    vertical-align: middle;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  // ---- Striped ----
+  &.rf-table-striped tbody tr:nth-child(even) td {
+    background-color: @color-interface-softest;
+  }
+
+  // ---- Hover ----
+  &.rf-table-hover tbody tr {
+    transition: background-color @transition-fast;
+
+    &:hover td {
+      background-color: @color-primary-light;
+    }
+  }
+
+  // ---- Sortable headers ----
+  th.rf-sortable {
+    cursor: pointer;
+    padding-right: @spacing-xlarge;
+
+    &:hover {
+      background-color: @color-interface-softer;
+      color: @color-interface-strong;
+    }
+
+    .rf-sort-icon {
+      position: absolute;
+      right: @spacing-medium;
+      top: 50%;
+      transform: translateY(-50%);
+      color: @color-interface-soft;
+      font-size: 11px;
+      transition: @transition-fast;
+    }
+
+    &.rf-sort-asc {
+      color: @color-primary;
+      background-color: @color-primary-light;
+      .rf-sort-icon { color: @color-primary; }
+    }
+
+    &.rf-sort-desc {
+      color: @color-primary;
+      background-color: @color-primary-light;
+      .rf-sort-icon { color: @color-primary; }
+    }
+  }
+
+  // ---- Row actions ----
+  .rf-table-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: flex-end;
+
+    .rf-table-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: @rounded-small;
+      border: @border-width solid @border-color;
+      background: none;
+      cursor: pointer;
+      font-size: 12px;
+      color: @color-interface-medium;
+      transition: @transition-fast;
+
+      &:hover {
+        border-color: @color-primary;
+        color: @color-primary;
+        background-color: @color-primary-light;
+      }
+
+      &.rf-action-delete:hover {
+        border-color: @color-danger-strong;
+        color: @color-danger-strong;
+        background-color: @color-danger-soft;
+      }
+    }
+  }
+
+  // ---- Checkboxes ----
+  .rf-table-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: @color-primary;
+  }
+
+  th.rf-col-check,
+  td.rf-col-check {
+    width: 46px;
+    padding-right: @spacing-small;
+  }
+}
+
+// ---- Pagination ----
+.rf-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: @spacing-medium @spacing-large;
+  border-top: @border-width solid @border-color;
+  background-color: @color-interface-softest;
+  border-radius: 0 0 @rounded-medium @rounded-medium;
+  flex-wrap: wrap;
+  gap: @spacing-small;
+
+  .rf-pagination-info {
+    font-size: @font-size-sm;
+    color: @color-interface-medium;
+  }
+
+  .rf-pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .rf-page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border-radius: @rounded-small;
+    border: @border-width solid @border-color;
+    background: @color-white;
+    font-size: @font-size-sm;
+    font-weight: @font-weight-medium;
+    color: @color-interface-strong;
+    cursor: pointer;
+    transition: @transition-fast;
+    font-family: @font-family-base;
+
+    &:hover {
+      border-color: @color-primary;
+      color: @color-primary;
+      background-color: @color-primary-light;
+    }
+
+    &.rf-page-active {
+      background-color: @color-primary;
+      border-color: @color-primary;
+      color: @color-white;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &.rf-page-ellipsis {
+      border: none;
+      background: none;
+      cursor: default;
+      color: @color-interface-medium;
+      &:hover { background: none; color: @color-interface-medium; border: none; }
+    }
+  }
+}
+
+// ---- Dark Mode ----
+body.dark-mode {
+  .rf-table-responsive {
+    border-color: @dark-border;
+  }
+
+  .rf-table {
+    background: @dark-surface-raised;
+
+    thead tr {
+      background-color: @dark-surface;
+      border-bottom-color: @dark-border;
+    }
+
+    th {
+      color: @dark-text-medium;
+    }
+
+    td {
+      color: @dark-text-strong;
+      border-bottom-color: @dark-border;
+    }
+
+    &.rf-table-striped tbody tr:nth-child(even) td {
+      background-color: fade(#fff, 3%);
+    }
+
+    &.rf-table-hover tbody tr:hover td {
+      background-color: fade(@color-primary, 10%);
+    }
+
+    th.rf-sortable {
+      &:hover {
+        background-color: @dark-surface;
+        color: @dark-text-strong;
+      }
+    }
+
+    .rf-table-action-btn {
+      border-color: @dark-border;
+      color: @dark-text-medium;
+
+      &:hover {
+        border-color: @color-primary;
+        color: @color-primary;
+        background-color: fade(@color-primary, 15%);
+      }
+
+      &.rf-action-delete:hover {
+        border-color: @color-danger-strong;
+        color: @color-danger-strong;
+        background-color: fade(@color-danger-strong, 15%);
+      }
+    }
+  }
+
+  .rf-pagination {
+    background-color: @dark-surface;
+    border-top-color: @dark-border;
+
+    .rf-pagination-info { color: @dark-text-medium; }
+
+    .rf-page-btn {
+      background: @dark-surface-raised;
+      border-color: @dark-border;
+      color: @dark-text-strong;
+
+      &:hover {
+        border-color: @color-primary;
+        color: @color-primary;
+        background-color: fade(@color-primary, 15%);
+      }
+
+      &.rf-page-active {
+        background-color: @color-primary;
+        border-color: @color-primary;
+        color: @color-white;
+      }
+    }
+  }
+}

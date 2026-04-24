@@ -1,0 +1,239 @@
+// ============================================================
+// Rock Foundations — Giving / Donation Widget
+// ============================================================
+
+.rf-giving-widget {
+  .card-base();
+  max-width: 380px;
+  padding: @spacing-xlarge @spacing-large;
+
+  .rf-giving-title {
+    font-family: @font-family-display;
+    font-size: @font-size-2xl;
+    font-weight: @font-weight-bold;
+    color: @color-interface-strong;
+    text-align: center;
+    margin-bottom: @spacing-xsmall;
+    line-height: @line-height-tight;
+  }
+
+  .rf-giving-subtitle {
+    font-size: @font-size-sm;
+    color: @color-interface-medium;
+    text-align: center;
+    margin-bottom: @spacing-large;
+  }
+
+  .rf-giving-amounts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: @spacing-xsmall;
+    margin-bottom: @spacing-medium;
+    justify-content: center;
+
+    .rf-amount-btn {
+      flex: 1;
+      min-width: 60px;
+      padding: 9px @spacing-small;
+      border: 2px solid @border-color;
+      border-radius: @rounded-full;
+      background: @color-white;
+      font-size: @font-size-base;
+      font-weight: @font-weight-semibold;
+      color: @color-interface-medium;
+      cursor: pointer;
+      transition: @transition-fast;
+      text-align: center;
+      font-family: @font-family-base;
+
+      &:hover {
+        border-color: @color-primary;
+        color: @color-primary;
+        background-color: @color-primary-light;
+      }
+
+      &.rf-amount-active {
+        background-color: @color-primary;
+        border-color: @color-primary;
+        color: @color-white;
+      }
+    }
+  }
+
+  .rf-giving-custom-input {
+    margin-bottom: @spacing-medium;
+    display: none;
+
+    &.rf-visible { display: block; }
+
+    .rf-input-wrapper {
+      .rf-input-currency-prefix {
+        position: absolute;
+        left: 12px;
+        font-size: @font-size-md;
+        font-weight: @font-weight-semibold;
+        color: @color-interface-medium;
+        pointer-events: none;
+        z-index: 1;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .rf-input {
+        padding-left: 28px;
+        font-size: @font-size-lg;
+        font-weight: @font-weight-semibold;
+        text-align: center;
+      }
+    }
+  }
+
+  .rf-giving-fund {
+    margin-bottom: @spacing-medium;
+
+    .rf-label { margin-bottom: 5px; }
+  }
+
+  .rf-giving-frequency {
+    margin-bottom: @spacing-large;
+
+    .rf-giving-freq-label {
+      font-size: @font-size-xs;
+      font-weight: @font-weight-semibold;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: @color-interface-medium;
+      margin-bottom: @spacing-small;
+    }
+
+    .rf-freq-tabs {
+      display: flex;
+      border: @border-width solid @border-color;
+      border-radius: @rounded-small;
+      overflow: hidden;
+
+      .rf-freq-tab {
+        flex: 1;
+        padding: 8px;
+        font-size: @font-size-sm;
+        font-weight: @font-weight-medium;
+        color: @color-interface-medium;
+        background: @color-white;
+        border: none;
+        cursor: pointer;
+        transition: @transition-fast;
+        font-family: @font-family-base;
+        border-right: @border-width solid @border-color;
+
+        &:last-child { border-right: none; }
+
+        &:hover {
+          background-color: @color-interface-softest;
+          color: @color-interface-strong;
+        }
+
+        &.rf-freq-active {
+          background-color: @color-primary;
+          color: @color-white;
+        }
+      }
+    }
+  }
+
+  .rf-giving-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: @spacing-medium;
+    background-color: @color-primary-light;
+    border-radius: @rounded-medium;
+    border: @border-width solid @color-primary-soft;
+    margin-bottom: @spacing-large;
+
+    .rf-giving-total-label {
+      font-size: @font-size-sm;
+      color: @color-primary;
+      font-weight: @font-weight-medium;
+    }
+
+    .rf-giving-total-amount {
+      font-size: @font-size-lg;
+      font-weight: @font-weight-bold;
+      color: @color-primary;
+    }
+  }
+
+  .rf-giving-cta {
+    margin-bottom: @spacing-small;
+  }
+
+  .rf-giving-secure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: @font-size-xs;
+    color: @color-interface-medium;
+    margin-bottom: @spacing-medium;
+
+    i { color: @color-success-strong; }
+  }
+
+  .rf-giving-social-proof {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: @font-size-sm;
+    color: @color-interface-medium;
+    padding-top: @spacing-medium;
+    border-top: @border-width solid @border-color;
+
+    i { color: @color-danger-strong; }
+    strong { color: @color-interface-strong; }
+  }
+}
+
+body.dark-mode {
+  .rf-giving-widget {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+
+    .rf-giving-title { color: @dark-text-strong; }
+    .rf-giving-subtitle { color: @dark-text-medium; }
+
+    .rf-amount-btn {
+      background: @dark-surface;
+      border-color: @dark-border;
+      color: @dark-text-medium;
+
+      &:hover { border-color: @color-primary; color: @color-primary; background-color: fade(@color-primary, 15%); }
+      &.rf-amount-active { background-color: @color-primary; border-color: @color-primary; color: @color-white; }
+    }
+
+    .rf-giving-total {
+      background-color: fade(@color-primary, 12%);
+      border-color: fade(@color-primary, 25%);
+    }
+
+    .rf-giving-secure { color: @dark-text-medium; }
+    .rf-giving-social-proof {
+      border-color: @dark-border;
+      color: @dark-text-medium;
+      strong { color: @dark-text-strong; }
+    }
+
+    .rf-freq-tabs {
+      border-color: @dark-border;
+
+      .rf-freq-tab {
+        background: @dark-surface;
+        color: @dark-text-medium;
+        border-right-color: @dark-border;
+
+        &:hover { background-color: @dark-surface-raised; color: @dark-text-strong; }
+        &.rf-freq-active { background-color: @color-primary; color: @color-white; }
+      }
+    }
+  }
+}

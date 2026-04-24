@@ -1,0 +1,2304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Foundations — Church-Grade Design System</title>
+  <meta name="description" content="A church-grade UI component library aligned with Rock RMS v18 RockNextGen design tokens. 26 components, dark mode, WCAG AA accessible.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 3.4 (grid + reset foundation) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Less source files — compiled in browser by less.js -->
+  <link rel="stylesheet/less" type="text/css" href="less/main.less">
+
+  <!-- less.js config — must be BEFORE the less.js script -->
+  <script>less = { env: 'development', logLevel: 2 }</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/4.2.0/less.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ============================================================
+       TOPBAR
+  ============================================================ -->
+  <header class="rf-topbar" role="banner">
+    <button class="rf-hamburger" id="rf-hamburger" aria-label="Open navigation" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <a href="#" class="rf-topbar-brand" aria-label="Rock Foundations home">
+      <div class="rf-topbar-logo-icon" aria-hidden="true">
+        <i class="fa-solid fa-church"></i>
+      </div>
+      <span class="rf-topbar-brand-name">Rock Foundations</span>
+    </a>
+
+    <div class="rf-topbar-spacer"></div>
+
+    <nav class="rf-topbar-nav" aria-label="Main navigation">
+      <a href="#color-palette" class="rf-nav-active">Foundations</a>
+      <a href="#buttons">Components</a>
+      <a href="#member-card">Church</a>
+      <a href="#modal">Vue</a>
+    </nav>
+
+    <div class="rf-topbar-spacer"></div>
+
+    <div class="rf-topbar-actions">
+      <button class="rf-topbar-btn" id="rf-topbar-dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <i class="fa-solid fa-moon rf-topbar-dark-icon rf-dark-toggle-icon"></i>
+      </button>
+      <div class="rf-topbar-sep" aria-hidden="true"></div>
+      <a href="https://github.com" class="rf-topbar-btn" aria-label="View on GitHub" target="_blank" rel="noopener">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <span class="rf-version-badge">v1.0</span>
+    </div>
+  </header>
+
+  <!-- Sidebar overlay for mobile -->
+  <div id="rf-sidebar-overlay" class="rf-sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       SIDEBAR
+  ============================================================ -->
+  <aside class="rf-sidebar" id="sidebar" role="navigation" aria-label="Component navigation">
+    <div class="rf-sidebar-top">
+      <div class="rf-sidebar-brand">
+        <div class="rf-sidebar-logo" aria-hidden="true"><i class="fa-solid fa-church"></i></div>
+        <span class="rf-sidebar-brand-name">Rock Foundations</span>
+      </div>
+      <p class="rf-sidebar-subtitle">v1.0 · Rock RMS v18</p>
+      <div class="rf-sidebar-search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="rf-sidebar-search" placeholder="Search components…" aria-label="Search components">
+      </div>
+    </div>
+
+    <nav class="rf-sidebar-nav">
+
+      <!-- Foundations -->
+      <div class="rf-sidebar-section">
+        <button class="rf-sidebar-section-header" aria-expanded="true">
+          <span>Foundations</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <ul class="rf-sidebar-items" role="list">
+          <li class="rf-sidebar-item"><a href="#color-palette">Color Palette</a></li>
+          <li class="rf-sidebar-item"><a href="#typography">Typography</a></li>
+          <li class="rf-sidebar-item"><a href="#spacing">Spacing</a></li>
+          <li class="rf-sidebar-item"><a href="#shadows">Shadows</a></li>
+          <li class="rf-sidebar-item"><a href="#border-radius">Border Radius</a></li>
+        </ul>
+      </div>
+
+      <!-- Core Components -->
+      <div class="rf-sidebar-section">
+        <button class="rf-sidebar-section-header" aria-expanded="true">
+          <span>Core Components</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <ul class="rf-sidebar-items" role="list">
+          <li class="rf-sidebar-item"><a href="#buttons">Buttons</a></li>
+          <li class="rf-sidebar-item"><a href="#forms">Form Inputs</a></li>
+          <li class="rf-sidebar-item"><a href="#badges">Badges &amp; Tags</a></li>
+          <li class="rf-sidebar-item"><a href="#alerts">Alerts</a></li>
+          <li class="rf-sidebar-item"><a href="#avatars">Avatars</a></li>
+          <li class="rf-sidebar-item"><a href="#cards">Cards</a></li>
+          <li class="rf-sidebar-item"><a href="#panels">Panels</a></li>
+          <li class="rf-sidebar-item"><a href="#tables">Tables</a></li>
+          <li class="rf-sidebar-item"><a href="#navigation">Navigation</a></li>
+        </ul>
+      </div>
+
+      <!-- Church Components -->
+      <div class="rf-sidebar-section">
+        <button class="rf-sidebar-section-header" aria-expanded="true">
+          <span>Church Components</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <ul class="rf-sidebar-items" role="list">
+          <li class="rf-sidebar-item"><a href="#member-card">Member Card</a></li>
+          <li class="rf-sidebar-item"><a href="#group-card">Group Card</a></li>
+          <li class="rf-sidebar-item"><a href="#event-registration">Event Registration</a></li>
+          <li class="rf-sidebar-item"><a href="#giving-widget">Giving Widget</a></li>
+          <li class="rf-sidebar-item"><a href="#prayer-request">Prayer Request</a></li>
+          <li class="rf-sidebar-item"><a href="#attendance-stats">Attendance Stats</a></li>
+          <li class="rf-sidebar-item"><a href="#checkin-badge">Check-In Badge</a></li>
+          <li class="rf-sidebar-item"><a href="#volunteer-schedule">Volunteer Schedule</a></li>
+        </ul>
+      </div>
+
+      <!-- Vue Components -->
+      <div class="rf-sidebar-section">
+        <button class="rf-sidebar-section-header" aria-expanded="true">
+          <span>Vue Components</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <ul class="rf-sidebar-items" role="list">
+          <li class="rf-sidebar-item"><a href="#modal">Modal</a></li>
+          <li class="rf-sidebar-item"><a href="#toasts">Toast Notifications</a></li>
+          <li class="rf-sidebar-item"><a href="#dropdown">Dropdown Menu</a></li>
+          <li class="rf-sidebar-item"><a href="#vue-tabs">Tabs</a></li>
+        </ul>
+      </div>
+
+    </nav>
+
+    <div class="rf-sidebar-footer">
+      <button class="rf-sidebar-dark-toggle rf-dark-toggle" aria-label="Toggle dark mode">
+        <span>
+          <i class="fa-solid fa-moon rf-dark-toggle-icon" aria-hidden="true"></i>
+          <span class="rf-dark-toggle-label">Dark Mode</span>
+        </span>
+        <i class="fa-solid fa-toggle-off" style="font-size:18px;color:#D1D5DB;"></i>
+      </button>
+      <div class="rf-sidebar-meta">
+        <i class="fa-solid fa-heart"></i>
+        Built for Rock RMS v18
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
+  <main class="rf-content" id="main-content" role="main">
+
+    <!-- Hero Banner -->
+    <div class="rf-hero" role="banner" aria-label="Rock Foundations hero">
+      <nav aria-label="Breadcrumb">
+        <ol class="rf-breadcrumb" style="margin-bottom:16px;">
+          <li><a href="#" style="color:rgba(255,255,255,0.7)">Home</a> <span class="rf-breadcrumb-sep" style="color:rgba(255,255,255,0.4)">›</span></li>
+          <li class="rf-breadcrumb-current" style="color:rgba(255,255,255,0.9)">Rock Foundations</li>
+        </ol>
+      </nav>
+      <h1 class="rf-hero-title">Rock Foundations</h1>
+      <p class="rf-hero-subtitle">A church-grade UI component library built to align with Rock RMS v18 RockNextGen design tokens. 26 components. Dark mode. WCAG AA accessible. Zero build step.</p>
+      <div class="rf-hero-actions">
+        <a href="https://github.com" target="_blank" rel="noopener" class="rf-btn-hero-outline">
+          <i class="fa-brands fa-github"></i> View on GitHub
+        </a>
+        <button class="rf-btn-hero-filled" id="rf-copy-cdn">
+          <i class="fa-solid fa-link"></i> Copy CDN Link
+        </button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 1: COLOR PALETTE
+    ============================================================ -->
+    <section id="color-palette" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Color Palette</h2>
+        <p class="rf-section-desc">Rock RMS v18 RockNextGen design tokens — every color has a purpose-driven name.</p>
+        <span class="rf-section-badge rf-section-badge--foundation">Foundation</span>
+      </div>
+
+      <p class="rf-subsection-title">Brand Colors</p>
+      <div class="rf-preview-box">
+        <div id="swatches-brand" class="rf-swatch-grid"></div>
+      </div>
+
+      <p class="rf-subsection-title">Interface Scale</p>
+      <div class="rf-preview-box">
+        <div id="swatches-interface" class="rf-swatch-grid"></div>
+      </div>
+
+      <p class="rf-subsection-title">Semantic Colors</p>
+      <div class="rf-preview-box">
+        <div id="swatches-semantic" class="rf-swatch-grid"></div>
+      </div>
+
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="less">// Rock RMS v18 Primary Brand
+@color-primary:      #1E6EBF;
+@color-primary-dark: #155499;
+@color-primary-light: #EBF4FF;
+@color-primary-soft:  #DBEAFE;
+
+// Semantic — Success
+@color-success-strong: #15803D;
+@color-success-soft:   #DCFCE7;
+
+// Semantic — Danger
+@color-danger-strong: #B91C1C;
+@color-danger-soft:   #FEE2E2;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2: TYPOGRAPHY
+    ============================================================ -->
+    <section id="typography" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Typography</h2>
+        <p class="rf-section-desc">Inter for UI text, Merriweather for display headings. Eight size steps, four weights.</p>
+        <span class="rf-section-badge rf-section-badge--foundation">Foundation</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <p class="rf-subsection-title" style="margin-top:0">Font Sizes — Inter</p>
+        <div class="rf-typo-sample">
+          <div class="rf-typo-meta"><span class="rf-typo-token">@font-size-xs</span><span class="rf-typo-px">11px</span></div>
+          <span class="rf-typo-text" style="font-size:11px;">The quick brown fox — Campus announcements &amp; captions</span>
+        </div>
+        <div class="rf-typo-sample">
+          <div class="rf-typo-meta"><span class="rf-typo-token">@font-size-sm</span><span class="rf-typo-px">12px</span></div>
+          <span class="rf-typo-text" style="font-size:12px;">The quick brown fox — Helper text &amp; meta labels</span>
+        </div>
+        <div class="rf-typo-sample">
+          <div class="rf-typo-meta"><span class="rf-typo-token">@font-size-base</span><span class="rf-typo-px">14px</span></div>
+          <span class="rf-typo-text" style="font-size:14px;">The quick brown fox — Primary body text for all UI</span>
+        </div>
+        <div class="rf-typo-sample">
+          <div class="rf-typo-meta"><span class="rf-typo-token">@font-size-md</span><span class="rf-typo-px">16px</span></div>
+          <span class="rf-typo-text" style="font-size:16px;">The quick brown fox — Card titles &amp; subheadings</span>
+        </div>
+        <div class="rf-typo-sample">
+          <div class="rf-typo-meta"><span class="rf-typo-token">@font-size-lg</span><span class="rf-typo-px">18px</span></div>
+          <span class="rf-typo-text" style="font-size:18px;">The quick brown fox — Section headings</span>
+        </div>
+        <div class="rf-typo-sample">
+          <div class="rf-typo-meta"><span class="rf-typo-token">@font-size-xl</span><span class="rf-typo-px">22px</span></div>
+          <span class="rf-typo-text" style="font-size:22px;">The quick brown fox — Page titles</span>
+        </div>
+        <div class="rf-typo-sample">
+          <div class="rf-typo-meta"><span class="rf-typo-token">@font-size-2xl</span><span class="rf-typo-px">28px</span></div>
+          <span class="rf-typo-text" style="font-size:28px;">Stat numbers &amp; hero text</span>
+        </div>
+        <div class="rf-typo-sample">
+          <div class="rf-typo-meta"><span class="rf-typo-token">@font-size-3xl</span><span class="rf-typo-px">36px</span></div>
+          <span class="rf-typo-text" style="font-size:36px;">Display numbers</span>
+        </div>
+
+        <p class="rf-subsection-title">Weights — Inter</p>
+        <div class="rf-demo-row" style="flex-wrap:wrap;gap:24px;">
+          <div><p style="font-weight:400;font-size:16px;margin:0;">Regular 400 — Body text</p></div>
+          <div><p style="font-weight:500;font-size:16px;margin:0;">Medium 500 — Labels</p></div>
+          <div><p style="font-weight:600;font-size:16px;margin:0;">Semibold 600 — Headings</p></div>
+          <div><p style="font-weight:700;font-size:16px;margin:0;">Bold 700 — Stats &amp; CTAs</p></div>
+        </div>
+
+        <p class="rf-subsection-title">Display Font — Merriweather</p>
+        <div style="padding:20px;background:linear-gradient(135deg,#EBF4FF,#DBEAFE);border-radius:8px;">
+          <p style="font-family:'Merriweather',Georgia,serif;font-size:28px;font-weight:700;color:#1F2937;margin:0 0 8px;">Give to Life Change</p>
+          <p style="font-family:'Merriweather',Georgia,serif;font-size:16px;font-style:italic;color:#6B7280;margin:0;">Your generosity transforms communities and changes lives.</p>
+        </div>
+
+        <p class="rf-subsection-title">Line Heights</p>
+        <div class="rf-demo-row" style="gap:32px;align-items:flex-start;">
+          <div style="max-width:220px;">
+            <div class="rf-demo-label">Tight — 1.25</div>
+            <p style="line-height:1.25;font-size:14px;">Sunday morning services bring our congregation together for worship, teaching, and community.</p>
+          </div>
+          <div style="max-width:220px;">
+            <div class="rf-demo-label">Base — 1.5</div>
+            <p style="line-height:1.5;font-size:14px;">Sunday morning services bring our congregation together for worship, teaching, and community.</p>
+          </div>
+          <div style="max-width:220px;">
+            <div class="rf-demo-label">Loose — 1.75</div>
+            <p style="line-height:1.75;font-size:14px;">Sunday morning services bring our congregation together for worship, teaching, and community.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="less">// Typography tokens
+font-family: @font-family-base;     // Inter — all UI text
+font-family: @font-family-display;  // Merriweather — headings, giving widget
+
+font-size: @font-size-base;         // 14px — body
+font-size: @font-size-md;           // 16px — card titles
+font-size: @font-size-xl;           // 22px — section headings
+
+font-weight: @font-weight-normal;   // 400
+font-weight: @font-weight-semibold; // 600 — headings
+font-weight: @font-weight-bold;     // 700 — stats, CTAs
+
+line-height: @line-height-base;     // 1.5 — body text
+line-height: @line-height-tight;    // 1.25 — headings</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3: SPACING
+    ============================================================ -->
+    <section id="spacing" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Spacing Scale</h2>
+        <p class="rf-section-desc">Seven consistent spacing tokens from 4px to 64px — used for padding, gaps, and margins throughout.</p>
+        <span class="rf-section-badge rf-section-badge--foundation">Foundation</span>
+      </div>
+      <div class="rf-preview-box">
+        <div class="rf-spacing-demo">
+          <div class="rf-spacing-row"><span class="rf-spacing-token">@spacing-xsmall</span><span class="rf-spacing-px">4px</span><div class="rf-spacing-bar" style="width:4px;"></div></div>
+          <div class="rf-spacing-row"><span class="rf-spacing-token">@spacing-small</span><span class="rf-spacing-px">8px</span><div class="rf-spacing-bar" style="width:8px;"></div></div>
+          <div class="rf-spacing-row"><span class="rf-spacing-token">@spacing-medium</span><span class="rf-spacing-px">16px</span><div class="rf-spacing-bar" style="width:16px;"></div></div>
+          <div class="rf-spacing-row"><span class="rf-spacing-token">@spacing-large</span><span class="rf-spacing-px">24px</span><div class="rf-spacing-bar" style="width:24px;"></div></div>
+          <div class="rf-spacing-row"><span class="rf-spacing-token">@spacing-xlarge</span><span class="rf-spacing-px">32px</span><div class="rf-spacing-bar" style="width:32px;"></div></div>
+          <div class="rf-spacing-row"><span class="rf-spacing-token">@spacing-xxlarge</span><span class="rf-spacing-px">48px</span><div class="rf-spacing-bar" style="width:48px;"></div></div>
+          <div class="rf-spacing-row"><span class="rf-spacing-token">@spacing-xxxlarge</span><span class="rf-spacing-px">64px</span><div class="rf-spacing-bar" style="width:64px;"></div></div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="less">// Rock Foundations Spacing Scale
+padding: @spacing-medium;         // 16px
+gap: @spacing-small;              // 8px
+margin-bottom: @spacing-xlarge;   // 32px</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4: SHADOWS
+    ============================================================ -->
+    <section id="shadows" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Shadow Scale</h2>
+        <p class="rf-section-desc">Five levels of elevation from nearly imperceptible to dramatic depth.</p>
+        <span class="rf-section-badge rf-section-badge--foundation">Foundation</span>
+      </div>
+      <div class="rf-preview-box">
+        <div class="rf-shadow-demo">
+          <div class="rf-shadow-card rf-shadow-xs"><div class="rf-shadow-label">@shadow-xs</div></div>
+          <div class="rf-shadow-card rf-shadow-sm"><div class="rf-shadow-label">@shadow-sm</div></div>
+          <div class="rf-shadow-card rf-shadow-md"><div class="rf-shadow-label">@shadow-md</div></div>
+          <div class="rf-shadow-card rf-shadow-lg"><div class="rf-shadow-label">@shadow-lg</div></div>
+          <div class="rf-shadow-card rf-shadow-xl"><div class="rf-shadow-label">@shadow-xl</div></div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="less">// Apply shadows via Less variables
+box-shadow: @shadow-xs;   // Topbar, subtle borders
+box-shadow: @shadow-sm;   // Cards, default state
+box-shadow: @shadow-md;   // Cards on hover
+box-shadow: @shadow-lg;   // Dropdowns, panels
+box-shadow: @shadow-xl;   // Modals, overlays</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5: BORDER RADIUS
+    ============================================================ -->
+    <section id="border-radius" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Border Radius</h2>
+        <p class="rf-section-desc">Six radius tokens from sharp corners to fully circular pill shapes.</p>
+        <span class="rf-section-badge rf-section-badge--foundation">Foundation</span>
+      </div>
+      <div class="rf-preview-box">
+        <div class="rf-radius-demo">
+          <div class="rf-radius-item"><div class="rf-radius-square" style="border-radius:3px;"></div><span class="rf-radius-token">@rounded-xsmall</span><span class="rf-radius-px">3px</span></div>
+          <div class="rf-radius-item"><div class="rf-radius-square" style="border-radius:5px;"></div><span class="rf-radius-token">@rounded-small</span><span class="rf-radius-px">5px</span></div>
+          <div class="rf-radius-item"><div class="rf-radius-square" style="border-radius:8px;"></div><span class="rf-radius-token">@rounded-medium</span><span class="rf-radius-px">8px</span></div>
+          <div class="rf-radius-item"><div class="rf-radius-square" style="border-radius:12px;"></div><span class="rf-radius-token">@rounded-large</span><span class="rf-radius-px">12px</span></div>
+          <div class="rf-radius-item"><div class="rf-radius-square" style="border-radius:16px;"></div><span class="rf-radius-token">@rounded-xlarge</span><span class="rf-radius-px">16px</span></div>
+          <div class="rf-radius-item"><div class="rf-radius-square" style="border-radius:9999px;width:60px;height:60px;"></div><span class="rf-radius-token">@rounded-full</span><span class="rf-radius-px">9999px</span></div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="less">// Apply radius tokens via Less variables
+border-radius: @rounded-xsmall;  // 3px  — buttons (sm), tags
+border-radius: @rounded-small;   // 5px  — inputs, buttons (default)
+border-radius: @rounded-medium;  // 8px  — cards, panels, modals
+border-radius: @rounded-large;   // 12px — action icons, media cards
+border-radius: @rounded-xlarge;  // 16px — feature cards
+border-radius: @rounded-full;    // 9999px — avatars, badges, pills</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6: BUTTONS
+    ============================================================ -->
+    <section id="buttons" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Buttons</h2>
+        <p class="rf-section-desc">Seven variants, three sizes, full state coverage including loading and icon combinations.</p>
+        <span class="rf-section-badge rf-section-badge--core">Core</span>
+      </div>
+
+      <p class="rf-subsection-title">Variants</p>
+      <div class="rf-preview-box">
+        <div class="rf-demo-row">
+          <button class="rf-btn rf-btn-primary">Primary</button>
+          <button class="rf-btn rf-btn-secondary">Secondary</button>
+          <button class="rf-btn rf-btn-success">Success</button>
+          <button class="rf-btn rf-btn-danger">Danger</button>
+          <button class="rf-btn rf-btn-warning">Warning</button>
+          <button class="rf-btn rf-btn-ghost">Ghost</button>
+          <button class="rf-btn rf-btn-link">Link</button>
+        </div>
+      </div>
+
+      <p class="rf-subsection-title">Sizes</p>
+      <div class="rf-preview-box">
+        <div class="rf-demo-row" style="align-items:center;">
+          <button class="rf-btn rf-btn-primary rf-btn-sm">Small</button>
+          <button class="rf-btn rf-btn-primary">Default</button>
+          <button class="rf-btn rf-btn-primary rf-btn-lg">Large</button>
+        </div>
+      </div>
+
+      <p class="rf-subsection-title">States</p>
+      <div class="rf-preview-box">
+        <div class="rf-demo-row">
+          <button class="rf-btn rf-btn-primary">Default</button>
+          <button class="rf-btn rf-btn-primary disabled" disabled aria-disabled="true">Disabled</button>
+          <button class="rf-btn rf-btn-primary rf-btn-loading" aria-label="Loading…" aria-busy="true">Save Changes</button>
+          <button class="rf-btn rf-btn-secondary disabled" disabled>Disabled Secondary</button>
+        </div>
+      </div>
+
+      <p class="rf-subsection-title">With Icons</p>
+      <div class="rf-preview-box">
+        <div class="rf-demo-row">
+          <button class="rf-btn rf-btn-primary"><i class="fa-solid fa-plus"></i> Add Member</button>
+          <button class="rf-btn rf-btn-secondary">Export <i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+          <button class="rf-btn rf-btn-success"><i class="fa-solid fa-check"></i> Mark Attended</button>
+          <button class="rf-btn rf-btn-danger"><i class="fa-solid fa-trash-can"></i> Remove</button>
+          <button class="rf-btn rf-btn-ghost rf-btn-icon-only" aria-label="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="rf-btn rf-btn-ghost rf-btn-icon-only" aria-label="More options"><i class="fa-solid fa-ellipsis"></i></button>
+        </div>
+      </div>
+
+      <p class="rf-subsection-title">Button Group</p>
+      <div class="rf-preview-box">
+        <div class="rf-demo-row">
+          <div class="rf-btn-group" role="group" aria-label="View options">
+            <button class="rf-btn rf-btn-primary">All</button>
+            <button class="rf-btn rf-btn-secondary">Active</button>
+            <button class="rf-btn rf-btn-secondary">Inactive</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;!-- Button variants --&gt;
+&lt;button class="rf-btn rf-btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="rf-btn rf-btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="rf-btn rf-btn-success"&gt;Success&lt;/button&gt;
+&lt;button class="rf-btn rf-btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="rf-btn rf-btn-ghost"&gt;Ghost&lt;/button&gt;
+
+&lt;!-- Sizes: add .rf-btn-sm or .rf-btn-lg --&gt;
+&lt;button class="rf-btn rf-btn-primary rf-btn-lg"&gt;Large&lt;/button&gt;
+
+&lt;!-- Loading state --&gt;
+&lt;button class="rf-btn rf-btn-primary rf-btn-loading" aria-busy="true"&gt;Save&lt;/button&gt;
+
+&lt;!-- Icon only --&gt;
+&lt;button class="rf-btn rf-btn-ghost rf-btn-icon-only" aria-label="Edit"&gt;
+  &lt;i class="fa-solid fa-pen-to-square"&gt;&lt;/i&gt;
+&lt;/button&gt;</code></pre>
+      </div>
+      <div class="rf-notes">
+        <p><strong>Accessibility:</strong> All buttons meet 44×44px minimum touch targets. Loading state uses <code>aria-busy="true"</code>. Icon-only buttons require <code>aria-label</code>. Focus ring visible on keyboard navigation.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 7: FORM INPUTS
+    ============================================================ -->
+    <section id="forms" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Form Inputs</h2>
+        <p class="rf-section-desc">Text inputs, select, checkbox, radio, toggle, and a complete realistic "New Person" form.</p>
+        <span class="rf-section-badge rf-section-badge--core">Core</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+          <!-- Default input -->
+          <div class="rf-form-group">
+            <label class="rf-label" for="inp-default">Full Name</label>
+            <input class="rf-input" id="inp-default" type="text" placeholder="Enter full name">
+            <div class="rf-field-help"><i class="fa-solid fa-circle-info"></i> As it appears on legal documents</div>
+          </div>
+
+          <!-- Error state -->
+          <div class="rf-form-group">
+            <label class="rf-label" for="inp-error">Email Address <span class="rf-label-required">*</span></label>
+            <input class="rf-input rf-input-error" id="inp-error" type="email" value="not-an-email" aria-describedby="inp-error-msg" aria-invalid="true">
+            <div class="rf-field-error" id="inp-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address</div>
+          </div>
+
+          <!-- Success state -->
+          <div class="rf-form-group">
+            <label class="rf-label" for="inp-success">Phone Number</label>
+            <input class="rf-input rf-input-success" id="inp-success" type="tel" value="(615) 555-0192">
+            <div class="rf-field-success"><i class="fa-solid fa-circle-check"></i> Valid phone number</div>
+          </div>
+
+          <!-- Disabled -->
+          <div class="rf-form-group">
+            <label class="rf-label" for="inp-disabled">Member ID</label>
+            <input class="rf-input" id="inp-disabled" type="text" value="RMS-00847" disabled aria-disabled="true">
+            <div class="rf-field-help">Auto-assigned by Rock RMS</div>
+          </div>
+
+          <!-- With prefix icon -->
+          <div class="rf-form-group">
+            <label class="rf-label" for="inp-search">Search People</label>
+            <div class="rf-input-wrapper">
+              <i class="rf-input-prefix-icon fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <input class="rf-input has-prefix" id="inp-search" type="search" placeholder="Search by name, email…">
+            </div>
+          </div>
+
+          <!-- With suffix button -->
+          <div class="rf-form-group">
+            <label class="rf-label" for="inp-copy">API Key</label>
+            <div class="rf-input-wrapper">
+              <input class="rf-input has-suffix" id="inp-copy" type="text" value="rf_live_xk7d8s9p2q" readonly>
+              <button class="rf-input-suffix-btn" onclick="copyCode(this.parentNode)">Copy</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+          <!-- Textarea -->
+          <div class="rf-form-group">
+            <label class="rf-label" for="inp-textarea">Prayer Request</label>
+            <textarea class="rf-textarea" id="inp-textarea" rows="4" placeholder="Share your prayer request with the community…"></textarea>
+          </div>
+
+          <!-- Select -->
+          <div class="rf-form-group">
+            <label class="rf-label" for="inp-select">Home Campus</label>
+            <select class="rf-select" id="inp-select">
+              <option value="">Select a campus…</option>
+              <option value="main" selected>Main Campus — Nashville</option>
+              <option value="north">North Campus</option>
+              <option value="east">East Campus</option>
+              <option value="south">South Campus</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;">
+
+          <!-- Checkboxes -->
+          <div>
+            <div class="rf-demo-label">Checkboxes</div>
+            <div class="rf-checkbox-group">
+              <label class="rf-checkbox-wrapper">
+                <input type="checkbox" checked>
+                <div class="rf-checkbox"><i class="fa-solid fa-check"></i></div>
+                <span class="rf-checkbox-label">Email Notifications</span>
+              </label>
+              <label class="rf-checkbox-wrapper">
+                <input type="checkbox">
+                <div class="rf-checkbox"><i class="fa-solid fa-check"></i></div>
+                <span class="rf-checkbox-label">SMS Notifications</span>
+              </label>
+              <label class="rf-checkbox-wrapper">
+                <input type="checkbox" id="cb-indeterminate">
+                <div class="rf-checkbox" id="cb-indeterminate-visual"><i class="fa-solid fa-check"></i></div>
+                <span class="rf-checkbox-label">App Notifications</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Radio -->
+          <div>
+            <div class="rf-demo-label">Radio Group</div>
+            <div class="rf-radio-group" role="radiogroup" aria-label="Membership status">
+              <label class="rf-radio-wrapper">
+                <input type="radio" name="membership" value="member" checked>
+                <div class="rf-radio"></div>
+                <span class="rf-radio-label">Member</span>
+              </label>
+              <label class="rf-radio-wrapper">
+                <input type="radio" name="membership" value="attendee">
+                <div class="rf-radio"></div>
+                <span class="rf-radio-label">Regular Attendee</span>
+              </label>
+              <label class="rf-radio-wrapper">
+                <input type="radio" name="membership" value="guest">
+                <div class="rf-radio"></div>
+                <span class="rf-radio-label">First-Time Guest</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Toggles -->
+          <div>
+            <div class="rf-demo-label">Toggle Switches</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <label class="rf-toggle-wrapper">
+                <input type="checkbox" checked aria-label="Email opt-in">
+                <div class="rf-toggle"></div>
+                <span class="rf-toggle-label">Email Opt-In</span>
+              </label>
+              <label class="rf-toggle-wrapper">
+                <input type="checkbox" aria-label="Text opt-in">
+                <div class="rf-toggle"></div>
+                <span class="rf-toggle-label">Text Opt-In</span>
+              </label>
+              <label class="rf-toggle-wrapper">
+                <input type="checkbox" checked aria-label="Directory listing">
+                <div class="rf-toggle"></div>
+                <span class="rf-toggle-label">Directory Listing</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Range Slider -->
+        <div style="margin-top:24px;max-width:400px;">
+          <div class="rf-demo-label">Range Slider</div>
+          <input class="rf-range" type="range" min="0" max="100" value="65" aria-label="Capacity percentage">
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:#6B7280;margin-top:4px;"><span>0</span><span>65%</span><span>100</span></div>
+        </div>
+      </div>
+
+      <p class="rf-subsection-title">New Person Form — Full Example</p>
+      <div class="rf-preview-box">
+        <form style="max-width:600px;" onsubmit="return false;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div class="rf-form-group" style="margin-bottom:0;">
+              <label class="rf-label" for="np-first">First Name <span class="rf-label-required">*</span></label>
+              <input class="rf-input" id="np-first" type="text" placeholder="First name" required>
+            </div>
+            <div class="rf-form-group" style="margin-bottom:0;">
+              <label class="rf-label" for="np-last">Last Name <span class="rf-label-required">*</span></label>
+              <input class="rf-input" id="np-last" type="text" placeholder="Last name" required>
+            </div>
+          </div>
+          <div class="rf-form-group">
+            <label class="rf-label" for="np-email">Email Address</label>
+            <input class="rf-input" id="np-email" type="email" placeholder="name@example.com">
+          </div>
+          <div class="rf-form-group">
+            <label class="rf-label" for="np-phone">Phone Number</label>
+            <input class="rf-input" id="np-phone" type="tel" placeholder="(615) 555-0000">
+          </div>
+          <div class="rf-form-group">
+            <label class="rf-label" for="np-campus">Home Campus</label>
+            <select class="rf-select" id="np-campus">
+              <option value="">Select campus…</option>
+              <option>Main Campus — Nashville</option>
+              <option>North Campus</option>
+              <option>East Campus</option>
+            </select>
+          </div>
+          <div class="rf-form-group">
+            <div class="rf-demo-label">Membership Status</div>
+            <div class="rf-radio-group" role="radiogroup" aria-label="Membership status">
+              <label class="rf-radio-wrapper"><input type="radio" name="np-status" value="member" checked><div class="rf-radio"></div><span class="rf-radio-label">Member</span></label>
+              <label class="rf-radio-wrapper"><input type="radio" name="np-status" value="attendee"><div class="rf-radio"></div><span class="rf-radio-label">Regular Attendee</span></label>
+              <label class="rf-radio-wrapper"><input type="radio" name="np-status" value="guest"><div class="rf-radio"></div><span class="rf-radio-label">First-Time Guest</span></label>
+            </div>
+          </div>
+          <div class="rf-form-group">
+            <label class="rf-toggle-wrapper">
+              <input type="checkbox" checked aria-label="Email opt-in">
+              <div class="rf-toggle"></div>
+              <span class="rf-toggle-label">Opt in to email communications</span>
+            </label>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:8px;">
+            <button type="submit" class="rf-btn rf-btn-primary"><i class="fa-solid fa-user-plus"></i> Add Person</button>
+            <button type="button" class="rf-btn rf-btn-ghost">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;!-- Text Input with label and helper --&gt;
+&lt;div class="rf-form-group"&gt;
+  &lt;label class="rf-label" for="my-input"&gt;Full Name&lt;/label&gt;
+  &lt;input class="rf-input" id="my-input" type="text" placeholder="Enter name"&gt;
+  &lt;div class="rf-field-help"&gt;Helper text below&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Error state --&gt;
+&lt;input class="rf-input rf-input-error" aria-invalid="true"
+       aria-describedby="err-msg"&gt;
+&lt;div class="rf-field-error" id="err-msg"&gt;Error message&lt;/div&gt;
+
+&lt;!-- Toggle Switch --&gt;
+&lt;label class="rf-toggle-wrapper"&gt;
+  &lt;input type="checkbox"&gt;
+  &lt;div class="rf-toggle"&gt;&lt;/div&gt;
+  &lt;span class="rf-toggle-label"&gt;Email Opt-In&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 8: BADGES & TAGS
+    ============================================================ -->
+    <section id="badges" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Badges &amp; Tags</h2>
+        <p class="rf-section-desc">Status indicators, removable tags, counter badges, and semantic color variants.</p>
+        <span class="rf-section-badge rf-section-badge--core">Core</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <p class="rf-subsection-title" style="margin-top:0;">Filled Variants</p>
+        <div class="rf-demo-row">
+          <span class="rf-badge rf-badge-primary">Primary</span>
+          <span class="rf-badge rf-badge-success">Success</span>
+          <span class="rf-badge rf-badge-warning">Warning</span>
+          <span class="rf-badge rf-badge-danger">Danger</span>
+          <span class="rf-badge rf-badge-info">Info</span>
+          <span class="rf-badge rf-badge-neutral">Neutral</span>
+          <span class="rf-badge rf-badge-secondary">Secondary</span>
+        </div>
+
+        <p class="rf-subsection-title">Soft Variants</p>
+        <div class="rf-demo-row">
+          <span class="rf-badge rf-badge-primary-soft">Primary</span>
+          <span class="rf-badge rf-badge-success-soft">Success</span>
+          <span class="rf-badge rf-badge-warning-soft">Warning</span>
+          <span class="rf-badge rf-badge-danger-soft">Danger</span>
+          <span class="rf-badge rf-badge-info-soft">Info</span>
+          <span class="rf-badge rf-badge-neutral-soft">Neutral</span>
+        </div>
+
+        <p class="rf-subsection-title">Outline Variants</p>
+        <div class="rf-demo-row">
+          <span class="rf-badge rf-badge-outline-primary">Primary</span>
+          <span class="rf-badge rf-badge-outline-success">Success</span>
+          <span class="rf-badge rf-badge-outline-warning">Warning</span>
+          <span class="rf-badge rf-badge-outline-danger">Danger</span>
+          <span class="rf-badge rf-badge-outline-neutral">Neutral</span>
+        </div>
+
+        <p class="rf-subsection-title">Sizes</p>
+        <div class="rf-demo-row" style="align-items:center;">
+          <span class="rf-badge rf-badge-primary rf-badge-sm">Small</span>
+          <span class="rf-badge rf-badge-primary">Medium</span>
+          <span class="rf-badge rf-badge-primary rf-badge-lg">Large</span>
+        </div>
+
+        <p class="rf-subsection-title">Status Badges</p>
+        <div class="rf-demo-row">
+          <span class="rf-status-badge rf-status-active"><span class="rf-status-dot"></span>Active</span>
+          <span class="rf-status-badge rf-status-inactive"><span class="rf-status-dot"></span>Inactive</span>
+          <span class="rf-status-badge rf-status-pending"><span class="rf-status-dot"></span>Pending</span>
+          <span class="rf-status-badge rf-status-danger"><span class="rf-status-dot"></span>Flagged</span>
+        </div>
+
+        <p class="rf-subsection-title">Removable Tags</p>
+        <div class="rf-demo-row" id="removable-tags-demo">
+          <span class="rf-tag">Young Adults <button class="rf-tag-remove" aria-label="Remove Young Adults">×</button></span>
+          <span class="rf-tag">North Campus <button class="rf-tag-remove" aria-label="Remove North Campus">×</button></span>
+          <span class="rf-tag">Worship Team <button class="rf-tag-remove" aria-label="Remove Worship Team">×</button></span>
+          <span class="rf-tag">Volunteer <button class="rf-tag-remove" aria-label="Remove Volunteer">×</button></span>
+        </div>
+
+        <p class="rf-subsection-title">Counter Badge (notification overlay)</p>
+        <div class="rf-demo-row">
+          <div class="rf-badge-counter-wrapper">
+            <button class="rf-btn rf-btn-ghost rf-btn-icon-only" aria-label="Notifications (3 new)">
+              <i class="fa-solid fa-bell" style="font-size:16px;"></i>
+            </button>
+            <span class="rf-badge-counter" aria-label="3 unread">3</span>
+          </div>
+          <div class="rf-badge-counter-wrapper" style="margin-left:16px;">
+            <button class="rf-btn rf-btn-ghost rf-btn-icon-only" aria-label="Messages (12 new)">
+              <i class="fa-solid fa-envelope" style="font-size:16px;"></i>
+            </button>
+            <span class="rf-badge-counter" aria-label="12 unread">12</span>
+          </div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;!-- Filled badge --&gt;
+&lt;span class="rf-badge rf-badge-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="rf-badge rf-badge-success"&gt;Success&lt;/span&gt;
+
+&lt;!-- Soft (pale) badge --&gt;
+&lt;span class="rf-badge rf-badge-warning-soft"&gt;Pending Review&lt;/span&gt;
+
+&lt;!-- Status badge with dot --&gt;
+&lt;span class="rf-status-badge rf-status-active"&gt;
+  &lt;span class="rf-status-dot"&gt;&lt;/span&gt;Active
+&lt;/span&gt;
+
+&lt;!-- Removable tag — JS handles removal on × click --&gt;
+&lt;span class="rf-tag"&gt;
+  Worship Team
+  &lt;button class="rf-tag-remove" aria-label="Remove"&gt;×&lt;/button&gt;
+&lt;/span&gt;
+
+&lt;!-- Counter badge overlapping a button --&gt;
+&lt;div class="rf-badge-counter-wrapper"&gt;
+  &lt;button class="rf-btn rf-btn-ghost rf-btn-icon-only" aria-label="Notifications"&gt;
+    &lt;i class="fa-solid fa-bell"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;span class="rf-badge-counter"&gt;3&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 9: ALERTS
+    ============================================================ -->
+    <section id="alerts" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Alerts</h2>
+        <p class="rf-section-desc">Contextual feedback messages for success, warning, danger, and informational states.</p>
+        <span class="rf-section-badge rf-section-badge--core">Core</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div class="rf-alert rf-alert-success" role="alert">
+          <i class="rf-alert-icon fa-solid fa-circle-check"></i>
+          <div class="rf-alert-body">
+            <div class="rf-alert-title">Person Added Successfully</div>
+            <p class="rf-alert-text">Sarah Mitchell has been added to the Young Adults group and will receive a welcome email shortly.</p>
+          </div>
+          <button class="rf-alert-dismiss" aria-label="Dismiss alert">×</button>
+        </div>
+
+        <div class="rf-alert rf-alert-warning" role="alert">
+          <i class="rf-alert-icon fa-solid fa-triangle-exclamation"></i>
+          <div class="rf-alert-body">
+            <div class="rf-alert-title">Incomplete Profile</div>
+            <p class="rf-alert-text">This person is missing a home campus and birthday. Some Rock RMS features may be limited until this information is added.</p>
+          </div>
+          <button class="rf-alert-dismiss" aria-label="Dismiss alert">×</button>
+        </div>
+
+        <div class="rf-alert rf-alert-danger" role="alert">
+          <i class="rf-alert-icon fa-solid fa-circle-exclamation"></i>
+          <div class="rf-alert-body">
+            <div class="rf-alert-title">Sync Error</div>
+            <p class="rf-alert-text">Unable to sync with Rock RMS. The last successful sync was 2 hours ago. Please check your connection and try again.</p>
+          </div>
+          <button class="rf-alert-dismiss" aria-label="Dismiss alert">×</button>
+        </div>
+
+        <div class="rf-alert rf-alert-info" role="alert">
+          <i class="rf-alert-icon fa-solid fa-circle-info"></i>
+          <div class="rf-alert-body">
+            <div class="rf-alert-title">Scheduled Maintenance</div>
+            <p class="rf-alert-text">Rock RMS will be unavailable Saturday, April 26 from 2:00–4:00 AM CDT for a scheduled update to v18.1.</p>
+          </div>
+          <button class="rf-alert-dismiss" aria-label="Dismiss alert">×</button>
+        </div>
+
+        <p class="rf-subsection-title">Inline Compact Alerts</p>
+        <div class="rf-demo-stack">
+          <div><span class="rf-alert-inline rf-alert-success"><i class="fa-solid fa-check"></i> Saved successfully</span></div>
+          <div><span class="rf-alert-inline rf-alert-warning"><i class="fa-solid fa-triangle-exclamation"></i> Review required</span></div>
+          <div><span class="rf-alert-inline rf-alert-danger"><i class="fa-solid fa-xmark"></i> Validation failed</span></div>
+          <div><span class="rf-alert-inline rf-alert-info"><i class="fa-solid fa-circle-info"></i> 4 records imported</span></div>
+        </div>
+      </div>
+
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;div class="rf-alert rf-alert-success" role="alert"&gt;
+  &lt;i class="rf-alert-icon fa-solid fa-circle-check"&gt;&lt;/i&gt;
+  &lt;div class="rf-alert-body"&gt;
+    &lt;div class="rf-alert-title"&gt;Success Title&lt;/div&gt;
+    &lt;p class="rf-alert-text"&gt;Details about what happened.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;button class="rf-alert-dismiss" aria-label="Dismiss"&gt;×&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 10: AVATARS
+    ============================================================ -->
+    <section id="avatars" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Avatars</h2>
+        <p class="rf-section-desc">CSS-generated initials avatars with status indicators, size scale, and group stacking. Zero external images.</p>
+        <span class="rf-section-badge rf-section-badge--core">Core</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <p class="rf-subsection-title" style="margin-top:0;">Sizes</p>
+        <div class="rf-demo-row" style="align-items:center;">
+          <div class="rf-avatar rf-avatar-xs rf-avatar-blue" aria-label="SM">SM</div>
+          <div class="rf-avatar rf-avatar-sm rf-avatar-green" aria-label="JT">JT</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-purple" aria-label="LN">LN</div>
+          <div class="rf-avatar rf-avatar-lg rf-avatar-amber" aria-label="PW">PW</div>
+          <div class="rf-avatar rf-avatar-xl rf-avatar-teal" aria-label="MR">MR</div>
+          <div class="rf-avatar rf-avatar-xxl rf-avatar-indigo" aria-label="EJ">EJ</div>
+        </div>
+
+        <p class="rf-subsection-title">Color Variants</p>
+        <div class="rf-demo-row" style="align-items:center;">
+          <div class="rf-avatar rf-avatar-md rf-avatar-blue">AB</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-green">CD</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-amber">EF</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-red">GH</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-teal">IJ</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-purple">KL</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-pink">MN</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-indigo">OP</div>
+        </div>
+
+        <p class="rf-subsection-title">Icon Avatars</p>
+        <div class="rf-demo-row" style="align-items:center;">
+          <div class="rf-avatar rf-avatar-md rf-avatar-blue"><i class="fa-solid fa-user"></i></div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-purple"><i class="fa-solid fa-users"></i></div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-green"><i class="fa-solid fa-church"></i></div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-amber"><i class="fa-solid fa-star"></i></div>
+        </div>
+
+        <p class="rf-subsection-title">With Status Indicators</p>
+        <div class="rf-demo-row" style="align-items:center;gap:20px;">
+          <div class="rf-avatar-wrapper rf-avatar-md-wrap">
+            <div class="rf-avatar rf-avatar-md rf-avatar-blue">SM</div>
+            <div class="rf-avatar-status rf-status-online" title="Online"></div>
+          </div>
+          <div class="rf-avatar-wrapper rf-avatar-md-wrap">
+            <div class="rf-avatar rf-avatar-md rf-avatar-green">JT</div>
+            <div class="rf-avatar-status rf-status-busy" title="Busy"></div>
+          </div>
+          <div class="rf-avatar-wrapper rf-avatar-md-wrap">
+            <div class="rf-avatar rf-avatar-md rf-avatar-purple">LN</div>
+            <div class="rf-avatar-status rf-status-away" title="Away"></div>
+          </div>
+          <div class="rf-avatar-wrapper rf-avatar-md-wrap">
+            <div class="rf-avatar rf-avatar-md rf-avatar-amber">PW</div>
+            <div class="rf-avatar-status rf-status-offline" title="Offline"></div>
+          </div>
+        </div>
+
+        <p class="rf-subsection-title">Avatar Group</p>
+        <div class="rf-avatar-group" role="group" aria-label="Group members: Sarah, James, Lisa, and 3 more">
+          <div class="rf-avatar rf-avatar-md rf-avatar-blue" title="Sarah Mitchell">SM</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-green" title="James Torres">JT</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-purple" title="Lisa Nguyen">LN</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-amber" title="Patricia Webb">PW</div>
+          <div class="rf-avatar rf-avatar-md rf-avatar-teal" title="Marcus Rivera">MR</div>
+          <div class="rf-avatar-group-more">+3 more</div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;!-- Avatar with initials — sizes: xs sm md lg xl xxl --&gt;
+&lt;div class="rf-avatar rf-avatar-md rf-avatar-blue"&gt;SM&lt;/div&gt;
+
+&lt;!-- Color variants: blue green amber red teal purple pink indigo --&gt;
+&lt;div class="rf-avatar rf-avatar-md rf-avatar-purple"&gt;JT&lt;/div&gt;
+
+&lt;!-- Icon avatar --&gt;
+&lt;div class="rf-avatar rf-avatar-md rf-avatar-green"&gt;
+  &lt;i class="fa-solid fa-user"&gt;&lt;/i&gt;
+&lt;/div&gt;
+
+&lt;!-- Avatar with status dot --&gt;
+&lt;div class="rf-avatar-wrapper rf-avatar-md-wrap"&gt;
+  &lt;div class="rf-avatar rf-avatar-md rf-avatar-blue"&gt;SM&lt;/div&gt;
+  &lt;div class="rf-avatar-status rf-status-online"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Overlapping group --&gt;
+&lt;div class="rf-avatar-group"&gt;
+  &lt;div class="rf-avatar rf-avatar-md rf-avatar-blue"&gt;SM&lt;/div&gt;
+  &lt;div class="rf-avatar rf-avatar-md rf-avatar-green"&gt;JT&lt;/div&gt;
+  &lt;div class="rf-avatar-group-more"&gt;+3 more&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 11: CARDS
+    ============================================================ -->
+    <section id="cards" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Cards</h2>
+        <p class="rf-section-desc">Versatile card patterns for displaying content, stats, media, and actions.</p>
+        <span class="rf-section-badge rf-section-badge--core">Core</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;align-items:start;">
+
+          <!-- Basic card -->
+          <div class="rf-card">
+            <div class="rf-card-header">
+              <div>
+                <div class="rf-card-title">Group Activity</div>
+                <div class="rf-card-subtitle">Young Adults — Wednesday</div>
+              </div>
+              <span class="rf-badge rf-badge-success-soft">Active</span>
+            </div>
+            <div class="rf-card-body">
+              <p style="color:#6B7280;font-size:14px;margin:0;">This small group meets weekly for Bible study, community, and prayer. All young adults ages 18–35 are welcome.</p>
+            </div>
+            <div class="rf-card-footer">
+              <button class="rf-btn rf-btn-ghost rf-btn-sm">Learn More</button>
+              <button class="rf-btn rf-btn-primary rf-btn-sm">Join Group</button>
+            </div>
+          </div>
+
+          <!-- Media card -->
+          <div class="rf-card rf-card-clickable">
+            <div class="rf-card-media">
+              <div class="rf-card-media-overlay"></div>
+              <div class="rf-card-media-overlay" style="position:absolute;top:12px;left:12px;z-index:1;">
+                <span class="rf-badge rf-badge-warning-soft"><i class="fa-solid fa-calendar-days"></i> This Sunday</span>
+              </div>
+            </div>
+            <div class="rf-card-body">
+              <h4 style="font-size:16px;font-weight:700;color:#1F2937;margin:0 0 6px;">Easter Sunday Celebration</h4>
+              <p style="font-size:13px;color:#6B7280;margin:0 0 12px;">Join us for a special Easter service with live worship, powerful teaching, and community.</p>
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#6B7280;">
+                <i class="fa-solid fa-clock"></i> 9:00 AM &amp; 11:00 AM
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat card -->
+          <div class="rf-card-stat">
+            <div style="font-size:12px;color:#6B7280;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.05em;">Weekend Attendance</div>
+            <div class="rf-card-stat-number">1,247</div>
+            <div class="rf-card-stat-label">Total check-ins this weekend</div>
+            <span class="rf-card-stat-trend rf-trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +8% vs last week</span>
+          </div>
+
+          <!-- Action card -->
+          <div class="rf-card-action">
+            <div class="rf-card-action-icon"><i class="fa-solid fa-hands-praying"></i></div>
+            <div class="rf-card-action-title">Prayer Wall</div>
+            <p class="rf-card-action-text">Submit and pray for requests from your congregation in real time.</p>
+            <button class="rf-btn rf-btn-primary rf-btn-sm">Open Prayer Wall</button>
+          </div>
+
+        </div>
+
+        <p class="rf-subsection-title">Horizontal Card</p>
+        <div class="rf-card-horizontal" style="max-width:480px;">
+          <div class="rf-card-h-image"></div>
+          <div class="rf-card-h-body">
+            <h4 class="rf-card-h-title">Easter Sunday Celebration</h4>
+            <p class="rf-card-h-text">Sun, April 20 · 9:00 AM · Main Auditorium</p>
+            <div style="margin-top:8px;"><span class="rf-badge rf-badge-success-soft"><i class="fa-solid fa-check"></i> Free</span></div>
+          </div>
+        </div>
+
+        <p class="rf-subsection-title">Pricing Card</p>
+        <div style="max-width:280px;">
+          <div class="rf-card-pricing rf-card-pricing-featured">
+            <div class="rf-card-pricing-plan">Rock RMS Pro</div>
+            <div class="rf-card-pricing-price">$49<span>/mo</span></div>
+            <div class="rf-card-pricing-desc">Everything your church needs to grow</div>
+            <ul class="rf-card-pricing-features">
+              <li><i class="fa-solid fa-check"></i> Unlimited members</li>
+              <li><i class="fa-solid fa-check"></i> Check-in kiosks</li>
+              <li><i class="fa-solid fa-check"></i> Online giving</li>
+              <li><i class="fa-solid fa-check"></i> Group management</li>
+              <li><i class="fa-solid fa-check"></i> Volunteer scheduling</li>
+            </ul>
+            <button class="rf-btn rf-btn-primary rf-w-full">Get Started</button>
+          </div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;!-- Basic card with header / body / footer --&gt;
+&lt;div class="rf-card"&gt;
+  &lt;div class="rf-card-header"&gt;
+    &lt;div class="rf-card-title"&gt;Card Title&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-card-body"&gt;Card content goes here.&lt;/div&gt;
+  &lt;div class="rf-card-footer"&gt;
+    &lt;button class="rf-btn rf-btn-primary rf-btn-sm"&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Clickable card with hover lift --&gt;
+&lt;div class="rf-card rf-card-clickable"&gt;...&lt;/div&gt;
+
+&lt;!-- Stat card --&gt;
+&lt;div class="rf-card-stat"&gt;
+  &lt;div class="rf-card-stat-number"&gt;1,247&lt;/div&gt;
+  &lt;div class="rf-card-stat-label"&gt;Weekend Attendance&lt;/div&gt;
+  &lt;span class="rf-card-stat-trend rf-trend-up"&gt;
+    &lt;i class="fa-solid fa-arrow-trend-up"&gt;&lt;/i&gt; +8%
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 12: PANELS
+    ============================================================ -->
+    <section id="panels" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Panels</h2>
+        <p class="rf-section-desc">Rock-style collapsible panels with smooth animation and semantic color variants.</p>
+        <span class="rf-section-badge rf-section-badge--core">Core</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div class="rf-panel">
+          <div class="rf-panel-header" role="button" aria-expanded="true">
+            <h3 class="rf-panel-title">Default Panel — Group Details</h3>
+            <i class="rf-panel-toggle-icon fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </div>
+          <div class="rf-panel-body">
+            <p style="color:#6B7280;font-size:14px;margin:0;">Young Adults Wednesday meets weekly at 7:00 PM in Room 214. This small group focuses on building community through Bible study and shared life. Led by Pastor James Torres.</p>
+          </div>
+        </div>
+
+        <div class="rf-panel rf-panel-primary">
+          <div class="rf-panel-header" role="button" aria-expanded="true">
+            <h3 class="rf-panel-title" style="color:white;">Primary Panel — Giving Summary</h3>
+            <i class="rf-panel-toggle-icon fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </div>
+          <div class="rf-panel-body">
+            <p style="font-size:14px;margin:0;">Total giving this month: <strong>$47,832</strong>. Goal: $50,000. You are 95.7% of the way to your monthly giving goal.</p>
+          </div>
+        </div>
+
+        <div class="rf-panel rf-panel-success">
+          <div class="rf-panel-header" role="button" aria-expanded="false">
+            <h3 class="rf-panel-title" style="color:white;">Success Panel — Attendance Goal Met</h3>
+            <i class="rf-panel-toggle-icon fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </div>
+          <div class="rf-panel-body">
+            <p style="font-size:14px;margin:0;">Weekend attendance reached 1,247 — surpassing the quarterly goal of 1,200. Great work, team!</p>
+          </div>
+        </div>
+
+        <div class="rf-panel rf-panel-warning">
+          <div class="rf-panel-header" role="button" aria-expanded="false">
+            <h3 class="rf-panel-title">Warning Panel — Missing Volunteer Slots</h3>
+            <i class="rf-panel-toggle-icon fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </div>
+          <div class="rf-panel-body">
+            <p style="font-size:14px;margin:0;">3 volunteer roles remain unfilled for the 9:00 AM service this Sunday. Please assign volunteers in the scheduling tool.</p>
+          </div>
+        </div>
+
+        <div class="rf-panel rf-panel-danger">
+          <div class="rf-panel-header" role="button" aria-expanded="false">
+            <h3 class="rf-panel-title" style="color:white;">Danger Panel — System Alert</h3>
+            <i class="rf-panel-toggle-icon fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </div>
+          <div class="rf-panel-body">
+            <p style="font-size:14px;margin:0;">The Rock RMS integration has been disconnected. Contact your system administrator to restore the connection.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;!-- Default collapsible panel (JS toggles .is-open) --&gt;
+&lt;div class="rf-panel"&gt;
+  &lt;div class="rf-panel-header" role="button" aria-expanded="true"&gt;
+    &lt;h3 class="rf-panel-title"&gt;Panel Title&lt;/h3&gt;
+    &lt;i class="rf-panel-toggle-icon fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-panel-body is-open"&gt;
+    Panel body content here.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Colour variants: rf-panel-primary / success / warning / danger --&gt;
+&lt;div class="rf-panel rf-panel-primary"&gt;...&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 13: TABLES
+    ============================================================ -->
+    <section id="tables" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Tables</h2>
+        <p class="rf-section-desc">Sortable, hoverable, striped tables with row actions, checkboxes, and pagination.</p>
+        <span class="rf-section-badge rf-section-badge--core">Core</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div class="rf-paged-table" data-per-page="5">
+          <div class="rf-table-responsive">
+            <table class="rf-table rf-table-hover rf-table-striped" aria-label="Group members">
+              <thead>
+                <tr>
+                  <th class="rf-col-check"><input type="checkbox" class="rf-table-checkbox rf-table-select-all" aria-label="Select all rows"></th>
+                  <th class="rf-sortable">Name <i class="fas fa-sort rf-sort-icon"></i></th>
+                  <th class="rf-sortable">Campus <i class="fas fa-sort rf-sort-icon"></i></th>
+                  <th class="rf-sortable">Role <i class="fas fa-sort rf-sort-icon"></i></th>
+                  <th class="rf-sortable">Joined <i class="fas fa-sort rf-sort-icon"></i></th>
+                  <th class="rf-sortable">Status <i class="fas fa-sort rf-sort-icon"></i></th>
+                  <th style="text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="rf-col-check"><input type="checkbox" class="rf-table-checkbox rf-table-row-check" aria-label="Select Sarah Mitchell"></td>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><div class="rf-avatar rf-avatar-sm rf-avatar-blue">SM</div><strong>Sarah Mitchell</strong></div></td>
+                  <td>Main Campus</td><td>Group Leader</td><td>Mar 2019</td>
+                  <td><span class="rf-status-badge rf-status-active"><span class="rf-status-dot"></span>Active</span></td>
+                  <td><div class="rf-table-actions"><button class="rf-table-action-btn" aria-label="View Sarah Mitchell"><i class="fa-solid fa-eye"></i></button><button class="rf-table-action-btn" aria-label="Edit Sarah Mitchell"><i class="fa-solid fa-pen-to-square"></i></button><button class="rf-table-action-btn rf-action-delete" aria-label="Remove Sarah Mitchell"><i class="fa-solid fa-trash-can"></i></button></div></td>
+                </tr>
+                <tr>
+                  <td class="rf-col-check"><input type="checkbox" class="rf-table-checkbox rf-table-row-check" aria-label="Select James Torres"></td>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><div class="rf-avatar rf-avatar-sm rf-avatar-green">JT</div><strong>James Torres</strong></div></td>
+                  <td>North Campus</td><td>Pastor</td><td>Jan 2018</td>
+                  <td><span class="rf-status-badge rf-status-active"><span class="rf-status-dot"></span>Active</span></td>
+                  <td><div class="rf-table-actions"><button class="rf-table-action-btn" aria-label="View James Torres"><i class="fa-solid fa-eye"></i></button><button class="rf-table-action-btn" aria-label="Edit James Torres"><i class="fa-solid fa-pen-to-square"></i></button><button class="rf-table-action-btn rf-action-delete" aria-label="Remove James Torres"><i class="fa-solid fa-trash-can"></i></button></div></td>
+                </tr>
+                <tr>
+                  <td class="rf-col-check"><input type="checkbox" class="rf-table-checkbox rf-table-row-check" aria-label="Select Lisa Nguyen"></td>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><div class="rf-avatar rf-avatar-sm rf-avatar-purple">LN</div><strong>Lisa Nguyen</strong></div></td>
+                  <td>East Campus</td><td>Worship Lead</td><td>Sep 2020</td>
+                  <td><span class="rf-status-badge rf-status-pending"><span class="rf-status-dot"></span>Pending</span></td>
+                  <td><div class="rf-table-actions"><button class="rf-table-action-btn" aria-label="View Lisa Nguyen"><i class="fa-solid fa-eye"></i></button><button class="rf-table-action-btn" aria-label="Edit Lisa Nguyen"><i class="fa-solid fa-pen-to-square"></i></button><button class="rf-table-action-btn rf-action-delete" aria-label="Remove Lisa Nguyen"><i class="fa-solid fa-trash-can"></i></button></div></td>
+                </tr>
+                <tr>
+                  <td class="rf-col-check"><input type="checkbox" class="rf-table-checkbox rf-table-row-check" aria-label="Select Patricia Webb"></td>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><div class="rf-avatar rf-avatar-sm rf-avatar-amber">PW</div><strong>Patricia Webb</strong></div></td>
+                  <td>South Campus</td><td>Kids Leader</td><td>Jun 2017</td>
+                  <td><span class="rf-status-badge rf-status-active"><span class="rf-status-dot"></span>Active</span></td>
+                  <td><div class="rf-table-actions"><button class="rf-table-action-btn" aria-label="View Patricia Webb"><i class="fa-solid fa-eye"></i></button><button class="rf-table-action-btn" aria-label="Edit Patricia Webb"><i class="fa-solid fa-pen-to-square"></i></button><button class="rf-table-action-btn rf-action-delete" aria-label="Remove Patricia Webb"><i class="fa-solid fa-trash-can"></i></button></div></td>
+                </tr>
+                <tr>
+                  <td class="rf-col-check"><input type="checkbox" class="rf-table-checkbox rf-table-row-check" aria-label="Select Marcus Rivera"></td>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><div class="rf-avatar rf-avatar-sm rf-avatar-teal">MR</div><strong>Marcus Rivera</strong></div></td>
+                  <td>Main Campus</td><td>Deacon</td><td>Feb 2021</td>
+                  <td><span class="rf-status-badge rf-status-inactive"><span class="rf-status-dot"></span>Inactive</span></td>
+                  <td><div class="rf-table-actions"><button class="rf-table-action-btn" aria-label="View Marcus Rivera"><i class="fa-solid fa-eye"></i></button><button class="rf-table-action-btn" aria-label="Edit Marcus Rivera"><i class="fa-solid fa-pen-to-square"></i></button><button class="rf-table-action-btn rf-action-delete" aria-label="Remove Marcus Rivera"><i class="fa-solid fa-trash-can"></i></button></div></td>
+                </tr>
+                <tr>
+                  <td class="rf-col-check"><input type="checkbox" class="rf-table-checkbox rf-table-row-check" aria-label="Select Emma Johnson"></td>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><div class="rf-avatar rf-avatar-sm rf-avatar-pink">EJ</div><strong>Emma Johnson</strong></div></td>
+                  <td>North Campus</td><td>Volunteer</td><td>Oct 2022</td>
+                  <td><span class="rf-status-badge rf-status-active"><span class="rf-status-dot"></span>Active</span></td>
+                  <td><div class="rf-table-actions"><button class="rf-table-action-btn" aria-label="View Emma Johnson"><i class="fa-solid fa-eye"></i></button><button class="rf-table-action-btn" aria-label="Edit Emma Johnson"><i class="fa-solid fa-pen-to-square"></i></button><button class="rf-table-action-btn rf-action-delete" aria-label="Remove Emma Johnson"><i class="fa-solid fa-trash-can"></i></button></div></td>
+                </tr>
+                <tr>
+                  <td class="rf-col-check"><input type="checkbox" class="rf-table-checkbox rf-table-row-check" aria-label="Select David Park"></td>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><div class="rf-avatar rf-avatar-sm rf-avatar-indigo">DP</div><strong>David Park</strong></div></td>
+                  <td>East Campus</td><td>Member</td><td>Jul 2023</td>
+                  <td><span class="rf-status-badge rf-status-pending"><span class="rf-status-dot"></span>Pending</span></td>
+                  <td><div class="rf-table-actions"><button class="rf-table-action-btn" aria-label="View David Park"><i class="fa-solid fa-eye"></i></button><button class="rf-table-action-btn" aria-label="Edit David Park"><i class="fa-solid fa-pen-to-square"></i></button><button class="rf-table-action-btn rf-action-delete" aria-label="Remove David Park"><i class="fa-solid fa-trash-can"></i></button></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="rf-pagination" role="navigation" aria-label="Table pagination">
+            <div class="rf-pagination-info">Showing 1–5 of 7 results</div>
+            <div class="rf-pagination-controls">
+              <button class="rf-page-btn" data-action="prev" disabled aria-label="Previous page">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="rf-page-btn rf-page-active" data-page="1" aria-label="Page 1" aria-current="page">1</button>
+              <button class="rf-page-btn" data-page="2" aria-label="Page 2">2</button>
+              <button class="rf-page-btn" data-action="next" aria-label="Next page">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;table class="rf-table rf-table-hover rf-table-striped" aria-label="Group members"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th class="rf-col-check"&gt;&lt;input type="checkbox" class="rf-table-select-all"&gt;&lt;/th&gt;
+      &lt;th class="rf-sortable"&gt;Name &lt;i class="fas fa-sort rf-sort-icon"&gt;&lt;/i&gt;&lt;/th&gt;
+      &lt;th class="rf-sortable"&gt;Role &lt;i class="fas fa-sort rf-sort-icon"&gt;&lt;/i&gt;&lt;/th&gt;
+      &lt;th class="rf-sortable"&gt;Status &lt;i class="fas fa-sort rf-sort-icon"&gt;&lt;/i&gt;&lt;/th&gt;
+      &lt;th&gt;Actions&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class="rf-col-check"&gt;&lt;input type="checkbox" class="rf-table-row-check"&gt;&lt;/td&gt;
+      &lt;td&gt;Sarah Mitchell&lt;/td&gt;
+      &lt;td&gt;Group Leader&lt;/td&gt;
+      &lt;td&gt;&lt;span class="rf-status-badge rf-status-active"&gt;Active&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;
+        &lt;div class="rf-table-actions"&gt;
+          &lt;button class="rf-table-action-btn" aria-label="View"&gt;&lt;i class="fa-solid fa-eye"&gt;&lt;/i&gt;&lt;/button&gt;
+          &lt;button class="rf-table-action-btn" aria-label="Edit"&gt;&lt;i class="fa-solid fa-pen-to-square"&gt;&lt;/i&gt;&lt;/button&gt;
+          &lt;button class="rf-table-action-btn rf-action-delete" aria-label="Delete"&gt;&lt;i class="fa-solid fa-trash-can"&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- Pagination --&gt;
+&lt;div class="rf-pagination"&gt;
+  &lt;div class="rf-pagination-info"&gt;Showing 1–5 of 7 results&lt;/div&gt;
+  &lt;div class="rf-pagination-controls"&gt;
+    &lt;button class="rf-page-btn" data-action="prev"&gt;&lt;i class="fa-solid fa-chevron-left"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button class="rf-page-btn rf-page-active" data-page="1"&gt;1&lt;/button&gt;
+    &lt;button class="rf-page-btn" data-page="2"&gt;2&lt;/button&gt;
+    &lt;button class="rf-page-btn" data-action="next"&gt;&lt;i class="fa-solid fa-chevron-right"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 14: NAVIGATION
+    ============================================================ -->
+    <section id="navigation" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Navigation</h2>
+        <p class="rf-section-desc">Breadcrumbs, tabs, and pills navigation components.</p>
+        <span class="rf-section-badge rf-section-badge--core">Core</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <p class="rf-subsection-title" style="margin-top:0;">Breadcrumbs</p>
+        <nav aria-label="Breadcrumb example">
+          <ol class="rf-breadcrumb">
+            <li><a href="#">Home</a> <span class="rf-breadcrumb-sep" aria-hidden="true">›</span></li>
+            <li><a href="#">Components</a> <span class="rf-breadcrumb-sep" aria-hidden="true">›</span></li>
+            <li class="rf-breadcrumb-current" aria-current="page">Buttons</li>
+          </ol>
+        </nav>
+
+        <p class="rf-subsection-title">Tabs</p>
+        <div class="rf-tabs" role="tabpanel">
+          <div class="rf-tab-list" role="tablist">
+            <button class="rf-tab-btn" role="tab" aria-selected="false">Overview</button>
+            <button class="rf-tab-btn" role="tab" aria-selected="false">Members</button>
+            <button class="rf-tab-btn" role="tab" aria-selected="false">Events</button>
+            <button class="rf-tab-btn" role="tab" aria-selected="false">Settings</button>
+          </div>
+          <div class="rf-tab-content-area">
+            <div class="rf-tab-pane">
+              <p style="color:#6B7280;font-size:14px;margin:0;">Overview content — group summary, attendance, and recent activity.</p>
+            </div>
+            <div class="rf-tab-pane">
+              <p style="color:#6B7280;font-size:14px;margin:0;">Members content — full roster with roles and attendance history.</p>
+            </div>
+            <div class="rf-tab-pane">
+              <p style="color:#6B7280;font-size:14px;margin:0;">Events content — upcoming and past group events.</p>
+            </div>
+            <div class="rf-tab-pane">
+              <p style="color:#6B7280;font-size:14px;margin:0;">Settings content — group privacy, notifications, and enrollment settings.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="rf-subsection-title">Pills Navigation</p>
+        <div class="rf-pills" role="group" aria-label="Filter options">
+          <button class="rf-pill rf-pill-active">All Members</button>
+          <button class="rf-pill">Active</button>
+          <button class="rf-pill">Pending</button>
+          <button class="rf-pill">Inactive</button>
+          <button class="rf-pill">Leaders</button>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;!-- Breadcrumbs --&gt;
+&lt;nav aria-label="Breadcrumb"&gt;
+  &lt;ol class="rf-breadcrumb"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt; &lt;span class="rf-breadcrumb-sep" aria-hidden="true"&gt;›&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Components&lt;/a&gt; &lt;span class="rf-breadcrumb-sep" aria-hidden="true"&gt;›&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="rf-breadcrumb-current" aria-current="page"&gt;Buttons&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- Tabs (vanilla JS) --&gt;
+&lt;div class="rf-tabs" role="tabpanel"&gt;
+  &lt;div class="rf-tab-list" role="tablist"&gt;
+    &lt;button class="rf-tab-btn" role="tab" aria-selected="true"&gt;Overview&lt;/button&gt;
+    &lt;button class="rf-tab-btn" role="tab" aria-selected="false"&gt;Members&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-tab-content-area"&gt;
+    &lt;div class="rf-tab-pane"&gt;Overview content&lt;/div&gt;
+    &lt;div class="rf-tab-pane"&gt;Members content&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Pills --&gt;
+&lt;div class="rf-pills" role="group" aria-label="Filter options"&gt;
+  &lt;button class="rf-pill rf-pill-active"&gt;All Members&lt;/button&gt;
+  &lt;button class="rf-pill"&gt;Active&lt;/button&gt;
+  &lt;button class="rf-pill"&gt;Inactive&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 15: MEMBER CARD
+    ============================================================ -->
+    <section id="member-card" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Member Card</h2>
+        <p class="rf-section-desc">Person profile card with avatar, stats, and action buttons.</p>
+        <span class="rf-section-badge rf-section-badge--church">Church</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div style="display:flex;flex-wrap:wrap;gap:24px;">
+          <div class="rf-member-card" tabindex="0" role="article" aria-label="Sarah Mitchell, Worship Team Lead">
+            <div class="rf-member-card-status">
+              <span class="rf-status-badge rf-status-active"><span class="rf-status-dot"></span>Connected</span>
+            </div>
+            <div class="rf-member-card-avatar-area">
+              <div class="rf-avatar-wrapper rf-avatar-lg-wrap">
+                <div class="rf-avatar rf-avatar-lg rf-avatar-blue">SM</div>
+                <div class="rf-avatar-status rf-status-online"></div>
+              </div>
+            </div>
+            <div class="rf-member-card-name">Sarah Mitchell</div>
+            <div class="rf-member-card-role">Worship Team Lead</div>
+            <div class="rf-member-card-campus">
+              <span class="rf-badge rf-badge-info-soft"><i class="fa-solid fa-location-dot"></i> North Campus</span>
+            </div>
+            <div class="rf-member-card-since">Member since March 2019</div>
+            <div class="rf-member-card-divider"></div>
+            <div class="rf-member-card-stats">
+              <span><strong>47</strong> Groups</span>
+              <span class="rf-stat-sep">·</span>
+              <span><strong>12</strong> Events</span>
+              <span class="rf-stat-sep">·</span>
+              <span><strong>8</strong> Serves</span>
+            </div>
+            <div class="rf-member-card-actions">
+              <button class="rf-btn rf-btn-ghost rf-btn-sm">Message</button>
+              <button class="rf-btn rf-btn-ghost rf-btn-sm">Profile</button>
+              <button class="rf-btn rf-btn-primary rf-btn-sm">+ Group</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;div class="rf-member-card" tabindex="0" role="article" aria-label="Sarah Mitchell, Worship Team Lead"&gt;
+  &lt;div class="rf-member-card-status"&gt;
+    &lt;span class="rf-status-badge rf-status-active"&gt;Connected&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-member-card-avatar-area"&gt;
+    &lt;div class="rf-avatar-wrapper rf-avatar-lg-wrap"&gt;
+      &lt;div class="rf-avatar rf-avatar-lg rf-avatar-blue"&gt;SM&lt;/div&gt;
+      &lt;div class="rf-avatar-status rf-status-online"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-member-card-name"&gt;Sarah Mitchell&lt;/div&gt;
+  &lt;div class="rf-member-card-role"&gt;Worship Team Lead&lt;/div&gt;
+  &lt;div class="rf-member-card-stats"&gt;
+    &lt;span&gt;&lt;strong&gt;47&lt;/strong&gt; Groups&lt;/span&gt;
+    &lt;span class="rf-stat-sep"&gt;·&lt;/span&gt;
+    &lt;span&gt;&lt;strong&gt;12&lt;/strong&gt; Events&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-member-card-actions"&gt;
+    &lt;button class="rf-btn rf-btn-ghost rf-btn-sm"&gt;Message&lt;/button&gt;
+    &lt;button class="rf-btn rf-btn-primary rf-btn-sm"&gt;+ Group&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 16: GROUP CARD
+    ============================================================ -->
+    <section id="group-card" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Group Card</h2>
+        <p class="rf-section-desc">Ministry group listing with leader info, capacity bar, and join action.</p>
+        <span class="rf-section-badge rf-section-badge--church">Church</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div class="rf-group-card">
+          <div class="rf-group-card-header">
+            <div class="rf-group-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="rf-group-title-area">
+              <div class="rf-group-name">Young Adults — Wednesday</div>
+              <span class="rf-badge rf-badge-primary-soft">Small Group</span>
+            </div>
+          </div>
+          <div class="rf-group-divider"></div>
+          <div class="rf-group-leader-row">
+            <div class="rf-avatar rf-avatar-sm rf-avatar-green">JT</div>
+            <span>Led by <strong>Pastor James Torres</strong></span>
+          </div>
+          <ul class="rf-group-info-list">
+            <li><i class="fa-solid fa-calendar-days"></i> Wednesdays at 7:00 PM</li>
+            <li><i class="fa-solid fa-location-dot"></i> Main Campus — Room 214</li>
+            <li><i class="fa-solid fa-users"></i> 14 / 20 Members</li>
+          </ul>
+          <div class="rf-group-capacity">
+            <div class="rf-group-capacity-label"><span>Capacity</span><strong>14 / 20</strong></div>
+            <div class="rf-progress"><div class="rf-progress-bar" style="width:70%;"></div></div>
+          </div>
+          <button class="rf-btn rf-btn-primary rf-w-full"><i class="fa-solid fa-user-plus"></i> Join Group</button>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;div class="rf-group-card"&gt;
+  &lt;div class="rf-group-card-header"&gt;
+    &lt;div class="rf-group-icon"&gt;&lt;i class="fa-solid fa-users"&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class="rf-group-title-area"&gt;
+      &lt;div class="rf-group-name"&gt;Young Adults — Wednesday&lt;/div&gt;
+      &lt;span class="rf-badge rf-badge-primary-soft"&gt;Small Group&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-group-leader-row"&gt;
+    &lt;div class="rf-avatar rf-avatar-sm rf-avatar-green"&gt;JT&lt;/div&gt;
+    &lt;span&gt;Led by &lt;strong&gt;Pastor James Torres&lt;/strong&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;ul class="rf-group-info-list"&gt;
+    &lt;li&gt;&lt;i class="fa-solid fa-calendar-days"&gt;&lt;/i&gt; Wednesdays at 7:00 PM&lt;/li&gt;
+    &lt;li&gt;&lt;i class="fa-solid fa-location-dot"&gt;&lt;/i&gt; Main Campus — Room 214&lt;/li&gt;
+    &lt;li&gt;&lt;i class="fa-solid fa-users"&gt;&lt;/i&gt; 14 / 20 Members&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="rf-group-capacity"&gt;
+    &lt;div class="rf-group-capacity-label"&gt;&lt;span&gt;Capacity&lt;/span&gt;&lt;strong&gt;14 / 20&lt;/strong&gt;&lt;/div&gt;
+    &lt;div class="rf-progress"&gt;&lt;div class="rf-progress-bar" style="width:70%;"&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="rf-btn rf-btn-primary rf-w-full"&gt;Join Group&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 17: EVENT REGISTRATION
+    ============================================================ -->
+    <section id="event-registration" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Event Registration Block</h2>
+        <p class="rf-section-desc">Full event card with banner, metadata, capacity, countdown, and registration CTA.</p>
+        <span class="rf-section-badge rf-section-badge--church">Church</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div class="rf-event-block">
+          <div class="rf-event-banner">
+            <div class="rf-event-banner-overlay"></div>
+            <div class="rf-event-banner-badge">
+              <span class="rf-badge rf-badge-warning" style="font-size:11px;">Community</span>
+            </div>
+            <div class="rf-event-banner-icon"><i class="fa-solid fa-church"></i></div>
+          </div>
+          <div class="rf-event-body">
+            <h3 class="rf-event-name">Easter Sunday Celebration</h3>
+            <ul class="rf-event-meta-list">
+              <li><i class="fa-solid fa-calendar-days"></i> Sunday, April 20, 2025</li>
+              <li><i class="fa-solid fa-clock"></i> 9:00 AM &amp; 11:00 AM Services</li>
+              <li><i class="fa-solid fa-location-dot"></i> Main Auditorium</li>
+            </ul>
+            <p class="rf-event-description">Join us for a powerful Easter Sunday celebration! Experience moving worship, an inspiring message, and the joy of gathering together as a church family. Childcare available for ages 0–5 during both services.</p>
+            <div class="rf-event-divider"></div>
+            <div class="rf-event-capacity">
+              <div class="rf-event-capacity-label"><span>Registered</span><strong>312 / 500</strong></div>
+              <div class="rf-progress"><div class="rf-progress-bar" style="width:62%;"></div></div>
+            </div>
+            <div class="rf-event-footer-row">
+              <span class="rf-badge rf-badge-success-soft"><i class="fa-solid fa-tag"></i> Free Event</span>
+              <div class="rf-event-countdown"><i class="fa-regular fa-clock"></i> Happening in 14 days</div>
+            </div>
+            <div class="rf-event-cta">
+              <button class="rf-btn rf-btn-primary rf-w-full rf-btn-lg">
+                <i class="fa-solid fa-user-check"></i> Register Now
+              </button>
+            </div>
+            <a href="#" class="rf-event-calendar-link">
+              <i class="fa-regular fa-calendar-plus"></i> Add to Calendar
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;div class="rf-event-block"&gt;
+  &lt;div class="rf-event-banner"&gt;
+    &lt;div class="rf-event-banner-overlay"&gt;&lt;/div&gt;
+    &lt;div class="rf-event-banner-icon"&gt;&lt;i class="fa-solid fa-church"&gt;&lt;/i&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-event-body"&gt;
+    &lt;h3 class="rf-event-name"&gt;Easter Sunday Celebration&lt;/h3&gt;
+    &lt;ul class="rf-event-meta-list"&gt;
+      &lt;li&gt;&lt;i class="fa-solid fa-calendar-days"&gt;&lt;/i&gt; Sunday, April 20, 2025&lt;/li&gt;
+      &lt;li&gt;&lt;i class="fa-solid fa-clock"&gt;&lt;/i&gt; 9:00 AM &amp;amp; 11:00 AM Services&lt;/li&gt;
+      &lt;li&gt;&lt;i class="fa-solid fa-location-dot"&gt;&lt;/i&gt; Main Auditorium&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="rf-event-capacity"&gt;
+      &lt;div class="rf-progress"&gt;&lt;div class="rf-progress-bar" style="width:62%;"&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="rf-btn rf-btn-primary rf-w-full rf-btn-lg"&gt;Register Now&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 18: GIVING WIDGET
+    ============================================================ -->
+    <section id="giving-widget" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Giving Widget</h2>
+        <p class="rf-section-desc">Preset amount buttons, fund selector, frequency tabs, and secure giving CTA.</p>
+        <span class="rf-section-badge rf-section-badge--church">Church</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div class="rf-giving-widget">
+          <div class="rf-giving-title">Give to Life Change</div>
+          <p class="rf-giving-subtitle">Your generosity changes lives</p>
+
+          <div class="rf-giving-amounts">
+            <button class="rf-amount-btn" data-amount="25">$25</button>
+            <button class="rf-amount-btn rf-amount-active" data-amount="50">$50</button>
+            <button class="rf-amount-btn" data-amount="100">$100</button>
+            <button class="rf-amount-btn" data-amount="250">$250</button>
+            <button class="rf-amount-btn" data-amount="" data-custom="true">Custom</button>
+          </div>
+
+          <div class="rf-giving-custom-input">
+            <div class="rf-input-wrapper" style="position:relative;">
+              <span class="rf-input-currency-prefix">$</span>
+              <input class="rf-input" type="number" placeholder="0" min="1" aria-label="Custom giving amount">
+            </div>
+          </div>
+
+          <div class="rf-giving-fund rf-form-group">
+            <label class="rf-label" for="giving-fund">Give To</label>
+            <select class="rf-select" id="giving-fund">
+              <option>General Fund</option>
+              <option>Missions</option>
+              <option>Building Fund</option>
+              <option>Youth Ministry</option>
+            </select>
+          </div>
+
+          <div class="rf-giving-frequency">
+            <div class="rf-giving-freq-label">Frequency</div>
+            <div class="rf-freq-tabs" role="group" aria-label="Gift frequency">
+              <button class="rf-freq-tab rf-freq-active" type="button">One-Time</button>
+              <button class="rf-freq-tab" type="button">Weekly</button>
+              <button class="rf-freq-tab" type="button">Monthly</button>
+            </div>
+          </div>
+
+          <div class="rf-giving-total">
+            <span class="rf-giving-total-label">Your gift:</span>
+            <span class="rf-giving-total-amount">$50</span>
+          </div>
+
+          <div class="rf-giving-cta">
+            <button class="rf-btn rf-btn-primary rf-w-full rf-btn-lg">
+              <i class="fa-solid fa-lock"></i> Give Now
+            </button>
+          </div>
+
+          <div class="rf-giving-secure">
+            <i class="fa-solid fa-shield-halved"></i> Secure &amp; encrypted giving
+          </div>
+
+          <div class="rf-giving-social-proof">
+            <i class="fa-solid fa-heart"></i>
+            <strong>4,231 people</strong> gave this month
+          </div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;div class="rf-giving-widget"&gt;
+  &lt;div class="rf-giving-title"&gt;Give to Life Change&lt;/div&gt;
+
+  &lt;div class="rf-giving-amounts"&gt;
+    &lt;button class="rf-amount-btn" data-amount="25"&gt;$25&lt;/button&gt;
+    &lt;button class="rf-amount-btn rf-amount-active" data-amount="50"&gt;$50&lt;/button&gt;
+    &lt;button class="rf-amount-btn" data-amount="100"&gt;$100&lt;/button&gt;
+    &lt;button class="rf-amount-btn" data-amount="" data-custom="true"&gt;Custom&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class="rf-giving-fund rf-form-group"&gt;
+    &lt;label class="rf-label" for="giving-fund"&gt;Give To&lt;/label&gt;
+    &lt;select class="rf-select" id="giving-fund"&gt;
+      &lt;option&gt;General Fund&lt;/option&gt;
+      &lt;option&gt;Missions&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+
+  &lt;div class="rf-freq-tabs" role="group" aria-label="Gift frequency"&gt;
+    &lt;button class="rf-freq-tab rf-freq-active"&gt;One-Time&lt;/button&gt;
+    &lt;button class="rf-freq-tab"&gt;Weekly&lt;/button&gt;
+    &lt;button class="rf-freq-tab"&gt;Monthly&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;button class="rf-btn rf-btn-primary rf-w-full rf-btn-lg"&gt;
+    &lt;i class="fa-solid fa-lock"&gt;&lt;/i&gt; Give Now
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 19: PRAYER REQUEST
+    ============================================================ -->
+    <section id="prayer-request" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Prayer Request Card</h2>
+        <p class="rf-section-desc">Prayer wall card with expandable text, tag filtering, and Vue-powered prayer counter.</p>
+        <span class="rf-section-badge rf-section-badge--church">Church</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div class="rf-prayer-card">
+          <div class="rf-prayer-header">
+            <div class="rf-prayer-author-info">
+              <div class="rf-avatar rf-avatar-sm rf-avatar-teal">MR</div>
+              <div>
+                <div class="rf-prayer-author-name">Marcus Rivera</div>
+                <div class="rf-prayer-time">2 hours ago</div>
+              </div>
+            </div>
+            <label class="rf-toggle-wrapper" style="cursor:pointer;" aria-label="Anonymous mode toggle">
+              <input type="checkbox" aria-label="Post anonymously">
+              <div class="rf-toggle"></div>
+              <span style="font-size:12px;color:#6B7280;">Anonymous</span>
+            </label>
+          </div>
+
+          <div class="rf-prayer-body">
+            <p class="rf-prayer-text" id="prayer-text-1">Please pray for my mother who is recovering from surgery. She has been struggling with her health for the past few months and we are trusting God for a full recovery. The doctors say it will be a long road, but we believe in the power of prayer and the healing hands of our Lord.</p>
+            <button class="rf-prayer-read-more" aria-expanded="false" aria-controls="prayer-text-1">Read more</button>
+          </div>
+
+          <div class="rf-prayer-tags">
+            <span class="rf-badge rf-badge-info-soft">Health</span>
+            <span class="rf-badge rf-badge-warning-soft">Family</span>
+            <span class="rf-badge rf-badge-primary-soft">North Campus</span>
+          </div>
+
+          <div class="rf-prayer-divider"></div>
+
+          <!-- Vue-powered counter -->
+          <div id="vue-prayer-counter"></div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;div class="rf-prayer-card"&gt;
+  &lt;div class="rf-prayer-header"&gt;
+    &lt;div class="rf-prayer-author-info"&gt;
+      &lt;div class="rf-avatar rf-avatar-sm rf-avatar-teal"&gt;MR&lt;/div&gt;
+      &lt;div&gt;
+        &lt;div class="rf-prayer-author-name"&gt;Marcus Rivera&lt;/div&gt;
+        &lt;div class="rf-prayer-time"&gt;2 hours ago&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-prayer-body"&gt;
+    &lt;p class="rf-prayer-text" id="prayer-text-1"&gt;Prayer request text here...&lt;/p&gt;
+    &lt;button class="rf-prayer-read-more" aria-expanded="false" aria-controls="prayer-text-1"&gt;Read more&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-prayer-tags"&gt;
+    &lt;span class="rf-badge rf-badge-info-soft"&gt;Health&lt;/span&gt;
+    &lt;span class="rf-badge rf-badge-warning-soft"&gt;Family&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;!-- Vue prayer counter mounts here --&gt;
+  &lt;div id="vue-prayer-counter"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 20: ATTENDANCE STATS
+    ============================================================ -->
+    <section id="attendance-stats" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Attendance Stat Cards</h2>
+        <p class="rf-section-desc">Dashboard KPI row with sparklines and trend indicators.</p>
+        <span class="rf-section-badge rf-section-badge--church">Church</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div class="rf-stat-grid">
+
+          <div class="rf-stat-card">
+            <div class="rf-stat-card-header">
+              <div class="rf-stat-icon rf-stat-icon-blue"><i class="fa-solid fa-users"></i></div>
+              <span class="rf-stat-trend rf-trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +8%</span>
+            </div>
+            <div class="rf-stat-number">1,247</div>
+            <div class="rf-stat-label">Weekend Attendance</div>
+            <div class="rf-stat-footer">
+              <span style="font-size:11px;color:#9CA3AF;">vs last week</span>
+              <div class="rf-stat-sparkline">
+                <svg width="60" height="28" viewBox="0 0 60 28" fill="none" aria-hidden="true">
+                  <polyline points="0,22 8,18 16,20 24,14 32,16 40,10 48,8 60,4" stroke="#1E6EBF" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="rf-stat-card">
+            <div class="rf-stat-card-header">
+              <div class="rf-stat-icon rf-stat-icon-green"><i class="fa-solid fa-star"></i></div>
+              <span class="rf-stat-trend rf-trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +23%</span>
+            </div>
+            <div class="rf-stat-number">84</div>
+            <div class="rf-stat-label">First-Time Guests</div>
+            <div class="rf-stat-footer">
+              <span style="font-size:11px;color:#9CA3AF;">vs last week</span>
+              <div class="rf-stat-sparkline">
+                <svg width="60" height="28" viewBox="0 0 60 28" fill="none" aria-hidden="true">
+                  <polyline points="0,24 8,20 16,22 24,16 32,14 40,10 48,6 60,4" stroke="#15803D" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="rf-stat-card">
+            <div class="rf-stat-card-header">
+              <div class="rf-stat-icon rf-stat-icon-purple"><i class="fa-solid fa-hands-praying"></i></div>
+              <span class="rf-stat-trend rf-trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +4</span>
+            </div>
+            <div class="rf-stat-number">12</div>
+            <div class="rf-stat-label">Salvations</div>
+            <div class="rf-stat-footer">
+              <span style="font-size:11px;color:#9CA3AF;">this month</span>
+              <div class="rf-stat-sparkline">
+                <svg width="60" height="28" viewBox="0 0 60 28" fill="none" aria-hidden="true">
+                  <polyline points="0,20 8,18 16,22 24,16 32,14 40,12 48,14 60,8" stroke="#7C3AED" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="rf-stat-card">
+            <div class="rf-stat-card-header">
+              <div class="rf-stat-icon rf-stat-icon-orange"><i class="fa-solid fa-hand-holding-heart"></i></div>
+              <span class="rf-stat-trend rf-trend-down"><i class="fa-solid fa-arrow-trend-down"></i> -2%</span>
+            </div>
+            <div class="rf-stat-number">342</div>
+            <div class="rf-stat-label">Active Volunteers</div>
+            <div class="rf-stat-footer">
+              <span style="font-size:11px;color:#9CA3AF;">vs last week</span>
+              <div class="rf-stat-sparkline">
+                <svg width="60" height="28" viewBox="0 0 60 28" fill="none" aria-hidden="true">
+                  <polyline points="0,6 8,8 16,6 24,10 32,12 40,14 48,16 60,18" stroke="#D97706" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;div class="rf-stat-grid"&gt;
+  &lt;div class="rf-stat-card"&gt;
+    &lt;div class="rf-stat-card-header"&gt;
+      &lt;div class="rf-stat-icon rf-stat-icon-blue"&gt;&lt;i class="fa-solid fa-users"&gt;&lt;/i&gt;&lt;/div&gt;
+      &lt;span class="rf-stat-trend rf-trend-up"&gt;&lt;i class="fa-solid fa-arrow-trend-up"&gt;&lt;/i&gt; +8%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="rf-stat-number"&gt;1,247&lt;/div&gt;
+    &lt;div class="rf-stat-label"&gt;Weekend Attendance&lt;/div&gt;
+    &lt;div class="rf-stat-footer"&gt;
+      &lt;span&gt;vs last week&lt;/span&gt;
+      &lt;div class="rf-stat-sparkline"&gt;
+        &lt;svg width="60" height="28" viewBox="0 0 60 28" fill="none"&gt;
+          &lt;polyline points="0,22 8,18 16,20 24,14 32,16 40,10 48,8 60,4"
+            stroke="#1E6EBF" stroke-width="1.5" fill="none"/&gt;
+        &lt;/svg&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Repeat for each KPI: rf-stat-icon-green, purple, orange --&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 21: CHECK-IN BADGE
+    ============================================================ -->
+    <section id="checkin-badge" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Check-In Badge</h2>
+        <p class="rf-section-desc">Physical-style name badge for children's check-in with security code, allergy alerts, and barcode.</p>
+        <span class="rf-section-badge rf-section-badge--church">Church</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div class="rf-checkin-badge">
+          <div class="rf-checkin-header">
+            <span class="rf-checkin-church-name"><i class="fa-solid fa-church" style="margin-right:6px;font-size:14px;"></i>Rock Church</span>
+            <i class="rf-checkin-header-icon fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="rf-checkin-body">
+            <div class="rf-checkin-code">4721</div>
+            <div class="rf-checkin-divider"></div>
+            <div class="rf-checkin-child-name">Emma Johnson</div>
+            <div class="rf-checkin-service">9:00 AM Service — Room K3</div>
+            <div class="rf-checkin-teacher">Teacher: Ms. Patricia Webb</div>
+            <div class="rf-checkin-divider-2"></div>
+            <div class="rf-checkin-allergies">
+              <span class="rf-badge rf-badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Nut Allergy</span>
+              <span class="rf-badge rf-badge-warning">Gluten Free</span>
+            </div>
+            <div class="rf-checkin-medical-note">
+              <i class="fa-solid fa-circle-exclamation"></i> Medical notes on file — See teacher
+            </div>
+          </div>
+          <div class="rf-checkin-barcode" role="img" aria-label="Security barcode"></div>
+          <div class="rf-checkin-actions">
+            <button class="rf-btn rf-btn-primary rf-w-full rf-btn-sm" onclick="window.print()">
+              <i class="fa-solid fa-print"></i> Print Badge
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;div class="rf-checkin-badge"&gt;
+  &lt;div class="rf-checkin-header"&gt;
+    &lt;span class="rf-checkin-church-name"&gt;Rock Church&lt;/span&gt;
+    &lt;i class="rf-checkin-header-icon fa-solid fa-shield-halved"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-checkin-body"&gt;
+    &lt;div class="rf-checkin-code"&gt;4721&lt;/div&gt;
+    &lt;div class="rf-checkin-child-name"&gt;Emma Johnson&lt;/div&gt;
+    &lt;div class="rf-checkin-service"&gt;9:00 AM Service — Room K3&lt;/div&gt;
+    &lt;div class="rf-checkin-allergies"&gt;
+      &lt;span class="rf-badge rf-badge-danger"&gt;
+        &lt;i class="fa-solid fa-triangle-exclamation"&gt;&lt;/i&gt; Nut Allergy
+      &lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-checkin-barcode" role="img" aria-label="Security barcode"&gt;&lt;/div&gt;
+  &lt;button class="rf-btn rf-btn-primary rf-w-full rf-btn-sm"&gt;
+    &lt;i class="fa-solid fa-print"&gt;&lt;/i&gt; Print Badge
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 22: VOLUNTEER SCHEDULE
+    ============================================================ -->
+    <section id="volunteer-schedule" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Volunteer Schedule</h2>
+        <p class="rf-section-desc">Scheduling table with role badges, status indicators, and confirm/decline actions.</p>
+        <span class="rf-section-badge rf-section-badge--church">Church</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div class="rf-volunteer-table">
+          <div class="rf-volunteer-table-header">
+            <span>Volunteer</span>
+            <span>Role</span>
+            <span>Service</span>
+            <span>Status</span>
+            <span style="text-align:right;">Actions</span>
+          </div>
+
+          <div class="rf-volunteer-row">
+            <div class="rf-vol-person">
+              <div class="rf-avatar rf-avatar-sm rf-avatar-blue">SM</div>
+              <span class="rf-vol-name">Sarah Mitchell</span>
+            </div>
+            <div class="rf-vol-role"><span class="rf-badge rf-badge-primary-soft">Worship</span></div>
+            <div class="rf-vol-time">9:00 AM</div>
+            <div class="rf-vol-status"><span class="rf-status-badge rf-status-active"><span class="rf-status-dot"></span>Confirmed</span></div>
+            <div class="rf-vol-actions">
+              <button class="rf-vol-action-btn rf-vol-confirm" aria-label="Confirm Sarah Mitchell"><i class="fa-solid fa-check"></i></button>
+              <button class="rf-vol-action-btn rf-vol-decline" aria-label="Decline Sarah Mitchell"><i class="fa-solid fa-xmark"></i></button>
+              <button class="rf-vol-action-btn rf-vol-message" aria-label="Message Sarah Mitchell"><i class="fa-regular fa-comment"></i></button>
+            </div>
+          </div>
+
+          <div class="rf-volunteer-row">
+            <div class="rf-vol-person">
+              <div class="rf-avatar rf-avatar-sm rf-avatar-green">JT</div>
+              <span class="rf-vol-name">James Torres</span>
+            </div>
+            <div class="rf-vol-role"><span class="rf-badge rf-badge-success-soft">Greeter</span></div>
+            <div class="rf-vol-time">9:00 AM</div>
+            <div class="rf-vol-status"><span class="rf-status-badge rf-status-pending"><span class="rf-status-dot"></span>Pending</span></div>
+            <div class="rf-vol-actions">
+              <button class="rf-vol-action-btn rf-vol-confirm" aria-label="Confirm James Torres"><i class="fa-solid fa-check"></i></button>
+              <button class="rf-vol-action-btn rf-vol-decline" aria-label="Decline James Torres"><i class="fa-solid fa-xmark"></i></button>
+              <button class="rf-vol-action-btn rf-vol-message" aria-label="Message James Torres"><i class="fa-regular fa-comment"></i></button>
+            </div>
+          </div>
+
+          <div class="rf-volunteer-row">
+            <div class="rf-vol-person">
+              <div class="rf-avatar rf-avatar-sm rf-avatar-amber">PW</div>
+              <span class="rf-vol-name">Patricia Webb</span>
+            </div>
+            <div class="rf-vol-role"><span class="rf-badge rf-badge-warning-soft">Kids Leader</span></div>
+            <div class="rf-vol-time">11:00 AM</div>
+            <div class="rf-vol-status"><span class="rf-status-badge rf-status-active"><span class="rf-status-dot"></span>Confirmed</span></div>
+            <div class="rf-vol-actions">
+              <button class="rf-vol-action-btn rf-vol-confirm" aria-label="Confirm Patricia Webb"><i class="fa-solid fa-check"></i></button>
+              <button class="rf-vol-action-btn rf-vol-decline" aria-label="Decline Patricia Webb"><i class="fa-solid fa-xmark"></i></button>
+              <button class="rf-vol-action-btn rf-vol-message" aria-label="Message Patricia Webb"><i class="fa-regular fa-comment"></i></button>
+            </div>
+          </div>
+
+          <div class="rf-volunteer-row">
+            <div class="rf-vol-person">
+              <div class="rf-avatar rf-avatar-sm rf-avatar-red">EJ</div>
+              <span class="rf-vol-name">Emma Johnson</span>
+            </div>
+            <div class="rf-vol-role"><span class="rf-badge rf-badge-neutral-soft">Usher</span></div>
+            <div class="rf-vol-time">11:00 AM</div>
+            <div class="rf-vol-status"><span class="rf-status-badge rf-status-danger"><span class="rf-status-dot"></span>Declined</span></div>
+            <div class="rf-vol-actions">
+              <button class="rf-vol-action-btn rf-vol-confirm" aria-label="Confirm Emma Johnson"><i class="fa-solid fa-check"></i></button>
+              <button class="rf-vol-action-btn rf-vol-decline" aria-label="Decline Emma Johnson"><i class="fa-solid fa-xmark"></i></button>
+              <button class="rf-vol-action-btn rf-vol-message" aria-label="Message Emma Johnson"><i class="fa-regular fa-comment"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;div class="rf-volunteer-table"&gt;
+  &lt;div class="rf-volunteer-table-header"&gt;
+    &lt;span&gt;Volunteer&lt;/span&gt;
+    &lt;span&gt;Role&lt;/span&gt;
+    &lt;span&gt;Service&lt;/span&gt;
+    &lt;span&gt;Status&lt;/span&gt;
+    &lt;span&gt;Actions&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-volunteer-row"&gt;
+    &lt;div class="rf-vol-person"&gt;
+      &lt;div class="rf-avatar rf-avatar-sm rf-avatar-blue"&gt;SM&lt;/div&gt;
+      &lt;span class="rf-vol-name"&gt;Sarah Mitchell&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="rf-vol-role"&gt;&lt;span class="rf-badge rf-badge-primary-soft"&gt;Worship&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="rf-vol-time"&gt;9:00 AM&lt;/div&gt;
+    &lt;div class="rf-vol-status"&gt;
+      &lt;span class="rf-status-badge rf-status-active"&gt;Confirmed&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="rf-vol-actions"&gt;
+      &lt;button class="rf-vol-action-btn rf-vol-confirm" aria-label="Confirm"&gt;&lt;i class="fa-solid fa-check"&gt;&lt;/i&gt;&lt;/button&gt;
+      &lt;button class="rf-vol-action-btn rf-vol-decline" aria-label="Decline"&gt;&lt;i class="fa-solid fa-xmark"&gt;&lt;/i&gt;&lt;/button&gt;
+      &lt;button class="rf-vol-action-btn rf-vol-message" aria-label="Message"&gt;&lt;i class="fa-regular fa-comment"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 23: MODAL (Vue)
+    ============================================================ -->
+    <section id="modal" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Modal</h2>
+        <p class="rf-section-desc">Vue 3 modal with three size variants, backdrop dismiss, Escape key, body scroll lock, and focus trap.</p>
+        <span class="rf-section-badge rf-section-badge--vue">Vue</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div id="vue-modal-app"></div>
+      </div>
+
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;!-- Modal trigger (Vue) --&gt;
+&lt;button class="rf-btn rf-btn-primary" @click="openModal('md')"&gt;
+  Open Modal
+&lt;/button&gt;
+
+&lt;!-- Modal structure --&gt;
+&lt;div class="rf-modal-backdrop" role="dialog" aria-modal="true"&gt;
+  &lt;div class="rf-modal-box rf-modal-md"&gt;
+    &lt;div class="rf-modal-header"&gt;
+      &lt;h3 class="rf-modal-title"&gt;Modal Title&lt;/h3&gt;
+      &lt;button class="rf-modal-close" aria-label="Close"&gt;×&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="rf-modal-body"&gt;Content here&lt;/div&gt;
+    &lt;div class="rf-modal-footer"&gt;
+      &lt;button class="rf-btn rf-btn-ghost"&gt;Cancel&lt;/button&gt;
+      &lt;button class="rf-btn rf-btn-primary"&gt;Confirm&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <div class="rf-notes">
+        <p><strong>Accessibility:</strong> <code>role="dialog"</code>, <code>aria-modal="true"</code>, Escape key closes, backdrop click closes, body scroll locked when open, focus returned to trigger on close.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 24: TOASTS (Vue)
+    ============================================================ -->
+    <section id="toasts" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Toast Notifications</h2>
+        <p class="rf-section-desc">Vue 3 toast stack with auto-dismiss, progress bar, and slide animations.</p>
+        <span class="rf-section-badge rf-section-badge--vue">Vue</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div id="vue-toasts-app"></div>
+        <p style="font-size:12px;color:#9CA3AF;margin-top:12px;">Toasts appear in the bottom-right corner. Each auto-dismisses after 4 seconds.</p>
+      </div>
+
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;!-- Trigger a toast from Vue --&gt;
+&lt;button class="rf-btn rf-btn-success" @click="addToast('success', 'Saved!', 'Changes saved successfully.')"&gt;
+  Success Toast
+&lt;/button&gt;
+
+&lt;!-- Toast container (Vue renders here) --&gt;
+&lt;div class="rf-toast-container" aria-live="polite" role="status"&gt;
+  &lt;transition-group name="rf-toast"&gt;
+    &lt;div v-for="toast in toasts" :key="toast.id"
+      class="rf-toast" :class="'rf-toast-' + toast.type" role="alert"&gt;
+      &lt;div class="rf-toast-content"&gt;
+        &lt;strong&gt;{{ toast.title }}&lt;/strong&gt;
+        &lt;span&gt;{{ toast.message }}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="rf-toast-progress"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/transition-group&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+      <div class="rf-notes">
+        <p><strong>Accessibility:</strong> Container has <code>aria-live="polite"</code> and <code>role="status"</code>. Individual toasts have <code>role="alert"</code>. Progress bar indicates time remaining. Max 4 visible at once.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 25: DROPDOWN (Vue)
+    ============================================================ -->
+    <section id="dropdown" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Dropdown Menu</h2>
+        <p class="rf-section-desc">Vue 3 dropdown with icon items, dividers, disabled states, and destructive actions.</p>
+        <span class="rf-section-badge rf-section-badge--vue">Vue</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div id="vue-dropdown-app"></div>
+      </div>
+
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;!-- Dropdown trigger (Vue) --&gt;
+&lt;div class="rf-dropdown-wrapper"&gt;
+  &lt;button class="rf-btn rf-btn-ghost"
+    aria-haspopup="true"
+    :aria-expanded="isOpen.toString()"
+    @click="toggle"&gt;
+    Actions &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;div v-if="isOpen" class="rf-dropdown-menu" role="menu"&gt;
+    &lt;button class="rf-dropdown-item" role="menuitem"&gt;
+      &lt;i class="fa-solid fa-pen-to-square"&gt;&lt;/i&gt; Edit
+    &lt;/button&gt;
+    &lt;button class="rf-dropdown-item" role="menuitem"&gt;
+      &lt;i class="fa-solid fa-copy"&gt;&lt;/i&gt; Duplicate
+    &lt;/button&gt;
+    &lt;div class="rf-dropdown-divider"&gt;&lt;/div&gt;
+    &lt;button class="rf-dropdown-item rf-dropdown-item-danger" role="menuitem"&gt;
+      &lt;i class="fa-solid fa-trash-can"&gt;&lt;/i&gt; Delete
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+      <div class="rf-notes">
+        <p><strong>Accessibility:</strong> <code>aria-haspopup="true"</code>, <code>aria-expanded</code> updates on toggle, Escape key closes, click-outside closes. Menu items use <code>role="menuitem"</code>.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 26: TABS (Vue)
+    ============================================================ -->
+    <section id="vue-tabs" class="rf-section">
+      <div class="rf-section-header">
+        <h2>Tabs</h2>
+        <p class="rf-section-desc">Vue 3 tabs with hash-based URL routing, meaningful church content, and fade transitions.</p>
+        <span class="rf-section-badge rf-section-badge--vue">Vue</span>
+      </div>
+
+      <div class="rf-preview-box">
+        <div id="vue-tabs-app"></div>
+      </div>
+
+      <div class="rf-code-block">
+        <button class="rf-copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code class="html">&lt;!-- Vue Tabs --&gt;
+&lt;div class="rf-vue-tabs"&gt;
+  &lt;div class="rf-vue-tab-list" role="tablist"&gt;
+    &lt;button class="rf-vue-tab-btn active"
+      :aria-selected="activeTab === 'overview'"
+      @click="setTab('overview')"&gt;
+      Overview
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="rf-vue-tab-content"&gt;
+    &lt;div v-if="activeTab === 'overview'"&gt;
+      &lt;!-- Tab content --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Footer spacer -->
+    <div style="height:64px;"></div>
+
+  </main>
+</div>
+
+<!-- ============================================================
+     SCRIPTS — loaded after body for performance
+============================================================ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="js/main.js"></script>
+<script src="js/vue-components.js"></script>
+
+<!-- Inline: set indeterminate checkbox state (can't be done in HTML) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var cb = document.getElementById('cb-indeterminate');
+    if (cb) cb.indeterminate = true;
+
+    // Add keyboard shortcut hint to topbar dark toggle
+    var darkToggle = document.getElementById('rf-topbar-dark-toggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var icon = darkToggle.querySelector('.rf-topbar-dark-icon');
+        if (icon) {
+          var isDark = document.body.classList.contains('dark-mode');
+          icon.className = 'fa-solid rf-topbar-dark-icon rf-dark-toggle-icon ' + (isDark ? 'fa-sun' : 'fa-moon');
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+// ============================================================
+// Rock Foundations — Check-In Badge
+// ============================================================
+
+.rf-checkin-badge {
+  width: 320px;
+  border-radius: @rounded-large;
+  box-shadow: @shadow-lg;
+  overflow: hidden;
+  border: @border-width solid @border-color;
+  background: @color-white;
+  font-family: @font-family-base;
+
+  .rf-checkin-header {
+    background: @color-primary;
+    padding: @spacing-medium @spacing-large;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .rf-checkin-church-name {
+      font-size: @font-size-md;
+      font-weight: @font-weight-bold;
+      color: @color-white;
+      letter-spacing: -0.02em;
+    }
+
+    .rf-checkin-header-icon {
+      color: fade(@color-white, 80%);
+      font-size: 18px;
+    }
+  }
+
+  .rf-checkin-body {
+    padding: @spacing-medium @spacing-large;
+    text-align: center;
+
+    .rf-checkin-code {
+      font-size: 52px;
+      font-weight: @font-weight-bold;
+      color: @color-primary;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      margin-bottom: @spacing-small;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .rf-checkin-divider {
+      height: 1px;
+      background-color: @border-color;
+      margin: @spacing-medium 0;
+    }
+
+    .rf-checkin-child-name {
+      font-size: 26px;
+      font-weight: @font-weight-bold;
+      color: @color-interface-strong;
+      margin-bottom: @spacing-xsmall;
+      line-height: @line-height-tight;
+    }
+
+    .rf-checkin-service {
+      font-size: @font-size-base;
+      color: @color-interface-medium;
+      margin-bottom: @spacing-xsmall;
+    }
+
+    .rf-checkin-teacher {
+      font-size: @font-size-sm;
+      color: @color-interface-medium;
+    }
+
+    .rf-checkin-divider-2 {
+      height: 1px;
+      background-color: @border-color;
+      margin: @spacing-medium 0;
+    }
+
+    .rf-checkin-allergies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: @spacing-xsmall;
+      justify-content: center;
+      margin-bottom: @spacing-small;
+    }
+
+    .rf-checkin-medical-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: @font-size-xs;
+      color: @color-warning-strong;
+      background-color: @color-warning-soft;
+      padding: 4px 10px;
+      border-radius: @rounded-small;
+
+      i { font-size: 11px; }
+    }
+  }
+
+  .rf-checkin-barcode {
+    margin: @spacing-medium @spacing-large;
+    height: 50px;
+    border-radius: @rounded-small;
+    overflow: hidden;
+    background: repeating-linear-gradient(
+      90deg,
+      @color-interface-strongest 0px,
+      @color-interface-strongest 2px,
+      @color-white 2px,
+      @color-white 5px,
+      @color-interface-strongest 5px,
+      @color-interface-strongest 6px,
+      @color-white 6px,
+      @color-white 9px,
+      @color-interface-strongest 9px,
+      @color-interface-strongest 12px,
+      @color-white 12px,
+      @color-white 14px,
+      @color-interface-strongest 14px,
+      @color-interface-strongest 15px,
+      @color-white 15px,
+      @color-white 19px,
+      @color-interface-strongest 19px,
+      @color-interface-strongest 21px,
+      @color-white 21px,
+      @color-white 23px
+    );
+    background-size: 23px 100%;
+  }
+
+  .rf-checkin-actions {
+    padding: 0 @spacing-large @spacing-large;
+    display: flex;
+    gap: @spacing-small;
+  }
+}
+
+body.dark-mode {
+  .rf-checkin-badge {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+
+    .rf-checkin-body {
+      .rf-checkin-child-name { color: @dark-text-strong; }
+      .rf-checkin-service    { color: @dark-text-medium; }
+      .rf-checkin-teacher    { color: @dark-text-medium; }
+      .rf-checkin-divider,
+      .rf-checkin-divider-2 { background-color: @dark-border; }
+    }
+
+    .rf-checkin-barcode {
+      background: repeating-linear-gradient(
+        90deg,
+        @dark-text-strong 0px,
+        @dark-text-strong 2px,
+        @dark-surface-raised 2px,
+        @dark-surface-raised 5px,
+        @dark-text-strong 5px,
+        @dark-text-strong 6px,
+        @dark-surface-raised 6px,
+        @dark-surface-raised 9px,
+        @dark-text-strong 9px,
+        @dark-text-strong 12px,
+        @dark-surface-raised 12px,
+        @dark-surface-raised 14px,
+        @dark-text-strong 14px,
+        @dark-text-strong 15px,
+        @dark-surface-raised 15px,
+        @dark-surface-raised 19px,
+        @dark-text-strong 19px,
+        @dark-text-strong 21px,
+        @dark-surface-raised 21px,
+        @dark-surface-raised 23px
+      );
+      background-size: 23px 100%;
+    }
+  }
+}

@@ -1,0 +1,150 @@
+// ============================================================
+// Rock Foundations — Modals
+// ============================================================
+
+.rf-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: @spacing-large;
+  transition: opacity 0.2s ease;
+
+  &.rf-modal-enter,
+  &.rf-modal-leave-to {
+    opacity: 0;
+  }
+}
+
+.rf-modal-box {
+  background: @color-white;
+  border-radius: @rounded-large;
+  box-shadow: @shadow-xl;
+  width: 100%;
+  max-height: calc(100vh - @spacing-xxlarge * 2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  position: relative;
+
+  &.rf-modal-enter,
+  &.rf-modal-leave-to {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  &.rf-modal-sm { max-width: 400px; }
+  &.rf-modal-md { max-width: 560px; }
+  &.rf-modal-lg { max-width: 720px; }
+}
+
+.rf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: @spacing-large @spacing-large @spacing-medium;
+  border-bottom: @border-width solid @border-color;
+  flex-shrink: 0;
+  gap: @spacing-medium;
+
+  .rf-modal-title {
+    font-size: @font-size-lg;
+    font-weight: @font-weight-semibold;
+    color: @color-interface-strong;
+    margin: 0;
+    line-height: @line-height-tight;
+  }
+
+  .rf-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: @rounded-small;
+    border: none;
+    background: none;
+    color: @color-interface-medium;
+    cursor: pointer;
+    font-size: 17px;
+    transition: @transition-fast;
+    flex-shrink: 0;
+    padding: 0;
+
+    &:hover {
+      background-color: @color-interface-softer;
+      color: @color-interface-strong;
+    }
+
+    .focus-ring();
+  }
+}
+
+.rf-modal-body {
+  padding: @spacing-large;
+  overflow-y: auto;
+  flex: 1;
+  color: @color-interface-strong;
+  line-height: @line-height-base;
+  font-size: @font-size-base;
+}
+
+.rf-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: @spacing-small;
+  padding: @spacing-medium @spacing-large;
+  border-top: @border-width solid @border-color;
+  background-color: @color-interface-softest;
+  flex-shrink: 0;
+}
+
+// ---- Vue transition classes ----
+.rf-modal-fade-enter-active,
+.rf-modal-fade-leave-active {
+  transition: opacity 0.2s ease;
+
+  .rf-modal-box {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+}
+
+.rf-modal-fade-enter-from,
+.rf-modal-fade-leave-to {
+  opacity: 0;
+
+  .rf-modal-box {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+// ---- Dark Mode ----
+body.dark-mode {
+  .rf-modal-box {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+  }
+
+  .rf-modal-header {
+    border-color: @dark-border;
+    .rf-modal-title { color: @dark-text-strong; }
+
+    .rf-modal-close {
+      color: @dark-text-medium;
+      &:hover { background-color: @dark-surface; color: @dark-text-strong; }
+    }
+  }
+
+  .rf-modal-body { color: @dark-text-strong; }
+
+  .rf-modal-footer {
+    background-color: @dark-surface;
+    border-color: @dark-border;
+  }
+}

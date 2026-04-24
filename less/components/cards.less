@@ -1,0 +1,313 @@
+// ============================================================
+// Rock Foundations — Cards
+// ============================================================
+
+// ---- Base Card ----
+.rf-card {
+  .card-base();
+  overflow: hidden;
+  transition: box-shadow @transition-slow, transform @transition-slow;
+
+  &:hover {
+    box-shadow: @shadow-md;
+  }
+
+  .rf-card-header {
+    padding: @spacing-medium @spacing-large;
+    border-bottom: @border-width solid @border-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: @spacing-medium;
+
+    .rf-card-title {
+      font-size: @font-size-md;
+      font-weight: @font-weight-semibold;
+      color: @color-interface-strong;
+      margin: 0;
+      line-height: @line-height-tight;
+    }
+
+    .rf-card-subtitle {
+      font-size: @font-size-sm;
+      color: @color-interface-medium;
+      margin-top: 3px;
+    }
+  }
+
+  .rf-card-body {
+    padding: @spacing-large;
+  }
+
+  .rf-card-footer {
+    padding: @spacing-medium @spacing-large;
+    border-top: @border-width solid @border-color;
+    background-color: @color-interface-softest;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: @spacing-small;
+  }
+
+  // ---- Media Card (image top) ----
+  .rf-card-media {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, @color-primary 0%, #6366F1 100%);
+    position: relative;
+    overflow: hidden;
+
+    .rf-card-media-overlay {
+      position: absolute;
+      bottom: @spacing-small;
+      left: @spacing-small;
+    }
+  }
+}
+
+// ---- Clickable card ----
+.rf-card-clickable {
+  cursor: pointer;
+  .hover-lift();
+}
+
+// ---- Horizontal Card ----
+.rf-card-horizontal {
+  .card-base();
+  display: flex;
+  overflow: hidden;
+  transition: box-shadow @transition-slow, transform @transition-slow;
+
+  &:hover {
+    box-shadow: @shadow-md;
+  }
+
+  .rf-card-h-image {
+    width: 120px;
+    min-width: 120px;
+    background: linear-gradient(160deg, @color-primary 0%, #8B5CF6 100%);
+    flex-shrink: 0;
+  }
+
+  .rf-card-h-body {
+    padding: @spacing-medium @spacing-large;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: @spacing-xsmall;
+
+    .rf-card-h-title {
+      font-size: @font-size-md;
+      font-weight: @font-weight-semibold;
+      color: @color-interface-strong;
+      margin: 0;
+    }
+
+    .rf-card-h-text {
+      font-size: @font-size-sm;
+      color: @color-interface-medium;
+      margin: 0;
+    }
+  }
+}
+
+// ---- Stat Card ----
+.rf-card-stat {
+  .card-base();
+  padding: @spacing-large;
+  transition: box-shadow @transition-slow, transform @transition-slow;
+
+  &:hover {
+    box-shadow: @shadow-md;
+  }
+
+  .rf-card-stat-number {
+    font-size: @font-size-2xl;
+    font-weight: @font-weight-bold;
+    color: @color-interface-strong;
+    line-height: 1;
+    margin-bottom: @spacing-xsmall;
+  }
+
+  .rf-card-stat-label {
+    font-size: @font-size-sm;
+    color: @color-interface-medium;
+    margin-bottom: @spacing-small;
+  }
+
+  .rf-card-stat-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: @font-size-xs;
+    font-weight: @font-weight-semibold;
+    padding: 2px 7px;
+    border-radius: @rounded-full;
+
+    &.rf-trend-up {
+      background-color: @color-success-soft;
+      color: @color-success-strong;
+    }
+
+    &.rf-trend-down {
+      background-color: @color-danger-soft;
+      color: @color-danger-strong;
+    }
+  }
+}
+
+// ---- Action Card ----
+.rf-card-action {
+  .card-base();
+  padding: @spacing-large;
+  text-align: center;
+  transition: box-shadow @transition-slow, transform @transition-slow;
+  cursor: pointer;
+
+  .hover-lift();
+
+  .rf-card-action-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: @rounded-large;
+    .flex-center();
+    margin: 0 auto @spacing-medium;
+    font-size: 22px;
+    background-color: @color-primary-soft;
+    color: @color-primary;
+  }
+
+  .rf-card-action-title {
+    font-size: @font-size-md;
+    font-weight: @font-weight-semibold;
+    color: @color-interface-strong;
+    margin-bottom: @spacing-xsmall;
+  }
+
+  .rf-card-action-text {
+    font-size: @font-size-sm;
+    color: @color-interface-medium;
+    margin-bottom: @spacing-medium;
+    line-height: @line-height-base;
+  }
+}
+
+// ---- Pricing Card ----
+.rf-card-pricing {
+  .card-base();
+  padding: @spacing-xlarge @spacing-large;
+  text-align: center;
+  transition: box-shadow @transition-slow, transform @transition-slow;
+
+  &:hover {
+    box-shadow: @shadow-lg;
+  }
+
+  &.rf-card-pricing-featured {
+    border-color: @color-primary;
+    box-shadow: 0 0 0 3px fade(@color-primary, 20%), @shadow-lg;
+  }
+
+  .rf-card-pricing-plan {
+    font-size: @font-size-sm;
+    font-weight: @font-weight-semibold;
+    color: @color-primary;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: @spacing-small;
+  }
+
+  .rf-card-pricing-price {
+    font-size: @font-size-3xl;
+    font-weight: @font-weight-bold;
+    color: @color-interface-strong;
+    line-height: 1;
+    margin-bottom: @spacing-xsmall;
+
+    span {
+      font-size: @font-size-md;
+      font-weight: @font-weight-normal;
+      color: @color-interface-medium;
+    }
+  }
+
+  .rf-card-pricing-desc {
+    font-size: @font-size-sm;
+    color: @color-interface-medium;
+    margin-bottom: @spacing-large;
+  }
+
+  .rf-card-pricing-features {
+    text-align: left;
+    margin-bottom: @spacing-xlarge;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: @spacing-small;
+      font-size: @font-size-sm;
+      color: @color-interface-strong;
+      padding: @spacing-xsmall 0;
+      border-bottom: 1px solid @color-interface-softer;
+
+      &:last-child { border-bottom: none; }
+
+      i {
+        color: @color-success-strong;
+        font-size: 12px;
+        width: 14px;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+// ---- Dark Mode ----
+body.dark-mode {
+  .rf-card,
+  .rf-card-horizontal,
+  .rf-card-stat,
+  .rf-card-action,
+  .rf-card-pricing {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+  }
+
+  .rf-card {
+    .rf-card-header {
+      border-color: @dark-border;
+      .rf-card-title { color: @dark-text-strong; }
+      .rf-card-subtitle { color: @dark-text-medium; }
+    }
+
+    .rf-card-footer {
+      background-color: @dark-surface;
+      border-color: @dark-border;
+    }
+  }
+
+  .rf-card-stat {
+    .rf-card-stat-number { color: @dark-text-strong; }
+    .rf-card-stat-label  { color: @dark-text-medium; }
+  }
+
+  .rf-card-action {
+    .rf-card-action-title { color: @dark-text-strong; }
+    .rf-card-action-text  { color: @dark-text-medium; }
+  }
+
+  .rf-card-pricing {
+    .rf-card-pricing-price { color: @dark-text-strong; }
+
+    .rf-card-pricing-features li {
+      color: @dark-text-strong;
+      border-color: @dark-border;
+    }
+  }
+
+  .rf-card-horizontal {
+    .rf-card-h-title { color: @dark-text-strong; }
+    .rf-card-h-text  { color: @dark-text-medium; }
+  }
+}

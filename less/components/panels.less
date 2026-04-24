@@ -1,0 +1,128 @@
+// ============================================================
+// Rock Foundations — Panels (Rock-style collapsible)
+// ============================================================
+
+.rf-panel {
+  .card-base();
+  margin-bottom: @spacing-medium;
+  overflow: hidden;
+
+  .rf-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px @spacing-large;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color @transition-fast;
+    gap: @spacing-medium;
+
+    &:hover {
+      background-color: @color-interface-softest;
+    }
+
+    .rf-panel-title {
+      font-size: @font-size-base;
+      font-weight: @font-weight-semibold;
+      margin: 0;
+      line-height: @line-height-tight;
+    }
+
+    .rf-panel-toggle-icon {
+      font-size: 12px;
+      color: @color-interface-medium;
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    &[aria-expanded="true"] .rf-panel-toggle-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  .rf-panel-body {
+    padding: @spacing-medium @spacing-large;
+    border-top: @border-width solid @border-color;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &.is-open {
+      max-height: 500px;
+      padding-top: @spacing-medium;
+      padding-bottom: @spacing-medium;
+    }
+  }
+}
+
+// ---- Variants ----
+.rf-panel-primary {
+  .rf-panel-header {
+    background-color: @color-primary;
+    border-bottom: none;
+
+    &:hover { background-color: darken(@color-primary, 5%); }
+
+    .rf-panel-title { color: @color-white; }
+    .rf-panel-toggle-icon { color: fade(@color-white, 70%); }
+  }
+}
+
+.rf-panel-success {
+  border-color: @color-success-strong;
+
+  .rf-panel-header {
+    background-color: @color-success-strong;
+    &:hover { background-color: darken(@color-success-strong, 5%); }
+    .rf-panel-title { color: @color-white; }
+    .rf-panel-toggle-icon { color: fade(@color-white, 70%); }
+  }
+
+  .rf-panel-body { border-top-color: @color-success-strong; }
+}
+
+.rf-panel-warning {
+  border-color: @color-warning-strong;
+
+  .rf-panel-header {
+    background-color: @color-warning-soft;
+    &:hover { background-color: darken(@color-warning-soft, 3%); }
+    .rf-panel-title { color: @color-warning-strong; }
+    .rf-panel-toggle-icon { color: @color-warning-strong; }
+  }
+
+  .rf-panel-body { border-top-color: @color-warning-strong; }
+}
+
+.rf-panel-danger {
+  border-color: @color-danger-strong;
+
+  .rf-panel-header {
+    background-color: @color-danger-strong;
+    &:hover { background-color: darken(@color-danger-strong, 5%); }
+    .rf-panel-title { color: @color-white; }
+    .rf-panel-toggle-icon { color: fade(@color-white, 70%); }
+  }
+
+  .rf-panel-body { border-top-color: @color-danger-strong; }
+}
+
+// ---- Dark Mode ----
+body.dark-mode {
+  .rf-panel {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+
+    .rf-panel-header {
+      &:hover { background-color: lighten(@dark-surface-raised, 3%); }
+      .rf-panel-title { color: @dark-text-strong; }
+    }
+
+    .rf-panel-body {
+      border-top-color: @dark-border;
+      color: @dark-text-strong;
+    }
+  }
+}

@@ -1,0 +1,140 @@
+// ============================================================
+// Rock Foundations — Avatars
+// ============================================================
+
+// ---- Base Avatar ----
+.rf-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: @rounded-full;
+  font-weight: @font-weight-semibold;
+  font-family: @font-family-base;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  user-select: none;
+  background-color: @color-primary-soft;
+  color: @color-primary;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: @rounded-full;
+  }
+}
+
+// ---- Sizes ----
+.rf-avatar-xs  { width: 24px;  height: 24px;  font-size: 9px;  }
+.rf-avatar-sm  { width: 32px;  height: 32px;  font-size: 11px; }
+.rf-avatar-md  { width: 40px;  height: 40px;  font-size: 14px; }
+.rf-avatar-lg  { width: 56px;  height: 56px;  font-size: 18px; }
+.rf-avatar-xl  { width: 72px;  height: 72px;  font-size: 24px; }
+.rf-avatar-xxl { width: 96px;  height: 96px;  font-size: 30px; }
+
+// ---- Color Variants (for initials) ----
+.rf-avatar-blue   { background-color: @color-primary-soft;  color: @color-primary; }
+.rf-avatar-green  { background-color: @color-success-soft;  color: @color-success-strong; }
+.rf-avatar-amber  { background-color: @color-warning-soft;  color: @color-warning-strong; }
+.rf-avatar-red    { background-color: @color-danger-soft;   color: @color-danger-strong; }
+.rf-avatar-teal   { background-color: #CCFBF1; color: #0D9488; }
+.rf-avatar-purple { background-color: #EDE9FE; color: #7C3AED; }
+.rf-avatar-pink   { background-color: #FCE7F3; color: #BE185D; }
+.rf-avatar-indigo { background-color: #E0E7FF; color: #4338CA; }
+
+// ---- Ring placeholder (for img tag) ----
+.rf-avatar-ring {
+  border: 2px solid @border-color;
+  background-color: @color-interface-softer;
+  color: @color-interface-medium;
+}
+
+// ---- Status Indicator ----
+.rf-avatar-wrapper {
+  position: relative;
+  display: inline-flex;
+
+  .rf-avatar-status {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    border-radius: @rounded-full;
+    border: 2px solid @color-white;
+    background-color: @color-interface-medium;
+
+    &.rf-status-online   { background-color: @color-success-strong; }
+    &.rf-status-busy     { background-color: @color-danger-strong; }
+    &.rf-status-away     { background-color: @color-warning-strong; }
+    &.rf-status-offline  { background-color: @color-interface-soft; }
+  }
+
+  &.rf-avatar-xs-wrap   .rf-avatar-status { width: 6px;  height: 6px;  border-width: 1px; bottom: 0; right: 0; }
+  &.rf-avatar-sm-wrap   .rf-avatar-status { width: 8px;  height: 8px;  border-width: 1.5px; }
+  &.rf-avatar-md-wrap   .rf-avatar-status { width: 10px; height: 10px; border-width: 2px; }
+  &.rf-avatar-lg-wrap   .rf-avatar-status { width: 13px; height: 13px; border-width: 2px; }
+  &.rf-avatar-xl-wrap   .rf-avatar-status { width: 16px; height: 16px; border-width: 2.5px; }
+  &.rf-avatar-xxl-wrap  .rf-avatar-status { width: 20px; height: 20px; border-width: 3px; }
+}
+
+// ---- Avatar Group (overlapping) ----
+.rf-avatar-group {
+  display: inline-flex;
+  align-items: center;
+
+  .rf-avatar,
+  .rf-avatar-wrapper {
+    border: 2px solid @color-white;
+    margin-left: -10px;
+    transition: @transition-fast;
+
+    &:first-child { margin-left: 0; }
+
+    &:hover {
+      z-index: 10;
+      transform: scale(1.1);
+    }
+  }
+
+  .rf-avatar-group-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: @rounded-full;
+    background-color: @color-interface-softer;
+    border: 2px solid @color-white;
+    margin-left: -10px;
+    font-size: @font-size-xs;
+    font-weight: @font-weight-semibold;
+    color: @color-interface-medium;
+    white-space: nowrap;
+  }
+}
+
+// ---- Dark Mode ----
+body.dark-mode {
+  .rf-avatar-wrapper .rf-avatar-status {
+    border-color: @dark-surface;
+  }
+
+  .rf-avatar-group {
+    .rf-avatar,
+    .rf-avatar-wrapper {
+      border-color: @dark-surface;
+    }
+
+    .rf-avatar-group-more {
+      background-color: @dark-surface-raised;
+      border-color: @dark-surface;
+      color: @dark-text-medium;
+    }
+  }
+
+  .rf-avatar-ring {
+    border-color: @dark-border;
+    background-color: @dark-surface-raised;
+    color: @dark-text-medium;
+  }
+}

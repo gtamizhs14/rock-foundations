@@ -1,0 +1,172 @@
+// ============================================================
+// Rock Foundations — Prayer Request Card
+// ============================================================
+
+.rf-prayer-card {
+  .card-base();
+  padding: @spacing-large;
+  max-width: 480px;
+
+  .rf-prayer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: @spacing-medium;
+    gap: @spacing-medium;
+
+    .rf-prayer-author-info {
+      display: flex;
+      align-items: center;
+      gap: @spacing-small;
+      flex: 1;
+      min-width: 0;
+
+      .rf-prayer-author-name {
+        font-weight: @font-weight-semibold;
+        font-size: @font-size-base;
+        color: @color-interface-strong;
+      }
+
+      .rf-prayer-time {
+        font-size: @font-size-xs;
+        color: @color-interface-medium;
+      }
+    }
+
+    .rf-prayer-anon-toggle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: @font-size-xs;
+      color: @color-interface-medium;
+    }
+  }
+
+  .rf-prayer-body {
+    margin-bottom: @spacing-medium;
+
+    .rf-prayer-text {
+      font-size: @font-size-base;
+      color: @color-interface-strong;
+      line-height: @line-height-loose;
+      margin-bottom: @spacing-xsmall;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+
+      &.rf-prayer-expanded {
+        -webkit-line-clamp: unset;
+        display: block;
+      }
+    }
+
+    .rf-prayer-read-more {
+      font-size: @font-size-sm;
+      color: @color-primary;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: @font-family-base;
+      font-weight: @font-weight-medium;
+      transition: @transition-fast;
+
+      &:hover { color: @color-primary-dark; }
+    }
+  }
+
+  .rf-prayer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: @spacing-xsmall;
+    margin-bottom: @spacing-medium;
+  }
+
+  .rf-prayer-divider {
+    height: 1px;
+    background-color: @border-color;
+    margin: @spacing-medium 0;
+  }
+
+  .rf-prayer-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .rf-prayer-action-btns {
+      display: flex;
+      gap: @spacing-small;
+
+      .rf-prayer-action-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 12px;
+        border-radius: @rounded-small;
+        border: @border-width solid @border-color;
+        background: none;
+        font-size: @font-size-xs;
+        font-weight: @font-weight-medium;
+        color: @color-interface-medium;
+        cursor: pointer;
+        transition: @transition-fast;
+        font-family: @font-family-base;
+
+        &:hover {
+          border-color: @color-primary;
+          color: @color-primary;
+          background-color: @color-primary-light;
+        }
+
+        &.rf-prayed-btn {
+          &.rf-prayed-active {
+            background-color: @color-primary-soft;
+            border-color: @color-primary;
+            color: @color-primary;
+          }
+        }
+
+        i { font-size: 12px; }
+      }
+    }
+
+    .rf-prayer-count {
+      font-size: @font-size-xs;
+      color: @color-interface-medium;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      strong {
+        color: @color-primary;
+        font-weight: @font-weight-semibold;
+      }
+    }
+  }
+}
+
+body.dark-mode {
+  .rf-prayer-card {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+
+    .rf-prayer-author-name { color: @dark-text-strong; }
+    .rf-prayer-time { color: @dark-text-medium; }
+    .rf-prayer-text { color: @dark-text-strong; }
+    .rf-prayer-divider { background-color: @dark-border; }
+
+    .rf-prayer-action-btn {
+      border-color: @dark-border;
+      color: @dark-text-medium;
+
+      &:hover {
+        border-color: @color-primary;
+        color: @color-primary;
+        background-color: fade(@color-primary, 15%);
+      }
+    }
+
+    .rf-prayer-count { color: @dark-text-medium; }
+  }
+}

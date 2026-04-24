@@ -1,0 +1,101 @@
+// ============================================================
+// Rock Foundations — Typography
+// ============================================================
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: @font-family-base;
+  font-weight: @font-weight-semibold;
+  line-height: @line-height-tight;
+  color: @color-interface-strong;
+  margin: 0 0 @spacing-medium 0;
+}
+
+h1 { font-size: @font-size-3xl; font-weight: @font-weight-bold; }
+h2 { font-size: @font-size-2xl; }
+h3 { font-size: @font-size-xl; }
+h4 { font-size: @font-size-lg; }
+h5 { font-size: @font-size-md; }
+h6 { font-size: @font-size-base; }
+
+.rf-display {
+  font-family: @font-family-display;
+  font-weight: @font-weight-bold;
+}
+
+.rf-text-xs   { font-size: @font-size-xs; }
+.rf-text-sm   { font-size: @font-size-sm; }
+.rf-text-base { font-size: @font-size-base; }
+.rf-text-md   { font-size: @font-size-md; }
+.rf-text-lg   { font-size: @font-size-lg; }
+.rf-text-xl   { font-size: @font-size-xl; }
+.rf-text-2xl  { font-size: @font-size-2xl; }
+.rf-text-3xl  { font-size: @font-size-3xl; }
+
+.rf-weight-normal   { font-weight: @font-weight-normal; }
+.rf-weight-medium   { font-weight: @font-weight-medium; }
+.rf-weight-semibold { font-weight: @font-weight-semibold; }
+.rf-weight-bold     { font-weight: @font-weight-bold; }
+
+.rf-leading-tight { line-height: @line-height-tight; }
+.rf-leading-base  { line-height: @line-height-base; }
+.rf-leading-loose { line-height: @line-height-loose; }
+
+.rf-text-strongest { color: @color-interface-strongest; }
+.rf-text-strong    { color: @color-interface-strong; }
+.rf-text-medium    { color: @color-interface-medium; }
+.rf-text-soft      { color: @color-interface-soft; }
+.rf-text-primary   { color: @color-primary; }
+.rf-text-success   { color: @color-success-strong; }
+.rf-text-warning   { color: @color-warning-strong; }
+.rf-text-danger    { color: @color-danger-strong; }
+.rf-text-info      { color: @color-info-strong; }
+
+.rf-font-display {
+  font-family: @font-family-display;
+}
+
+// Typography Scale Demo Styles
+.rf-typo-sample {
+  display: flex;
+  align-items: baseline;
+  gap: @spacing-large;
+  padding: @spacing-small 0;
+  border-bottom: 1px solid @color-interface-softer;
+
+  &:last-child { border-bottom: none; }
+
+  .rf-typo-meta {
+    display: flex;
+    gap: @spacing-medium;
+    min-width: 200px;
+    flex-shrink: 0;
+
+    .rf-typo-token {
+      font-size: @font-size-xs;
+      font-weight: @font-weight-semibold;
+      color: @color-primary;
+      font-family: 'Fira Code', 'Consolas', monospace;
+      min-width: 100px;
+    }
+
+    .rf-typo-px {
+      font-size: @font-size-xs;
+      color: @color-interface-medium;
+      font-family: 'Fira Code', 'Consolas', monospace;
+    }
+  }
+
+  .rf-typo-text {
+    color: @color-interface-strong;
+    line-height: @line-height-tight;
+  }
+}
+
+body.dark-mode {
+  h1, h2, h3, h4, h5, h6 {
+    color: @dark-text-strong;
+  }
+  .rf-typo-sample {
+    border-color: @dark-border;
+  }
+}

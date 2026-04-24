@@ -1,0 +1,153 @@
+// ============================================================
+// Rock Foundations — Alerts
+// ============================================================
+
+.rf-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: @spacing-medium;
+  padding: @spacing-medium @spacing-large;
+  border-radius: @rounded-medium;
+  border-left: 4px solid transparent;
+  position: relative;
+
+  .rf-alert-icon {
+    font-size: 17px;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .rf-alert-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .rf-alert-title {
+    font-size: @font-size-base;
+    font-weight: @font-weight-semibold;
+    margin-bottom: 3px;
+    line-height: @line-height-tight;
+  }
+
+  .rf-alert-text {
+    font-size: @font-size-sm;
+    line-height: @line-height-base;
+    margin: 0;
+  }
+
+  .rf-alert-dismiss {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 2px;
+    border-radius: @rounded-xsmall;
+    transition: @transition-fast;
+    flex-shrink: 0;
+    opacity: 0.6;
+
+    &:hover { opacity: 1; }
+  }
+}
+
+// ---- Variants ----
+.rf-alert-success {
+  background-color: @color-success-soft;
+  border-left-color: @color-success-strong;
+  .rf-alert-icon    { color: @color-success-strong; }
+  .rf-alert-title   { color: @color-success-strong; }
+  .rf-alert-text    { color: darken(@color-success-strong, 5%); }
+  .rf-alert-dismiss { color: @color-success-strong; }
+}
+
+.rf-alert-warning {
+  background-color: @color-warning-soft;
+  border-left-color: @color-warning-strong;
+  .rf-alert-icon    { color: @color-warning-strong; }
+  .rf-alert-title   { color: @color-warning-strong; }
+  .rf-alert-text    { color: darken(@color-warning-strong, 5%); }
+  .rf-alert-dismiss { color: @color-warning-strong; }
+}
+
+.rf-alert-danger {
+  background-color: @color-danger-soft;
+  border-left-color: @color-danger-strong;
+  .rf-alert-icon    { color: @color-danger-strong; }
+  .rf-alert-title   { color: @color-danger-strong; }
+  .rf-alert-text    { color: darken(@color-danger-strong, 5%); }
+  .rf-alert-dismiss { color: @color-danger-strong; }
+}
+
+.rf-alert-info {
+  background-color: @color-info-soft;
+  border-left-color: @color-info-strong;
+  .rf-alert-icon    { color: @color-info-strong; }
+  .rf-alert-title   { color: @color-info-strong; }
+  .rf-alert-text    { color: darken(@color-info-strong, 5%); }
+  .rf-alert-dismiss { color: @color-info-strong; }
+}
+
+// ---- Compact / Inline Alert ----
+.rf-alert-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: @spacing-small;
+  padding: 5px 12px;
+  border-radius: @rounded-small;
+  font-size: @font-size-sm;
+  font-weight: @font-weight-medium;
+  border-left-width: 3px;
+
+  &.rf-alert-success {
+    background-color: @color-success-soft;
+    color: @color-success-strong;
+    border-left-color: @color-success-strong;
+  }
+
+  &.rf-alert-warning {
+    background-color: @color-warning-soft;
+    color: @color-warning-strong;
+    border-left-color: @color-warning-strong;
+  }
+
+  &.rf-alert-danger {
+    background-color: @color-danger-soft;
+    color: @color-danger-strong;
+    border-left-color: @color-danger-strong;
+  }
+
+  &.rf-alert-info {
+    background-color: @color-info-soft;
+    color: @color-info-strong;
+    border-left-color: @color-info-strong;
+  }
+}
+
+// Stacked alerts spacing
+.rf-alert + .rf-alert {
+  margin-top: @spacing-small;
+}
+
+// ---- Dark Mode ----
+body.dark-mode {
+  .rf-alert-success {
+    background-color: fade(@color-success-strong, 12%);
+    .rf-alert-text { color: lighten(@color-success-strong, 25%); }
+  }
+
+  .rf-alert-warning {
+    background-color: fade(@color-warning-strong, 12%);
+    .rf-alert-text { color: lighten(@color-warning-strong, 25%); }
+  }
+
+  .rf-alert-danger {
+    background-color: fade(@color-danger-strong, 12%);
+    .rf-alert-text { color: lighten(@color-danger-strong, 25%); }
+  }
+
+  .rf-alert-info {
+    background-color: fade(@color-info-strong, 12%);
+    .rf-alert-text { color: lighten(@color-info-strong, 25%); }
+  }
+}

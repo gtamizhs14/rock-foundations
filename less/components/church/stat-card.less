@@ -1,0 +1,123 @@
+// ============================================================
+// Rock Foundations — Attendance Stat Cards
+// ============================================================
+
+.rf-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: @spacing-medium;
+
+  @media (max-width: @breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: @breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rf-stat-card {
+  .card-base();
+  padding: @spacing-large;
+  transition: box-shadow @transition-slow, transform @transition-slow;
+
+  &:hover {
+    box-shadow: @shadow-md;
+    transform: translateY(-2px);
+  }
+
+  .rf-stat-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: @spacing-small;
+  }
+
+  .rf-stat-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: @rounded-medium;
+    .flex-center();
+    font-size: 15px;
+    flex-shrink: 0;
+
+    &.rf-stat-icon-blue   { background: @color-primary-soft;  color: @color-primary; }
+    &.rf-stat-icon-green  { background: @color-success-soft;  color: @color-success-strong; }
+    &.rf-stat-icon-purple { background: #EDE9FE;              color: #7C3AED; }
+    &.rf-stat-icon-orange { background: #FEF3C7;              color: #D97706; }
+  }
+
+  .rf-stat-number {
+    font-size: @font-size-2xl;
+    font-weight: @font-weight-bold;
+    color: @color-interface-strong;
+    line-height: 1;
+    margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .rf-stat-label {
+    font-size: @font-size-xs;
+    color: @color-interface-medium;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: @font-weight-medium;
+    margin-bottom: @spacing-medium;
+  }
+
+  .rf-stat-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: @spacing-small;
+  }
+
+  .rf-stat-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: @font-size-xs;
+    font-weight: @font-weight-semibold;
+    padding: 2px 7px;
+    border-radius: @rounded-full;
+
+    &.rf-trend-up {
+      background-color: @color-success-soft;
+      color: @color-success-strong;
+    }
+
+    &.rf-trend-down {
+      background-color: @color-danger-soft;
+      color: @color-danger-strong;
+    }
+  }
+
+  .rf-stat-sparkline {
+    flex: 1;
+    height: 28px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    svg {
+      display: block;
+    }
+  }
+}
+
+body.dark-mode {
+  .rf-stat-card {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+
+    .rf-stat-number { color: @dark-text-strong; }
+    .rf-stat-label  { color: @dark-text-medium; }
+
+    .rf-stat-icon {
+      &.rf-stat-icon-blue   { background: fade(@color-primary, 15%); }
+      &.rf-stat-icon-green  { background: fade(@color-success-strong, 15%); }
+      &.rf-stat-icon-purple { background: fade(#7C3AED, 15%); }
+      &.rf-stat-icon-orange { background: fade(#D97706, 15%); }
+    }
+  }
+}

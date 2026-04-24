@@ -1,0 +1,87 @@
+// ============================================================
+// Rock Foundations — Reset & Base
+// ============================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  font-weight: @font-weight-normal;
+  line-height: @line-height-base;
+  color: @color-interface-strong;
+  background-color: @color-background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: @color-primary;
+  text-decoration: none;
+  transition: @transition-fast;
+  &:hover {
+    color: @color-primary-dark;
+    text-decoration: underline;
+  }
+}
+
+button {
+  font-family: @font-family-base;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+input,
+textarea,
+select {
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0 0 @spacing-medium 0;
+  &:last-child { margin-bottom: 0; }
+}
+
+hr {
+  border: none;
+  border-top: @border-width solid @border-color;
+  margin: @spacing-large 0;
+}
+
+// Remove Bootstrap's global box-sizing reset interference
+.container,
+.container-fluid,
+.row {
+  box-sizing: border-box;
+}
+
+// Bootstrap overrides
+.panel { margin-bottom: 0; }

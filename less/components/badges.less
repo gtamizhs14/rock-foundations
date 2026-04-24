@@ -1,0 +1,210 @@
+// ============================================================
+// Rock Foundations — Badges & Tags
+// ============================================================
+
+// ---- Base Badge ----
+.rf-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 9px;
+  border-radius: @rounded-full;
+  font-size: @font-size-xs;
+  font-weight: @font-weight-semibold;
+  line-height: 1.5;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+// ---- Sizes ----
+.rf-badge-sm {
+  padding: 1px 7px;
+  font-size: 10px;
+}
+
+.rf-badge-lg {
+  padding: 4px 12px;
+  font-size: @font-size-sm;
+}
+
+// ---- Filled Variants ----
+.rf-badge-primary  { .badge-base(@color-primary, @color-white); }
+.rf-badge-success  { .badge-base(@color-success-strong, @color-white); }
+.rf-badge-warning  { .badge-base(@color-warning-strong, @color-white); }
+.rf-badge-danger   { .badge-base(@color-danger-strong, @color-white); }
+.rf-badge-info     { .badge-base(@color-info-strong, @color-white); }
+.rf-badge-neutral  { .badge-base(@color-interface-medium, @color-white); }
+.rf-badge-secondary {
+  background-color: @color-interface-softer;
+  color: @color-interface-strong;
+}
+
+// ---- Soft (pale background) Variants ----
+.rf-badge-primary-soft  { .badge-base(@color-primary-soft, @color-primary); }
+.rf-badge-success-soft  { .badge-base(@color-success-soft, @color-success-strong); }
+.rf-badge-warning-soft  { .badge-base(@color-warning-soft, @color-warning-strong); }
+.rf-badge-danger-soft   { .badge-base(@color-danger-soft, @color-danger-strong); }
+.rf-badge-info-soft     { .badge-base(@color-info-soft, @color-info-strong); }
+.rf-badge-neutral-soft  { .badge-base(@color-interface-softer, @color-interface-medium); }
+
+// ---- Outline Variants ----
+.rf-badge-outline-primary {
+  background-color: transparent;
+  color: @color-primary;
+  border: 1px solid @color-primary;
+  padding: 1px 8px;
+}
+
+.rf-badge-outline-success {
+  background-color: transparent;
+  color: @color-success-strong;
+  border: 1px solid @color-success-strong;
+  padding: 1px 8px;
+}
+
+.rf-badge-outline-warning {
+  background-color: transparent;
+  color: @color-warning-strong;
+  border: 1px solid @color-warning-strong;
+  padding: 1px 8px;
+}
+
+.rf-badge-outline-danger {
+  background-color: transparent;
+  color: @color-danger-strong;
+  border: 1px solid @color-danger-strong;
+  padding: 1px 8px;
+}
+
+.rf-badge-outline-neutral {
+  background-color: transparent;
+  color: @color-interface-medium;
+  border: 1px solid @color-interface-soft;
+  padding: 1px 8px;
+}
+
+// ---- Status Badges (with dot) ----
+.rf-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: @rounded-full;
+  font-size: @font-size-xs;
+  font-weight: @font-weight-semibold;
+
+  .rf-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: @rounded-full;
+    flex-shrink: 0;
+  }
+
+  &.rf-status-active {
+    background-color: @color-success-soft;
+    color: @color-success-strong;
+    .rf-status-dot { background-color: @color-success-strong; }
+  }
+
+  &.rf-status-inactive {
+    background-color: @color-interface-softer;
+    color: @color-interface-medium;
+    .rf-status-dot { background-color: @color-interface-medium; }
+  }
+
+  &.rf-status-pending {
+    background-color: @color-warning-soft;
+    color: @color-warning-strong;
+    .rf-status-dot { background-color: @color-warning-strong; }
+  }
+
+  &.rf-status-danger {
+    background-color: @color-danger-soft;
+    color: @color-danger-strong;
+    .rf-status-dot { background-color: @color-danger-strong; }
+  }
+}
+
+// ---- Removable Tag ----
+.rf-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px 3px 10px;
+  border-radius: @rounded-full;
+  font-size: @font-size-xs;
+  font-weight: @font-weight-medium;
+  background-color: @color-primary-soft;
+  color: @color-primary;
+  border: 1px solid fade(@color-primary, 25%);
+  transition: @transition-fast;
+
+  .rf-tag-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: @rounded-full;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: @color-primary;
+    opacity: 0.7;
+    transition: @transition-fast;
+    font-size: 10px;
+    line-height: 1;
+
+    &:hover {
+      background-color: fade(@color-primary, 20%);
+      opacity: 1;
+    }
+  }
+}
+
+// ---- Counter / Notification Badge (overlapping) ----
+.rf-badge-counter-wrapper {
+  position: relative;
+  display: inline-flex;
+
+  .rf-badge-counter {
+    position: absolute;
+    top: -5px;
+    right: -7px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: @rounded-full;
+    background-color: @color-danger-strong;
+    color: @color-white;
+    font-size: 10px;
+    font-weight: @font-weight-bold;
+    line-height: 18px;
+    text-align: center;
+    border: 2px solid @color-white;
+    z-index: 1;
+  }
+}
+
+// ---- Dark Mode ----
+body.dark-mode {
+  .rf-badge-secondary {
+    background-color: @dark-surface-raised;
+    color: @dark-text-medium;
+  }
+
+  .rf-badge-neutral-soft {
+    background-color: @dark-surface-raised;
+    color: @dark-text-medium;
+  }
+
+  .rf-badge-counter-wrapper .rf-badge-counter {
+    border-color: @dark-surface;
+  }
+
+  .rf-tag {
+    background-color: fade(@color-primary, 15%);
+    border-color: fade(@color-primary, 30%);
+  }
+}

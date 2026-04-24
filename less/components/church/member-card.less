@@ -1,0 +1,108 @@
+// ============================================================
+// Rock Foundations — Member / Person Card
+// ============================================================
+
+.rf-member-card {
+  .card-base();
+  width: 280px;
+  padding: @spacing-large;
+  position: relative;
+  cursor: pointer;
+  .hover-lift();
+
+  .rf-member-card-status {
+    position: absolute;
+    top: @spacing-medium;
+    right: @spacing-medium;
+  }
+
+  .rf-member-card-avatar-area {
+    display: flex;
+    justify-content: center;
+    margin-bottom: @spacing-medium;
+  }
+
+  .rf-member-card-name {
+    font-size: @font-size-lg;
+    font-weight: @font-weight-bold;
+    color: @color-interface-strong;
+    text-align: center;
+    margin-bottom: 4px;
+    line-height: @line-height-tight;
+  }
+
+  .rf-member-card-role {
+    font-size: @font-size-sm;
+    color: @color-interface-medium;
+    text-align: center;
+    margin-bottom: @spacing-small;
+  }
+
+  .rf-member-card-campus {
+    display: flex;
+    justify-content: center;
+    margin-bottom: @spacing-small;
+  }
+
+  .rf-member-card-since {
+    font-size: @font-size-xs;
+    color: @color-interface-medium;
+    text-align: center;
+    margin-bottom: @spacing-medium;
+  }
+
+  .rf-member-card-divider {
+    height: 1px;
+    background-color: @border-color;
+    margin: @spacing-medium 0;
+  }
+
+  .rf-member-card-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: @spacing-small;
+    font-size: @font-size-xs;
+    color: @color-interface-medium;
+    margin-bottom: @spacing-medium;
+
+    .rf-stat-sep {
+      color: @color-interface-soft;
+    }
+
+    span strong {
+      color: @color-interface-strong;
+      font-weight: @font-weight-semibold;
+    }
+  }
+
+  .rf-member-card-actions {
+    display: flex;
+    gap: 6px;
+
+    .rf-btn {
+      flex: 1;
+      font-size: @font-size-xs;
+      padding: 7px 0;
+      justify-content: center;
+    }
+  }
+}
+
+body.dark-mode {
+  .rf-member-card {
+    background: @dark-surface-raised;
+    border-color: @dark-border;
+
+    .rf-member-card-name { color: @dark-text-strong; }
+    .rf-member-card-role { color: @dark-text-medium; }
+    .rf-member-card-since { color: @dark-text-medium; }
+    .rf-member-card-divider { background-color: @dark-border; }
+
+    .rf-member-card-stats {
+      color: @dark-text-medium;
+      .rf-stat-sep { color: @dark-border; }
+      span strong { color: @dark-text-strong; }
+    }
+  }
+}
