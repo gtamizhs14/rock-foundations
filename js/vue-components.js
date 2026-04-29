@@ -155,8 +155,8 @@ const ToastApp = createApp({
       easter:  { icon: 'fa-shrimp',          title: 'Rock Lobster detected 🦞', message: 'You read the whole JD, didn\'t you?' }
     };
 
-    function showToast(type) {
-      const config = toastConfig[type];
+    function showToast(type, override) {
+      const config = Object.assign({}, toastConfig[type], override || {});
       const id = ++nextId;
       const toast = { id, type, ...config, progress: 100 };
       toasts.unshift(toast);
@@ -288,10 +288,16 @@ const DropdownApp = createApp({
 
     function selectItem(label) {
       close();
-      const toast = document.getElementById('vue-toasts-app');
-      if (window._rfToastInstance) {
-        window._rfToastInstance.showToast('success');
-      }
+      if (!window._rfToastInstance) return;
+      const map = {
+        'View Profile':        { type: 'info',    title: 'Opening Profile',   message: 'Loading Sarah Mitchell\'s full profile.' },
+        'Edit Person':         { type: 'info',    title: 'Edit Mode',         message: 'Person record is now editable.' },
+        'Add to Group':        { type: 'success', title: 'Added to Group!',   message: 'Sarah Mitchell has been added successfully.' },
+        'Send Email':          { type: 'success', title: 'Email Sent',        message: 'Message delivered to sarah@rockchurch.org.' },
+        'Delete Record':       { type: 'error',   title: 'Record Deleted',    message: 'This action cannot be undone.' },
+      };
+      const action = map[label] || { type: 'info', title: label, message: 'Action completed.' };
+      window._rfToastInstance.showToast(action.type, { title: action.title, message: action.message });
     }
 
     onMounted(function() {
